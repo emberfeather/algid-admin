@@ -9,13 +9,7 @@
 	$(function() {
 		initialize();
 		
-		$adminMenu.text('Content Administration');
-	});
-	
-	$.fn.extend({
-		myPunk: function() {
-			return this;
-		}
+		$adminMenu.text('Administration');
 	});
 	
 	function initialize() {
@@ -26,4 +20,8 @@
 		// Set the variable for referencing the menu
 		$adminMenu = $('#admin-menu');
 	}
+	
+	/**
+	 * TODO Extend jQuery to have a function for adding options to the menu
+	 */
 })(jQuery);
