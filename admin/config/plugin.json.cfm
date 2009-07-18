@@ -10,5 +10,10 @@
 		"version": "0.1.0"
 	},
 	"navigation": [
-	]
+	],
+	"admin": {
+		"title": "Admin",
+		"navigation": [
+		]
+	}
 }
