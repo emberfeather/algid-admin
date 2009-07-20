@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<project name="p-admin" default="prepare" basedir=".">
+	<!-- Load ANT tasks -->
+	
+	<!-- Include the property files -->
+	<property file="${basedir}/project.properties"/>
+	<property file="${basedir}/user.properties"/>
+	
+	<target name="minify" depends="prepare" description="Minify the CSS and JS files">
+		<echo message="Starting: CSS and JS minification"/>
+		
+		<!-- Use the jar to minify the css and js files -->
+		<apply executable="java" parallel="false" dest="${basedir}/${project.name}/script">
+			<fileset dir="${basedir}/${project.name}/script" includes="**/*.js" excludes="**/*-min.js" />
+			<arg line="-jar"/>
+			<arg path="${basedir}/${build.dist}/lib/yuicompressor-2.4.2.jar" />
+			<arg line="-v"/>
+			<srcfile/>
+			<arg line="-o"/>
+			<mapper type="glob" from="*.js" to="*-min.js"/>
+			<targetfile/>
+		</apply>
+		
+		<apply executable="java" parallel="false" dest="${basedir}/${project.name}/style">
+			<fileset dir="${basedir}/${project.name}/style" includes="**/*.css" excludes="**/*-min.css" />
+			<arg line="-jar"/>
+			<arg path="${basedir}/${build.dist}/lib/yuicompressor-2.4.2.jar" />
+			<arg line="-v"/>
+			<srcfile/>
+			<arg line="-o"/>
+			<mapper type="glob" from="*.css" to="*-min.css"/>
+			<targetfile/>
+		</apply>
+		
+		<echo message="Finished: CSS and JS minification"/>
+	</target>
+	
+	<target name="prepare" description="Prepare environment for build">
+		<!-- Define log file -->
+		<record name="${basedir}${build.dist}/logs/${build.logfile}"/>
+		
+		<!-- Create the time stamp -->
+		<tstamp>
+			<format property="build.date" pattern="MM/dd/yy hh:mmaa"/>
+		</tstamp>
+		
+		<echo message="${project.fullname} preparations complete"/>
+	</target>
+</project>
