@@ -193,21 +193,7 @@
 			</div>
 			
 			<div class="grid_9">
-				<div class="grid_6 alpha">
-					<cfinclude template="/cf-compendium/inc/resource/structure/markupGuide.cfm" />
-				</div>
-				
-				<div class="grid_3 omega">
-					<div class="box">
-						<h2>Testing Inner Grid</h2>
-						
-						<div class="block">
-							<p>
-								Does it work to have an inner grid?
-							</p>
-						</div>
-					</div>
-				</div>
+				<cfinclude template="/cf-compendium/inc/resource/structure/markupGuide.cfm" />
 			</div>
 			
 			<div class="clear"><!-- clear --></div>
