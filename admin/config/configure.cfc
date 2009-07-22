@@ -18,7 +18,10 @@
 				
 				<cfloop query="files">
 					<!--- Apply Navigation Masks --->
+					<!--- TODO Get the masks working correctly --->
+					<!---
 					<cfset temp.applyMask( files.directory & '/' & files.name ) />
+					--->
 				</cfloop>
 			</cfif>
 		</cfloop>
