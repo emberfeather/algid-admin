@@ -84,7 +84,7 @@
 						navClasses = ['nav main', 'submenu'],
 						selectedOnly = false
 					} />
-				<cfoutput>#template.getNavigation(1, '', options)#</cfoutput>
+				<cfoutput>#template.getNavigation(1, ['main', 'secondary'], options)#</cfoutput>
 			</div>
 			
 			<div class="grid_12">
@@ -107,7 +107,7 @@
 								navClasses = ['section menu', 'submenu'],
 								selectedOnly = false
 							} />
-						<cfoutput>#template.getNavigation(2, '', options)#</cfoutput>
+						<cfoutput>#template.getNavigation(2, 'secondary', options)#</cfoutput>
 					</div>
 				</div>
 				

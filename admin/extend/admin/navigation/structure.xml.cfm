@@ -1,32 +1,32 @@
 <navigation>
-	<admin>
-		<tools>
-			<style>
-				<markup/>
-				<form/>
+	<admin position="main">
+		<tools position="secondary">
+			<style position="secondary">
+				<markup position="action"/>
+				<form position="action"/>
 			</style>
 			
-			<profile>
-				<page/>
+			<profile position="secondary">
+				<page position="action"/>
 			</profile>
 		</tools>
 	</admin>
 	
-	<support>
-		<documentation>
-			<list/>
-			<display>
-				<source/>
+	<support position="main">
+		<documentation position="secondary">
+			<list position="action"/>
+			<display position="action">
+				<source position="action"/>
 			</display>
 		</documentation>
 		
-		<navigation>
-			<list/>
+		<navigation position="secondary">
+			<list position="action"/>
 		</navigation>
 		
-		<contact>
-			<list/>
-			<email/>
+		<contact position="secondary">
+			<list position="action"/>
+			<email position="action"/>
 		</contact>
 	</support>
 </navigation>
