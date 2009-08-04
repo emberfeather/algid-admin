@@ -41,6 +41,10 @@
 		</cfcatch>
 	</cftry>
 	--->
+	
+	<cffile action="read" file="/cf-compendium/inc/resource/structure/markupGuide.cfm" variable="content" />
+	
+	<cfset template.setContent(content) />
 </cfsilent>
 <!--- TODO Separate out template file --->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -216,7 +220,7 @@
 			</div>
 			
 			<div class="grid_9">
-				<cfinclude template="/cf-compendium/inc/resource/structure/markupGuide.cfm" />
+				<cfoutput>#template.getContent()#</cfoutput>
 			</div>
 			
 			<div class="clear"><!-- clear --></div>

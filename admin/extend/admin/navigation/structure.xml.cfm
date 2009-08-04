@@ -1,31 +1,31 @@
-<navigation >
-	<section name="admin">
-		<subsection name="tools">
-			<view name="style">
-				<action name="markup"/>
-				<action name="form"/>
-			</view>
+<navigation>
+	<admin>
+		<tools>
+			<style>
+				<markup/>
+				<form/>
+			</style>
 			
-			<view name="profile">
-				<action name="page"/>
-			</view>
-		</subsection>
-	</section>
+			<profile>
+				<page/>
+			</profile>
+		</tools>
+	</admin>
 	
-	<section name="support">
-		<subsection name="documentation">
-			<action name="list"/>
-			<action name="display"/>
-			<action name="source"/>
-		</subsection>
+	<support>
+		<documentation>
+			<list/>
+			<display/>
+			<source/>
+		</documentation>
 		
-		<subsection name="navigation">
-			<action name="list"/>
-		</subsection>
+		<navigation>
+			<list/>
+		</navigation>
 		
-		<subsection name="contact">
-			<action name="list"/>
-			<action name="email"/>
-		</subsection>
-	</section>
+		<contact>
+			<list/>
+			<email/>
+		</contact>
+	</support>
 </navigation>
