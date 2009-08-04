@@ -11,6 +11,7 @@
 				'https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js'
 			]
 		} />
+	
 	<cfset template = application.managers.factory.getTemplate(navigation, theURL, options) />
 	
 	<!--- Include minified files for production --->
@@ -78,89 +79,12 @@
 			<div class="clear"><!-- clear --></div>
 			
 			<div class="grid_12">
-				<!--- TODO Use the template --->
-				<ul class="nav main">
-					<li>
-						<a href="#">Plugin</a>
-						<ul class="submenu">
-							<li>
-								<a>Submenu 1</a>
-							</li>
-							<li>
-								<a>Submenu 2</a>
-							</li>
-							<li>
-								<a>Submenu 3</a>
-							</li>
-							<li>
-								<a>Submenu 4</a>
-							</li>
-							<li>
-								<a>Submenu 5</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">Navigation</a>
-						<ul class="submenu">
-							<li>
-								<a>Submenu 1</a>
-							</li>
-							<li>
-								<a>Submenu 2</a>
-							</li>
-							<li>
-								<a>Submenu 3</a>
-							</li>
-							<li>
-								<a>Submenu 4</a>
-							</li>
-							<li>
-								<a>Submenu 5</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">Here</a>
-						<ul class="submenu">
-							<li>
-								<a>Submenu 1</a>
-							</li>
-							<li>
-								<a>Submenu 2</a>
-							</li>
-							<li>
-								<a>Submenu 3</a>
-							</li>
-							<li>
-								<a>Submenu 4</a>
-							</li>
-							<li>
-								<a>Submenu 5</a>
-							</li>
-						</ul>
-					</li>
-					<li class="secondary">
-						<a href="#">Actions</a>
-						<ul class="submenu">
-							<li>
-								<a>Submenu 1</a>
-							</li>
-							<li>
-								<a>Submenu 2</a>
-							</li>
-							<li>
-								<a>Submenu 3</a>
-							</li>
-							<li>
-								<a>Submenu 4</a>
-							</li>
-							<li>
-								<a>Submenu 5</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
+				<cfset options = {
+						depth = 2,
+						navClasses = ['nav main', 'submenu'],
+						selectedOnly = false
+					} />
+				<cfoutput>#template.getNavigation(1, '', options)#</cfoutput>
 			</div>
 			
 			<div class="grid_12">
@@ -178,32 +102,12 @@
 					<h2>Plugin Navigation</h2>
 					
 					<div class="block">
-						<!--- TODO Use the template --->
-						<ul class="section menu">
-							<li>
-								<a href="#">Individual</a>
-								<ul class="submenu">
-									<li>
-										<a>Submenu 1</a>
-									</li>
-									<li>
-										<a class="active">Submenu 2</a>
-									</li>
-									<li>
-										<a>Submenu 3</a>
-									</li>
-									<li>
-										<a>Submenu 4</a>
-									</li>
-									<li>
-										<a>Submenu 5</a>
-									</li>
-								</ul>
-							</li>
-							<li><a href="#">Plugin</a></li>
-							<li><a href="#">Navigation</a></li>
-							<li><a href="#">Here</a></li>
-						</ul>
+						<cfset options = {
+								depth = 1,
+								navClasses = ['section menu', 'submenu'],
+								selectedOnly = false
+							} />
+						<cfoutput>#template.getNavigation(2, '', options)#</cfoutput>
 					</div>
 				</div>
 				

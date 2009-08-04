@@ -15,8 +15,9 @@
 	<support>
 		<documentation>
 			<list/>
-			<display/>
-			<source/>
+			<display>
+				<source/>
+			</display>
 		</documentation>
 		
 		<navigation>
