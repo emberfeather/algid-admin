@@ -23,7 +23,7 @@
 	
 	<!--- Add the scripts and styles --->
 	<cfset template.addScripts('../cf-compendium/script/form#midfix#.js', '../cf-compendium/script/list#midfix#.js', '../cf-compendium/script/datagrid#midfix#.js', '../plugins/admin/script/admin#midfix#.js') />
-	<cfset template.addStyles('../plugins/admin/style/960/reset#midfix#.css', '../plugins/admin/style/960/text#midfix#.css', '../plugins/admin/style/960/960#midfix#.css" type="text/css', '../plugins/admin/style/960/layout#midfix#.css', '../plugins/admin/style/960/nav#midfix#.css', '../plugins/admin/style/admin#midfix#.css', '../cf-compendium/styles#midfix#.css', '../cf-compendium/form#midfix#.css', '../cf-compendium/list#midfix#.css', '../cf-compendium/datagrid#midfix#.css') />
+	<cfset template.addStyles('../plugins/admin/style/960/reset#midfix#.css', '../plugins/admin/style/960/960#midfix#.css" type="text/css', '../plugins/admin/style/text#midfix#.css', '../plugins/admin/style/layout#midfix#.css', '../plugins/admin/style/nav#midfix#.css', '../cf-compendium/styles#midfix#.css', '../cf-compendium/form#midfix#.css', '../cf-compendium/list#midfix#.css', '../cf-compendium/datagrid#midfix#.css') />
 	
 	<!--- TODO need to make this more dynamic for plugin based navigation --->
 	<cfset templateBasePath = '/admin/inc/content/' />
@@ -53,6 +53,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		
+		<!--- TODO Pull the title from the template --->
 		<title>Administration</title>
 		
 		<cfoutput>#template.getStyles()#</cfoutput>
@@ -71,7 +72,7 @@
 						Username | Logout
 					</p>
 					<p>
-						Stats and other information
+						Stats and other information... maybe this area is a widget?!?
 					</p>
 				</div>
 			</div>
@@ -88,11 +89,13 @@
 			</div>
 			
 			<div class="grid_12">
-				<h2 id="page-heading">Page Title</h2>
-				
-				<p>
+				<div class="float-right">
+					<!--- TODO Get the breadcrumb from the template --->
 					Breadcrumb &raquo; goes &raquo; here!
-				</p>
+				</div>
+				
+				<!--- TODO Get the page title from the template --->
+				<h2 id="page-heading">Page Title</h2>
 			</div>
 			
 			<div class="clear"><!-- clear --></div>
@@ -113,11 +116,11 @@
 				
 				<!--- TODO Figure out a widget system --->
 				<div class="box">
-					<h2>Plugin Widgets</h2>
+					<h2>Plugin Widget Title</h2>
 					
 					<div class="block">
 						<p>
-							Widgets about the plugin?
+							Widgets about the plugin...how do we do widgets?!?
 						</p>
 					</div>
 				</div>
