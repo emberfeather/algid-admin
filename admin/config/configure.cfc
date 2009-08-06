@@ -3,6 +3,7 @@
 		<cfargument name="newApplication" type="struct" required="true" />
 		
 		<cfset var bundleName = '' />
+		<cfset var contentDirectory = '' />
 		<cfset var files = '' />
 		<cfset var i18n = '' />
 		<cfset var i18nDirectory = '' />
@@ -17,8 +18,9 @@
 		<cfset navigation = createObject('component', 'cf-compendium.inc.resource.structure.navigationFile').init(i18n) />
 		
 		<cfloop array="#arguments.newApplication.plugins#" index="i">
-			<cfset navDirectory =  variables.appBaseDirectory & 'plugins/' & i.key & '/extend/admin/navigation/' />
+			<cfset contentDirectory =  '/plugins/' & i.key & '/extend/admin/content/' />
 			<cfset i18nDirectory =  '/plugins/' & i.key & '/i18n/extend/admin/navigation/' />
+			<cfset navDirectory =  variables.appBaseDirectory & 'plugins/' & i.key & '/extend/admin/navigation/' />
 			
 			<!--- Search for admin directory in the plugin extension point --->
 			<cfif directoryExists(navDirectory)>
@@ -30,10 +32,12 @@
 					<cfset bundleName = mid(files.name, search.pos[2], search.len[2]) />
 					
 					<!--- Apply Navigation Masks --->
-					<cfset navigation.applyMask( files.directory & '/' & files.name, i18nDirectory, bundleName, arrayToList(i.i18n.locales) ) />
+					<cfset navigation.applyMask( files.directory & '/' & files.name, contentDirectory, i18nDirectory, bundleName, arrayToList(i.i18n.locales) ) />
 				</cfloop>
 			</cfif>
 		</cfloop>
+		
+		<!--- TODO validate the navigation --->
 		
 		<cfset arguments.newApplication.managers.singleton.setAdminNavigation(navigation) />
 	</cffunction>

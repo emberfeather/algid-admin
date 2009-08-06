@@ -1,4 +1,6 @@
 <navigation>
+	<index position="main" orderBy="0"/>
+	
 	<admin position="main">
 		<tools position="secondary">
 			<style position="secondary">
