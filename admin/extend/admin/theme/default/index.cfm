@@ -53,7 +53,7 @@
 					
 					<div class="block">
 						<cfset options = {
-								depth = 1,
+								depth = 2,
 								navClasses = ['section menu', 'submenu'],
 								selectedOnly = false
 							} />

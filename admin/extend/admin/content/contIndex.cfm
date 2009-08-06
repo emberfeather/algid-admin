@@ -1,1 +1,1 @@
-
+Welcome to Ember Feather's first application: Poseidon!
