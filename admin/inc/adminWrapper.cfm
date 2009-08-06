@@ -9,10 +9,12 @@
 	<cfset options = {
 			scripts = [
 				'https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js'
-			]
+			],
+			siteLink = '?',
+			siteTitle = application.information.title
 		} />
 	
-	<cfset template = application.managers.factory.getTemplate(navigation, theURL, options) />
+	<cfset template = application.managers.factory.getTemplate(navigation, theURL, SESSION.locale, options) />
 	
 	<!--- Include minified files for production --->
 	<cfif application.settings.environment EQ 'production'>

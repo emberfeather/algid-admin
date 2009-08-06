@@ -3,8 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		
-		<!--- TODO Pull the title from the template --->
-		<title>Administration</title>
+		<title><cfoutput>#template.getHTMLTitle()#</cfoutput></title>
 		
 		<cfoutput>#template.getStyles()#</cfoutput>
 	</head>
@@ -40,19 +39,17 @@
 			
 			<div class="grid_12">
 				<div class="float-right">
-					<!--- TODO Get the breadcrumb from the template --->
-					Breadcrumb &raquo; goes &raquo; here!
+					<cfoutput>#template.getBreadcrumb()#</cfoutput>
 				</div>
 				
-				<!--- TODO Get the page title from the template --->
-				<h2 id="page-heading">Page Title</h2>
+				<h2 id="page-heading"><cfoutput>#template.getPageTitle()#</cfoutput></h2>
 			</div>
 			
 			<div class="clear"><!-- clear --></div>
 			
 			<div class="grid_3">
 				<div class="box menu">
-					<h2>Plugin Navigation</h2>
+					<h2><cfoutput>#template.getPageTitle(1)#</cfoutput> Navigation</h2>
 					
 					<div class="block">
 						<cfset options = {
