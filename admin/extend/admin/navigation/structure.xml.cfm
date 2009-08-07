@@ -2,6 +2,8 @@
 	<index position="main" orderBy="0"/>
 	
 	<admin position="main">
+		<app position="secondary"/>
+		
 		<tools position="secondary">
 			<style position="secondary">
 				<markup position="action"/>
@@ -9,14 +11,21 @@
 			</style>
 			
 			<profile position="secondary">
+				<browse position="secondary"/>
 				<page position="action"/>
 			</profile>
 		</tools>
+		
+		<servers position="secondary">
+			<cluster position="secondary"/>
+			<logs position="secondary"/>
+		</servers>
 	</admin>
 	
 	<support position="main">
 		<documentation position="secondary">
 			<list position="action"/>
+			
 			<display position="action">
 				<source position="action"/>
 			</display>
