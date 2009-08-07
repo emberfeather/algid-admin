@@ -11,10 +11,10 @@
 		<div class="container_12">
 			<div class="grid_3">
 				<div class="block">
-					Logo Here
+					<img src="../plugins/admin/extend/admin/theme/default/ef-poseidon.png" title="<cfoutput>#application.information.title#</cfoutput>" alt="<cfoutput>#application.information.title#</cfoutput>" />
 				</div>
 			</div>
-				
+			
 			<div class="grid_9">
 				<div class="block">
 					<p>
