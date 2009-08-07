@@ -11,7 +11,7 @@
 		<div class="container_12">
 			<div class="grid_3">
 				<div class="block">
-					<img src="../plugins/admin/extend/admin/theme/default/ef-poseidon.png" title="<cfoutput>#application.information.title#</cfoutput>" alt="<cfoutput>#application.information.title#</cfoutput>" />
+					<a href="?"><img src="../plugins/admin/extend/admin/theme/default/ef-poseidon.png" title="<cfoutput>#application.information.title#</cfoutput>" alt="<cfoutput>#application.information.title#</cfoutput>" /></a>
 				</div>
 			</div>
 			
