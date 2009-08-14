@@ -5,6 +5,7 @@
 		<cfset var bundleName = '' />
 		<cfset var contentDirectory = '' />
 		<cfset var files = '' />
+		<cfset var i = '' />
 		<cfset var i18n = '' />
 		<cfset var i18nDirectory = '' />
 		<cfset var navDirectory = '' />
