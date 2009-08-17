@@ -7,7 +7,7 @@
 	<cfset navigation = application.managers.singleton.getAdminNavigation() />
 	
 	<!--- Create URL object --->
-	<cfset theURL = application.managers.getURL(CGI.QUERY_STRING) />
+	<cfset theURL = application.managers.transient.getURL(CGI.QUERY_STRING) />
 	
 	<!--- Create template object --->
 	<cfset options = {
@@ -16,7 +16,7 @@
 			]
 		} />
 	
-	<cfset template = application.managers.getTemplate(navigation, theURL, SESSION.locale, options) />
+	<cfset template = application.managers.transient.getTemplate(navigation, theURL, SESSION.locale, options) />
 	
 	<!--- Include minified files for production --->
 	<cfif application.settings.environment EQ 'production'>
