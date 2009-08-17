@@ -61,6 +61,17 @@
 					</div>
 				</div>
 				
+				<div class="box menu">
+					<h2>Actions</h2>
+					
+					<div class="block">
+						<cfset options = {
+								navClasses = ['section menu']
+							} />
+						<cfoutput>#template.getNavigation(template.getLevel(), 'action', options)#</cfoutput>
+					</div>
+				</div>
+				
 				<!--- TODO Figure out a widget system --->
 				<div class="box">
 					<h2>Plugin Widget Title</h2>

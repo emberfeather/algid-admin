@@ -7,7 +7,7 @@
 	<cfset navigation = application.managers.singleton.getAdminNavigation() />
 	
 	<!--- Create URL object --->
-	<cfset theURL = application.managers.transient.getURL(CGI.QUERY_STRING) />
+	<cfset theURL = application.managers.transient.getURL(URL) />
 	
 	<!--- Create template object --->
 	<cfset options = {
