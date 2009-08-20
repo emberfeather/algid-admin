@@ -12,6 +12,7 @@
 	},
 	"key": "admin",
 	"prerequisites": {
+		"user": "0.1.000"
 	},
 	"version": "0.1.000"
 }
