@@ -21,7 +21,8 @@
 						Username | Logout
 					</p>
 					<p>
-						Stats and other information... maybe this area is a widget?!?
+						<!--- Output the user stats --->
+						<cfoutput>#template.getStats()#</cfoutput>
 					</p>
 				</div>
 			</div>
@@ -72,19 +73,12 @@
 					</div>
 				</div>
 				
-				<!--- TODO Figure out a widget system --->
-				<div class="box">
-					<h2>Plugin Widget Title</h2>
-					
-					<div class="block">
-						<p>
-							Widgets about the plugin...how do we do widgets?!?
-						</p>
-					</div>
-				</div>
+				<!--- Output the side content --->
+				<cfoutput>#template.getSide()#</cfoutput>
 			</div>
 			
 			<div class="grid_9">
+				<!--- Output the main content --->
 				<cfoutput>#template.getContent()#</cfoutput>
 			</div>
 			

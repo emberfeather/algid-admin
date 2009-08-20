@@ -48,6 +48,28 @@
 	
 	<cfset profiler.stop('process') />
 	
+	<cfset profiler.start('stats') />
+	
+	<!--- TODO Add in caching --->
+	<cfsavecontent variable="stats">
+		<cfinclude template="/plugins/user/extend/admin/content/widgUsers.cfm" />
+	</cfsavecontent>
+	
+	<cfset template.setStats(stats) />
+	
+	<cfset profiler.stop('stats') />
+	
+	<cfset profiler.start('side') />
+	
+	<!--- TODO Add in caching --->
+	<cfsavecontent variable="side">
+		<cfinclude template="#template.getContentPath('side')#" />
+	</cfsavecontent>
+	
+	<cfset template.setSide(side) />
+	
+	<cfset profiler.stop('side') />
+	
 	<cfset profiler.start('content') />
 	
 	<!--- TODO Add in caching --->

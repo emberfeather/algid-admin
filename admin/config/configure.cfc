@@ -39,7 +39,7 @@
 		</cfloop>
 		
 		<!--- Verify the content files exist --->
-		<cfset navigation.validate('proc,cont') />
+		<cfset navigation.validate('proc,cont,side') />
 		
 		<cfset arguments.newApplication.managers.singleton.setAdminNavigation(navigation) />
 	</cffunction>
