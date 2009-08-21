@@ -48,36 +48,63 @@
 			
 			<div class="clear"><!-- clear --></div>
 			
-			<div class="grid_3">
-				<div class="box menu">
-					<h2><cfoutput>#template.getPageTitle(1)#</cfoutput> Navigation</h2>
-					
-					<div class="block">
-						<cfset options = {
-								depth = 2,
-								navClasses = ['section menu', 'submenu'],
-								selectedOnly = false
-							} />
-						<cfoutput>#template.getNavigation(2, 'secondary', options)#</cfoutput>
-					</div>
-				</div>
-				
-				<div class="box menu">
-					<h2>Actions</h2>
-					
-					<div class="block">
-						<cfset options = {
-								navClasses = ['section menu']
-							} />
-						<cfoutput>#template.getNavigation(template.getLevel(), 'action', options)#</cfoutput>
-					</div>
-				</div>
-				
-				<!--- Output the side content --->
-				<cfoutput>#template.getSide()#</cfoutput>
-			</div>
+			<cfset options = {
+					depth = 2,
+					navClasses = ['section menu', 'submenu'],
+					selectedOnly = false
+				} />
 			
-			<div class="grid_9">
+			<cfset secondaryNav = template.getNavigation(2, 'secondary', options) />
+			
+			<cfset options = {
+					navClasses = ['section menu']
+				} />
+			
+			<cfset actionNav = template.getNavigation(template.getLevel(), 'action', options) />
+			
+			<cfif actionNav EQ ''>
+				<cfset actionNav = template.getNavigation(template.getLevel() + 1, 'action', options) />
+			</cfif>
+			
+			<cfset sideContent = trim(template.getSide()) />
+			
+			<!--- Determine if we are using the sidebar --->
+			<cfset isSideBar = secondaryNav NEQ '' OR actionNav NEQ '' OR sideContent NEQ '' />
+			
+			<!--- Test if we need the side column --->
+			<cfif isSideBar>
+				<div class="grid_3">
+					<cfif secondaryNav NEQ ''>
+						<div class="box menu">
+							<h2><cfoutput>#template.getPageTitle(1)#</cfoutput></h2>
+							
+							<div class="block">
+								<cfoutput>#secondaryNav#</cfoutput>
+							</div>
+						</div>
+					</cfif>
+					
+					<cfif actionNav NEQ ''>
+						<div class="box menu">
+							<h2>Actions</h2>
+							
+							<div class="block">
+								<cfoutput>#actionNav#</cfoutput>
+							</div>
+						</div>
+					</cfif>
+					
+					<cfif sideContent NEQ ''>
+						<div class="box">
+							<cfoutput>#sideContent#</cfoutput>
+						</div>
+					</cfif>
+				</div>
+			
+				<div class="grid_9">
+			<cfelse>
+				<div class="grid_12">
+			</cfif>
 				<!--- Output the main content --->
 				<cfoutput>#template.getContent()#</cfoutput>
 			</div>
