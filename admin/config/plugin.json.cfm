@@ -1,7 +1,7 @@
 {
 	"transient": {
 		"profiler": "cf-compendium.inc.resource.utility.profiler",
-		"template": "cf-compendium.inc.resource.structure.template",
+		"template": "algid.inc.resource.structure.template",
 		"url": "cf-compendium.inc.resource.utility.url"
 	},
 	"i18n": {

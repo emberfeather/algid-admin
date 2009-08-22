@@ -16,7 +16,7 @@
 		<cfset i18n = arguments.newApplication.managers.singleton.getI18N() />
 		
 		<!--- Create the admin navigation singleton --->
-		<cfset navigation = createObject('component', 'cf-compendium.inc.resource.structure.navigationFile').init(i18n) />
+		<cfset navigation = createObject('component', 'algid.inc.resource.structure.navigationFile').init(i18n) />
 		
 		<cfloop array="#arguments.newApplication.plugins#" index="i">
 			<cfset contentDirectory =  '/plugins/' & i.key & '/extend/admin/content/' />
