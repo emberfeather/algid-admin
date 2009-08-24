@@ -1,8 +1,11 @@
 {
-	"transient": {
-		"profiler": "cf-compendium.inc.resource.utility.profiler",
-		"template": "algid.inc.resource.structure.template",
-		"url": "cf-compendium.inc.resource.utility.url"
+	"application": {
+		"transient": {
+			"adminNavigation": "algid.inc.resource.structure.navigationFile",
+			"profiler": "cf-compendium.inc.resource.utility.profiler",
+			"template": "algid.inc.resource.structure.template",
+			"url": "cf-compendium.inc.resource.utility.url"
+		}
 	},
 	"i18n": {
 		"locales": [
