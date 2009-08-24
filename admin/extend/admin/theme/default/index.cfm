@@ -11,14 +11,18 @@
 		<div class="container_12">
 			<div class="grid_3">
 				<div class="block">
-					<a href="?"><img src="../plugins/admin/extend/admin/theme/default/algid-admin.png" title="<cfoutput>#application.information.title#</cfoutput>" alt="<cfoutput>#application.information.title#</cfoutput>" /></a>
+					<a href="?"><img src="../plugins/admin/extend/admin/theme/default/algid-admin.png" alt="Admin" /></a>
 				</div>
 			</div>
 			
 			<div class="grid_9">
 				<div class="block">
 					<p>
-						Username | Logout
+						<cfset theURL.setAccount('_base', '.account') />
+						<cfset theURL.setLogout('_base', '.account.logout') />
+						<cfoutput>
+							<a href="#theURL.getAccount()#">Username</a> | <a href="#theURL.getLogout()#">Logout</a>
+						</cfoutput>
 					</p>
 					<p>
 						<!--- Output the user stats --->
