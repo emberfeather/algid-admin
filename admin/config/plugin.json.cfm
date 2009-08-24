@@ -1,5 +1,5 @@
 {
-	"application": {
+	"applicationManagers": {
 		"transient": {
 			"adminNavigation": "algid.inc.resource.structure.navigationFile",
 			"profiler": "cf-compendium.inc.resource.utility.profiler",
