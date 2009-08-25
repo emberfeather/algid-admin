@@ -90,8 +90,6 @@
 					
 					<cfif actionNav NEQ ''>
 						<div class="box menu">
-							<h2>Actions</h2>
-							
 							<div class="block">
 								<cfoutput>#actionNav#</cfoutput>
 							</div>
