@@ -2,42 +2,42 @@
 	<index position="main" orderBy="0"/>
 	
 	<admin position="main">
-		<app position="secondary"/>
+		<app position="main"/>
 		
-		<tools position="secondary">
-			<style position="secondary">
-				<markup position="secondary"/>
-				<form position="secondary"/>
+		<tools position="main">
+			<style position="main">
+				<markup position="main"/>
+				<form position="main"/>
 			</style>
 			
-			<profile position="secondary">
+			<profile position="main">
 				<browse position="action"/>
-				<page position="secondary"/>
+				<page position="main"/>
 			</profile>
 		</tools>
 		
-		<servers position="secondary">
-			<cluster position="secondary"/>
-			<logs position="secondary"/>
+		<servers position="main">
+			<cluster position="main"/>
+			<logs position="main"/>
 		</servers>
 	</admin>
 	
 	<support position="main">
-		<documentation position="secondary">
+		<documentation position="main">
 			<list position="action"/>
 			
-			<display position="secondary">
-				<source position="secondary"/>
+			<display position="main">
+				<source position="main"/>
 			</display>
 		</documentation>
 		
-		<navigation position="secondary">
+		<navigation position="main">
 			<list position="action"/>
 		</navigation>
 		
-		<contact position="secondary">
+		<contact position="main">
 			<list position="action"/>
-			<email position="secondary"/>
+			<email position="main"/>
 		</contact>
 	</support>
 </navigation>

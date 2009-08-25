@@ -36,32 +36,26 @@
 			
 			<div class="grid_12">
 				<div class="menuHolder main">
-					<cfset options = {
-							navClasses = ['menu horizontal right']
-						} />
+					<cfset hasNavigation = true />
+					<cfset navLevel = 1 />
 					
-					<cfoutput>#template.getNavigation(2, 'action', options)#</cfoutput>
-					
-					<cfset options = {
-							navClasses = ['menu horizontal']
-						} />
-					
-					<cfoutput>#template.getNavigation(1, 'main', options)#</cfoutput>
-					
-					<div class="clear"><!-- clear --></div>
-					
-					<cfloop from="2" to="3" index="i">
+					<cfloop condition="hasNavigation">
 						<cfset options = {
 								navClasses = ['menu horizontal right']
 							} />
 						
-						<cfoutput>#template.getNavigation(i + 1, 'action', options)#</cfoutput>
+						<cfoutput>#template.getNavigation(navLevel + 1, 'action', options)#</cfoutput>
 						
 						<cfset options = {
 								navClasses = ['menu horizontal']
 							} />
 						
-						<cfoutput>#template.getNavigation(i, 'secondary', options)#</cfoutput>
+						<cfset mainNav = trim(template.getNavigation(navLevel, 'main', options)) />
+						
+						<cfoutput>#mainNav#</cfoutput>
+						
+						<cfset hasNavigation = mainNav NEQ '' />
+						<cfset navLevel++ />
 						
 						<div class="clear"><!-- clear --></div>
 					</cfloop>

@@ -13,7 +13,7 @@
 		<cfset var search = '' />
 		
 		<!--- Create the admin navigation singleton --->
-		<cfset navigation = arguments.newApplication.managers.transient.getAdminNavigation(arguments.newApplication.managers.singleton.getI18N()) />
+		<cfset navigation = arguments.newApplication.managers.transient.getNavigationForAdmin(arguments.newApplication.managers.singleton.getI18N()) />
 		
 		<cfloop array="#arguments.newApplication.plugins#" index="i">
 			<cfset contentDirectory =  '/plugins/' & i.key & '/extend/admin/content/' />
@@ -26,7 +26,7 @@
 				
 				<cfloop query="files">
 					<!--- Get the bundle name from the filename --->
-					<cfset search = reFind('^(.*).(json|xml).cfm$', files.name, 1, true) />
+					<cfset search = reFind('^(.*)\.(json|xml)\.cfm$', files.name, 1, true) />
 					<cfset bundleName = mid(files.name, search.pos[2], search.len[2]) />
 					
 					<!--- Apply Navigation Masks --->

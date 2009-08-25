@@ -3,11 +3,13 @@
 	
 	<cfset profiler.start('startup') />
 	
+	<cfset i18n = application.managers.singleton.getI18N() />
+	
 	<!--- Retrieve the admin navigation object --->
 	<cfset navigation = application.managers.singleton.getAdminNavigation() />
 	
 	<!--- Create URL object --->
-	<cfset theURL = application.managers.transient.getURL(URL) />
+	<cfset theURL = application.managers.transient.getURLForAdmin(URL) />
 	
 	<cfset profiler.stop('startup') />
 	
@@ -20,7 +22,7 @@
 			]
 		} />
 	
-	<cfset template = application.managers.transient.getTemplate(navigation, theURL, SESSION.locale, options) />
+	<cfset template = application.managers.transient.getTemplateForAdmin(navigation, theURL, SESSION.locale, options) />
 	
 	<!--- Include minified files for production --->
 	<cfif application.settings.environment EQ 'production'>
