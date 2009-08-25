@@ -11,7 +11,7 @@
 			</style>
 			
 			<profile position="secondary">
-				<browse position="secondary"/>
+				<browse position="action"/>
 				<page position="secondary"/>
 			</profile>
 		</tools>
@@ -24,7 +24,7 @@
 	
 	<support position="main">
 		<documentation position="secondary">
-			<list position="secondary"/>
+			<list position="action"/>
 			
 			<display position="secondary">
 				<source position="secondary"/>
@@ -32,11 +32,11 @@
 		</documentation>
 		
 		<navigation position="secondary">
-			<list position="secondary"/>
+			<list position="action"/>
 		</navigation>
 		
 		<contact position="secondary">
-			<list position="secondary"/>
+			<list position="action"/>
 			<email position="secondary"/>
 		</contact>
 	</support>

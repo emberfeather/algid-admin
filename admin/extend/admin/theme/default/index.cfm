@@ -18,7 +18,7 @@
 			</div>
 			
 			<div class="grid_9">
-				<div>
+				<div class="float-right">
 					<cfset theURL.setAccount('_base', '.account') />
 					<cfset theURL.setLogout('_base', '.account.logout') />
 					<cfoutput>
@@ -35,60 +35,59 @@
 			<div class="clear"><!-- clear --></div>
 			
 			<div class="grid_12">
-				<cfset options = {
-						navClasses = ['menu horizontal']
-					} />
 				<div class="menuHolder main">
+					<cfset options = {
+							navClasses = ['menu horizontal right']
+						} />
+					
+					<cfoutput>#template.getNavigation(2, 'action', options)#</cfoutput>
+					
+					<cfset options = {
+							navClasses = ['menu horizontal']
+						} />
+					
 					<cfoutput>#template.getNavigation(1, 'main', options)#</cfoutput>
+					
 					<div class="clear"><!-- clear --></div>
+					
+					<cfloop from="2" to="3" index="i">
+						<cfset options = {
+								navClasses = ['menu horizontal right']
+							} />
+						
+						<cfoutput>#template.getNavigation(i + 1, 'action', options)#</cfoutput>
+						
+						<cfset options = {
+								navClasses = ['menu horizontal']
+							} />
+						
+						<cfoutput>#template.getNavigation(i, 'secondary', options)#</cfoutput>
+						
+						<div class="clear"><!-- clear --></div>
+					</cfloop>
 				</div>
 			</div>
 			
 			<div class="clear"><!-- clear --></div>
 			
-			<cfset options = {
-					depth = -1,
-					navClasses = ['menu vertical', 'submenu'],
-					selectedOnly = false
-				} />
-			
-			<cfset secondaryNav = template.getNavigation(2, 'secondary', options) />
-			
-			<cfset options = {
-					navClasses = ['menu horizontal right']
-				} />
-			
-			<cfset actionNav = template.getNavigation(template.getLevel(), 'action', options) />
-			
-			<cfif actionNav EQ ''>
-				<cfset actionNav = template.getNavigation(template.getLevel() + 1, 'action', options) />
-			</cfif>
-			
-			<cfset sideContent = trim(template.getSide()) />
-			
-			<div class="grid_3">
-				<cfif secondaryNav NEQ ''>
+			<div class="content">
+				<div class="grid_3">
 					<div class="box">
-						<cfoutput>#secondaryNav#</cfoutput>
+						<cfoutput>#template.getSide()#</cfoutput>
 					</div>
-				</cfif>
-				
-				<cfif sideContent NEQ ''>
-					<div class="box">
-						<cfoutput>#sideContent#</cfoutput>
-					</div>
-				</cfif>
-			</div>
-			
-			<div class="grid_9">
-				<h2><cfoutput>#template.getPageTitle()#</cfoutput></h2>
-				
-				<div>
-					<cfoutput>#template.getBreadcrumb()#</cfoutput>
 				</div>
-				
-				<!--- Output the main content --->
-				<cfoutput>#template.getContent()#</cfoutput>
+			
+				<div class="grid_9">
+					<h2><cfoutput>#template.getPageTitle()#</cfoutput></h2>
+					
+					<div>
+						<cfoutput>#template.getBreadcrumb()#</cfoutput>
+					</div>
+					
+					<!--- Output the main content --->
+					<cfoutput>#template.getContent()#</cfoutput>
+				</div>
+				<div class="clear"><!-- clear --></div>
 			</div>
 			
 			<div class="clear"><!-- clear --></div>

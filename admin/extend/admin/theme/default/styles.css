@@ -20,7 +20,7 @@
 
 body {
 	border-top: 5px solid #2A4353;
-	background: #D5D8DD;
+	background: #D5D8DD url(background.png) repeat-x top;
 	color: #333;
 	font: 11px/15px Century Gothic, Apple Gothic, sans-serif;
 }
@@ -149,7 +149,13 @@ ul, ol {
 .container_12,
 .container_16 {
 	padding: 1em 0;
-	background:#fff;
+}
+
+.content {
+	background: #fff;
+	-moz-border-radius: .5em;
+	-webkit-border-radius: .5em;
+	margin-bottom: 1em;
 }
 
 /*
@@ -165,11 +171,15 @@ ul, ol {
 	-webkit-border-bottom-right-radius: .5em;
 }
 
+.section {
+	margin-bottom: 1em;
+}
+
 /*
 	primary navigation
 */
 
-.menuHolder.main {
+.menuHolder {
 	-moz-border-radius-topleft: .5em;
 	-moz-border-radius-topright: .5em;
 	-webkit-border-top-left-radius: .5em;
@@ -198,22 +208,12 @@ ul, ol {
 	display: block;
 	padding: .35em 1em;
 	color: #fff;
+	text-decoration: none;
+	padding-bottom: 3px;
 }
 
-/*
-	secondary navigation
-*/
-
-.menu.vertical {
-	margin: 0;
-	list-style: none;
-}
-
-.menu.vertical li {
-	margin: 0;
-	padding: 0;
-}
-
-.menu.vertical ul {
-	margin: 0 2em;
+.menu.horizontal li a.selected,
+.menu.horizontal li a:hover {
+	border-bottom: 3px solid #fff;
+	padding-bottom: 0;
 }
