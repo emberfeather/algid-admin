@@ -5,6 +5,8 @@
 		
 		<title><cfoutput>#template.getHTMLTitle()#</cfoutput></title>
 		
+		<cfset template.addStyles('../plugins/admin/style/960/reset#midfix#.css', '../plugins/admin/style/960/960#midfix#.css"', '../plugins/admin/extend/admin/theme/default/styles#midfix#.css') />
+		
 		<cfoutput>#template.getStyles()#</cfoutput>
 	</head>
 	<body>
@@ -16,18 +18,17 @@
 			</div>
 			
 			<div class="grid_9">
-				<div class="block">
-					<p>
-						<cfset theURL.setAccount('_base', '.account') />
-						<cfset theURL.setLogout('_base', '.account.logout') />
-						<cfoutput>
-							<a href="#theURL.getAccount()#">Username</a> | <a href="#theURL.getLogout()#">Logout</a>
-						</cfoutput>
-					</p>
-					<p>
-						<!--- Output the user stats --->
-						<cfoutput>#template.getStats()#</cfoutput>
-					</p>
+				<div>
+					<cfset theURL.setAccount('_base', '.account') />
+					<cfset theURL.setLogout('_base', '.account.logout') />
+					<cfoutput>
+						<a href="#theURL.getAccount()#">Username</a> | <a href="#theURL.getLogout()#">Logout</a>
+					</cfoutput>
+				</div>
+				
+				<div>
+					<!--- Output the user stats --->
+					<cfoutput>#template.getStats()#</cfoutput>
 				</div>
 			</div>
 			
@@ -35,33 +36,26 @@
 			
 			<div class="grid_12">
 				<cfset options = {
-						depth = 2,
-						navClasses = ['nav main', 'submenu'],
-						selectedOnly = false
+						navClasses = ['menu horizontal']
 					} />
-				<cfoutput>#template.getNavigation(1, ['main', 'secondary'], options)#</cfoutput>
-			</div>
-			
-			<div class="grid_12">
-				<div class="float-right">
-					<cfoutput>#template.getBreadcrumb()#</cfoutput>
+				<div class="menuHolder main">
+					<cfoutput>#template.getNavigation(1, 'main', options)#</cfoutput>
+					<div class="clear"><!-- clear --></div>
 				</div>
-				
-				<h2 id="page-heading"><cfoutput>#template.getPageTitle()#</cfoutput></h2>
 			</div>
 			
 			<div class="clear"><!-- clear --></div>
 			
 			<cfset options = {
-					depth = 2,
-					navClasses = ['section menu', 'submenu'],
+					depth = -1,
+					navClasses = ['menu vertical', 'submenu'],
 					selectedOnly = false
 				} />
 			
 			<cfset secondaryNav = template.getNavigation(2, 'secondary', options) />
 			
 			<cfset options = {
-					navClasses = ['section menu']
+					navClasses = ['menu horizontal right']
 				} />
 			
 			<cfset actionNav = template.getNavigation(template.getLevel(), 'action', options) />
@@ -72,41 +66,27 @@
 			
 			<cfset sideContent = trim(template.getSide()) />
 			
-			<!--- Determine if we are using the sidebar --->
-			<cfset isSideBar = secondaryNav NEQ '' OR actionNav NEQ '' OR sideContent NEQ '' />
+			<div class="grid_3">
+				<cfif secondaryNav NEQ ''>
+					<div class="box">
+						<cfoutput>#secondaryNav#</cfoutput>
+					</div>
+				</cfif>
+				
+				<cfif sideContent NEQ ''>
+					<div class="box">
+						<cfoutput>#sideContent#</cfoutput>
+					</div>
+				</cfif>
+			</div>
 			
-			<!--- Test if we need the side column --->
-			<cfif isSideBar>
-				<div class="grid_3">
-					<cfif secondaryNav NEQ ''>
-						<div class="box menu">
-							<h2><cfoutput>#template.getPageTitle(1)#</cfoutput></h2>
-							
-							<div class="block">
-								<cfoutput>#secondaryNav#</cfoutput>
-							</div>
-						</div>
-					</cfif>
-					
-					<cfif actionNav NEQ ''>
-						<div class="box menu">
-							<div class="block">
-								<cfoutput>#actionNav#</cfoutput>
-							</div>
-						</div>
-					</cfif>
-					
-					<cfif sideContent NEQ ''>
-						<div class="box">
-							<cfoutput>#sideContent#</cfoutput>
-						</div>
-					</cfif>
+			<div class="grid_9">
+				<h2><cfoutput>#template.getPageTitle()#</cfoutput></h2>
+				
+				<div>
+					<cfoutput>#template.getBreadcrumb()#</cfoutput>
 				</div>
-			
-				<div class="grid_9">
-			<cfelse>
-				<div class="grid_12">
-			</cfif>
+				
 				<!--- Output the main content --->
 				<cfoutput>#template.getContent()#</cfoutput>
 			</div>

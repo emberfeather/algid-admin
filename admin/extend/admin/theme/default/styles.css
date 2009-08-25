@@ -1,0 +1,219 @@
+/*
+====================
+=== Colors - old man winter | ver 04
+====================
+=        Lighter
+==       D5D8DD
+===      989DA4
+====     5CA2BE
+=====    135487
+======   2A4353
+=======  Darker
+====================
+*/
+
+/*
+====================
+=== Tags
+====================
+*/
+
+body {
+	border-top: 5px solid #2A4353;
+	background: #D5D8DD;
+	color: #333;
+	font: 11px/15px Century Gothic, Apple Gothic, sans-serif;
+}
+
+p,
+dl,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+pre,
+table,
+address,
+fieldset {
+	margin-bottom: 1.5em;
+}
+
+a {
+	color: #135487;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #2A4353;
+	text-decoration: underline;
+}
+
+a:focus {
+	outline: 1px dotted invert;
+}
+
+h1 {
+	font-size: 25px;
+}
+
+h2 {
+	font-size: 23px;
+}
+
+h3 {
+	font-size: 21px;
+}
+
+h4 {
+	font-size: 19px;
+}
+
+h5 {
+	font-size: 17px;
+}
+
+h6 {
+	font-size: 15px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height:1.2em;
+	margin: .3em 0;
+}
+
+ol {
+	list-style: decimal;
+}
+
+ul {
+	list-style: square;
+}
+
+li {
+	margin-left: 2em;
+}
+
+p {
+	margin-bottom: 1em;
+}
+
+blockquote {
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 1.2em;
+	padding-left: 1.5em;
+	border-left: 4px solid #ccc;
+}
+
+blockquote cite {
+	font-size: .9em;
+}
+
+ul, ol {
+	padding-top: 0;
+}
+
+/*
+====================
+=== IDs
+====================
+*/
+
+/*
+====================
+=== Classes
+====================
+*/
+
+/*
+	General Classes
+*/
+
+.float-right {
+	float: right;
+}
+
+/* 
+	960 grid system
+*/
+.container_12,
+.container_16 {
+	padding: 1em 0;
+	background:#fff;
+}
+
+/*
+	boxes
+*/
+.box {
+	background: #D5D8DD;
+	margin-bottom: 1em;
+	padding: 1em;
+	-moz-border-radius-bottomleft: .5em;
+	-moz-border-radius-bottomright: .5em;
+	-webkit-border-bottom-left-radius: .5em;
+	-webkit-border-bottom-right-radius: .5em;
+}
+
+/*
+	primary navigation
+*/
+
+.menuHolder.main {
+	-moz-border-radius-topleft: .5em;
+	-moz-border-radius-topright: .5em;
+	-webkit-border-top-left-radius: .5em;
+	-webkit-border-top-right-radius: .5em;
+	background: #135487;
+}
+
+.menu.horizontal {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.menu.horizontal.right {
+	float: right;
+}
+
+.menu.horizontal li {
+	margin: 0;
+	padding: 0;
+	float:left;
+	display: inline;
+}
+
+.menu.horizontal a {
+	display: block;
+	padding: .35em 1em;
+	color: #fff;
+}
+
+/*
+	secondary navigation
+*/
+
+.menu.vertical {
+	margin: 0;
+	list-style: none;
+}
+
+.menu.vertical li {
+	margin: 0;
+	padding: 0;
+}
+
+.menu.vertical ul {
+	margin: 0 2em;
+}
