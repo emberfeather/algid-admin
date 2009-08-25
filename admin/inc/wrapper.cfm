@@ -31,7 +31,7 @@
 	
 	<!--- Add the scripts and styles --->
 	<cfset template.addScripts('../cf-compendium/script/form#midfix#.js', '../cf-compendium/script/list#midfix#.js', '../cf-compendium/script/datagrid#midfix#.js', '../plugins/admin/script/admin#midfix#.js') />
-	<cfset template.addStyles('../plugins/admin/style/960/reset#midfix#.css', '../plugins/admin/style/960/960#midfix#.css"', '../cf-compendium/styles#midfix#.css', '../cf-compendium/form#midfix#.css', '../cf-compendium/list#midfix#.css', '../cf-compendium/datagrid#midfix#.css', '../plugins/admin/style/960/text#midfix#.css', '../plugins/admin/style/960/layout#midfix#.css', '../plugins/admin/style/960/nav#midfix#.css') />
+	<cfset template.addStyles('../cf-compendium/styles#midfix#.css', '../cf-compendium/form#midfix#.css', '../cf-compendium/list#midfix#.css', '../cf-compendium/datagrid#midfix#.css') />
 	
 	<cfset profiler.stop('template') />
 	

@@ -6,13 +6,13 @@
 		
 		<tools position="secondary">
 			<style position="secondary">
-				<markup position="action"/>
-				<form position="action"/>
+				<markup position="secondary"/>
+				<form position="secondary"/>
 			</style>
 			
 			<profile position="secondary">
 				<browse position="secondary"/>
-				<page position="action"/>
+				<page position="secondary"/>
 			</profile>
 		</tools>
 		
@@ -24,20 +24,20 @@
 	
 	<support position="main">
 		<documentation position="secondary">
-			<list position="action"/>
+			<list position="secondary"/>
 			
-			<display position="action">
-				<source position="action"/>
+			<display position="secondary">
+				<source position="secondary"/>
 			</display>
 		</documentation>
 		
 		<navigation position="secondary">
-			<list position="action"/>
+			<list position="secondary"/>
 		</navigation>
 		
 		<contact position="secondary">
-			<list position="action"/>
-			<email position="action"/>
+			<list position="secondary"/>
+			<email position="secondary"/>
 		</contact>
 	</support>
 </navigation>
