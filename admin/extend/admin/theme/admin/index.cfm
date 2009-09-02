@@ -79,13 +79,11 @@
 				</cfif>
 			
 				<div class="grid_<cfoutput>#mainGrid#</cfoutput>">
-					<h2><cfoutput>#template.getPageTitle()#</cfoutput></h2>
-					
-					<div id="breadcrumb" class="align-right">
+					<div id="breadcrumb" class="float-right">
 						<cfoutput>#template.getBreadcrumb()#</cfoutput>
 					</div>
 					
-					<div class="clear"><!-- clear --></div>
+					<h2><cfoutput>#template.getPageTitle()#</cfoutput></h2>
 					
 					<!--- Output the main content --->
 					<cfoutput>#template.getContent()#</cfoutput>

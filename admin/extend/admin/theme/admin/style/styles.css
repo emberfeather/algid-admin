@@ -88,7 +88,7 @@ h6 {
 
 h2 {
 	border-bottom: 1px solid #016392;
-	margin: .3em 0 0 0;
+	margin: .5em 0;
 }
 
 ol {
@@ -140,7 +140,8 @@ ul, ol {
 
 #breadcrumb {
 	font-size: .9em;
-	padding: .5em 0;
+	padding: 0 .5em;
+	line-height: 5em;
 }
 
 /*
@@ -227,52 +228,60 @@ ul, ol {
 	text-decoration: none;
 }
 
-.menu.horizontal li a.selected,
-.menu.horizontal li a:hover {
+.menu.horizontal a.selected,
+.menu.horizontal a:hover {
 	border-top: 1px solid #0085c3;
 	padding-top: 4px;
 }
 
-.menu.horizontal.level-1 a {
+.menu.horizontal.level-1 a,
+.menu.horizontal.level-2.action a {
 	padding: 12px 1em .5em;
 }
 
-.menu.horizontal.level-1 li a.selected,
-.menu.horizontal.level-1 li a:hover,
-.menu.horizontal.level-2.float-right li a.selected,
-.menu.horizontal.level-2.float-right li a:hover {
+.menu.horizontal.level-1 a.selected,
+.menu.horizontal.level-1 a:hover,
+.menu.horizontal.level-2.action a.selected,
+.menu.horizontal.level-2.action a:hover {
 	border-top: 8px solid #0085c3;
+	padding-top: 4px;
 }
 
-.menu.horizontal.level-2 a {
+.menu.horizontal.level-2 a,
+.menu.horizontal.level-3.action a {
 	padding: 10px 1em .5em;
 }
 
-.menu.horizontal.level-2 li a.selected,
-.menu.horizontal.level-2 li a:hover,
-.menu.horizontal.level-3.float-right li a.selected,
-.menu.horizontal.level-3.float-right li a:hover {
+.menu.horizontal.level-2 a.selected,
+.menu.horizontal.level-2 a:hover,
+.menu.horizontal.level-3.action a.selected,
+.menu.horizontal.level-3.action a:hover {
 	border-top: 6px solid #0085c3;
+	padding-top: 4px;
 }
 
-.menu.horizontal.level-3 a {
+.menu.horizontal.level-3 a,
+.menu.horizontal.level-4.action a {
 	padding: 8px 1em .5em;
 }
 
-.menu.horizontal.level-3 li a.selected,
-.menu.horizontal.level-3 li a:hover,
-.menu.horizontal.level-4.float-right li a.selected,
-.menu.horizontal.level-4.float-right li a:hover {
+.menu.horizontal.level-3 a.selected,
+.menu.horizontal.level-3 a:hover,
+.menu.horizontal.level-4.action a.selected,
+.menu.horizontal.level-4.action a:hover {
 	border-top: 4px solid #0085c3;
+	padding-top: 4px;
 }
 
-.menu.horizontal.level-4 a {
+.menu.horizontal.level-4 a,
+.menu.horizontal.level-5.action a {
 	padding: 6px 1em .5em;
 }
 
-.menu.horizontal.level-4 li a.selected,
-.menu.horizontal.level-4 li a:hover,
-.menu.horizontal.level-5.float-right li a.selected,
-.menu.horizontal.level-5.float-right li a:hover {
+.menu.horizontal.level-4 a.selected,
+.menu.horizontal.level-4 a:hover,
+.menu.horizontal.level-5.action a.selected,
+.menu.horizontal.level-5.action a:hover {
 	border-top: 2px solid #0085c3;
+	padding-top: 4px;
 }
