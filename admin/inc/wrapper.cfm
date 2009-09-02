@@ -90,6 +90,6 @@
 	<cfset profiler.start('theme') />
 </cfsilent>
 
-<cfinclude template="/plugins/admin/extend/admin/theme/default/index.cfm" />
+<cfinclude template="/plugins/admin/extend/admin/theme/admin/index.cfm" />
 
 <cfset profiler.stop('theme') />

@@ -1,5 +1,5 @@
-<div class="block">
-	<p>
-		List recent news...
-	</p>
-</div>
+<ul>
+	<li>List</li>
+	<li>Recent</li>
+	<li>News</li>
+</ul>
