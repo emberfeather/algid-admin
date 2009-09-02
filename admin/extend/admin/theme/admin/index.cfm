@@ -18,16 +18,20 @@
 				
 				<div class="grid_9">
 					<div class="float-right">
-						<cfset theURL.setAccount('_base', '.account') />
-						<cfset theURL.setLogout('_base', '.account.logout') />
-						<cfoutput>
-							<a href="#theURL.getAccount()#">Username</a> | <a href="#theURL.getLogout()#">Logout</a>
-						</cfoutput>
+						<p>
+							<cfset theURL.setAccount('_base', '.account') />
+							<cfset theURL.setLogout('_base', '.account.logout') />
+							<cfoutput>
+								<a href="#theURL.getAccount()#">Username</a> | <a href="#theURL.getLogout()#">Logout</a>
+							</cfoutput>
+						</p>
 					</div>
 					
 					<div>
-						<!--- Output the user stats --->
-						<cfoutput>#template.getStats()#</cfoutput>
+						<p>
+							<!--- Output the user stats --->
+							<cfoutput>#template.getStats()#</cfoutput>
+						</p>
 					</div>
 				</div>
 				
@@ -85,13 +89,9 @@
 				<div class="clear"><!-- clear --></div>
 			</div>
 			
-			<footer>
-				<div class="grid_12 align-center">
-					Powered by <a href="http://code.google.com/p/algid/" title="Algid CFML Framework">Algid</a>.
-				</div>
-				
-				<div class="clear"><!-- clear --></div>
-			</footer>
+			<div class="grid_12 align-center">
+				Powered by <a href="http://code.google.com/p/algid/" title="Algid CFML Framework">Algid</a>.
+			</div>
 			
 			<div class="clear"><!-- clear --></div>
 		</div>
