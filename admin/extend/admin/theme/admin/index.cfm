@@ -13,7 +13,7 @@
 		<div class="container_12">
 			<div id="header">
 				<div class="grid_3">
-					<a href="?"><img src="../plugins/admin/extend/admin/theme/default/algid-admin.png" alt="Admin" /></a>
+					<a href="?"><img src="../plugins/admin/extend/admin/theme/admin/img/algid-admin.png" alt="Admin" /></a>
 				</div>
 				
 				<div class="grid_9">

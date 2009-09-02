@@ -130,6 +130,11 @@ ul, ol {
 
 #header {
 	height: 60px;
+	color: #fff;
+}
+
+#header a {
+	color: #fff;
 }
 
 #breadcrumb {
