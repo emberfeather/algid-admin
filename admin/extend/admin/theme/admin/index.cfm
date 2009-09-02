@@ -67,13 +67,18 @@
 			<div class="clear"><!-- clear --></div>
 			
 			<div class="content">
-				<div class="grid_3">
-					<div class="box">
-						<cfoutput>#template.getSide()#</cfoutput>
+				<cfif trim(template.getSide()) EQ ''>
+					<cfset mainGrid = 12 />
+				<cfelse>
+					<cfset mainGrid = 9 />
+					<div class="grid_3">
+						<div class="box">
+							<cfoutput>#template.getSide()#</cfoutput>
+						</div>
 					</div>
-				</div>
+				</cfif>
 			
-				<div class="grid_9">
+				<div class="grid_<cfoutput>#mainGrid#</cfoutput>">
 					<h2><cfoutput>#template.getPageTitle()#</cfoutput></h2>
 					
 					<div id="breadcrumb" class="align-right">
