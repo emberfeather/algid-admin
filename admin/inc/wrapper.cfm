@@ -1,5 +1,5 @@
 <cfsilent>
-	<cfset profiler = application.managers.transient.getProfiler(application.settings.environment NEQ 'production') />
+	<cfset profiler = application.factories.transient.getProfiler(application.settings.environment NEQ 'production') />
 	
 	<cfset profiler.start('startup') />
 	
@@ -9,7 +9,7 @@
 	<cfset navigation = application.managers.singleton.getAdminNavigation() />
 	
 	<!--- Create URL object --->
-	<cfset theURL = application.managers.transient.getURLForAdmin(URL) />
+	<cfset theURL = application.factories.transient.getURLForAdmin(URL) />
 	
 	<cfset profiler.stop('startup') />
 	
@@ -22,7 +22,7 @@
 			]
 		} />
 	
-	<cfset template = application.managers.transient.getTemplateForAdmin(navigation, theURL, SESSION.locale, options) />
+	<cfset template = application.factories.transient.getTemplateForAdmin(navigation, theURL, SESSION.locale, options) />
 	
 	<!--- Include minified files for production --->
 	<cfif application.settings.environment EQ 'production'>
