@@ -10,15 +10,19 @@
 		<cfset var i18nDirectory = '' />
 		<cfset var navDirectory = '' />
 		<cfset var navigation = '' />
+		<cfset var plugin = '' />
 		<cfset var search = '' />
 		
 		<!--- Create the admin navigation singleton --->
 		<cfset navigation = arguments.newApplication.factories.transient.getNavigationForAdmin(arguments.newApplication.managers.singleton.getI18N()) />
 		
-		<cfloop array="#arguments.newApplication.plugins#" index="i">
-			<cfset contentDirectory =  '/plugins/' & i.key & '/extend/admin/content/' />
-			<cfset i18nDirectory =  '/plugins/' & i.key & '/i18n/extend/admin/navigation/' />
-			<cfset navDirectory =  variables.appBaseDirectory & 'plugins/' & i.key & '/extend/admin/navigation/' />
+		<!--- Update the plugins and setup the transient and singleton information --->
+		<cfloop array="#arguments.newApplication.app.getPrecedence()#" index="i">
+			<cfset plugin = arguments.newApplication.managers.plugins.get(i) />
+			
+			<cfset contentDirectory = '/plugins/' & i & '/extend/admin/content/' />
+			<cfset i18nDirectory = '/plugins/' & i & '/i18n/extend/admin/navigation/' />
+			<cfset navDirectory = variables.appBaseDirectory & 'plugins/' & i & '/extend/admin/navigation/' />
 			
 			<!--- Search for admin directory in the plugin extension point --->
 			<cfif directoryExists(navDirectory)>
@@ -30,7 +34,7 @@
 					<cfset bundleName = mid(files.name, search.pos[2], search.len[2]) />
 					
 					<!--- Apply Navigation Masks --->
-					<cfset navigation.applyMask( files.directory & '/' & files.name, contentDirectory, i18nDirectory, bundleName, arrayToList(i.i18n.locales) ) />
+					<cfset navigation.applyMask( files.directory & '/' & files.name, contentDirectory, i18nDirectory, bundleName, arrayToList(plugin.getI18n().locales) ) />
 				</cfloop>
 			</cfif>
 		</cfloop>
