@@ -6,12 +6,13 @@
 		<title><cfoutput>#template.getHTMLTitle()#</cfoutput></title>
 		
 		<cfset template.addStyles('../plugins/admin/style/960/reset#midfix#.css', '../plugins/admin/style/960/960#midfix#.css"', '../plugins/admin/extend/admin/theme/admin/style/styles#midfix#.css') />
+		<cfset template.addStyle('../plugins/admin/extend/admin/theme/admin/style/print#midfix#.css', 'print') />
 		
 		<cfoutput>#template.getStyles()#</cfoutput>
 	</head>
 	<body>
 		<div class="container_12">
-			<div id="header">
+			<div id="header" class="no-print">
 				<div class="grid_3">
 					<a href="?"><img src="../plugins/admin/extend/admin/theme/admin/img/algid-admin.png" alt="Admin" /></a>
 				</div>
@@ -38,7 +39,7 @@
 				<div class="clear"><!-- clear --></div>
 			</div>
 			
-			<div class="grid_12">
+			<div class="grid_12 no-print">
 				<cfset hasNavigation = true />
 				<cfset navLevel = 1 />
 				
