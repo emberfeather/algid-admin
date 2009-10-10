@@ -17,53 +17,58 @@
 					<a href="?"><img src="../plugins/admin/extend/admin/theme/admin/img/algid-admin.png" alt="Admin" /></a>
 				</div>
 				
-				<div class="grid_9">
-					<div class="float-right">
-						<p>
-							<cfset theURL.setAccount('_base', '.account') />
-							<cfset theURL.setLogout('_base', '.account.logout') />
-							<cfoutput>
-								<a href="#theURL.getAccount()#">Username</a> | <a href="#theURL.getLogout()#">Logout</a>
-							</cfoutput>
-						</p>
+				<cfif SESSION.managers.singleton.getUser().getUserID() NEQ 0>
+					<div class="grid_9">
+						<div class="float-right">
+							<p>
+								<cfset theURL.setAccount('_base', '.account') />
+								<cfset theURL.setLogout('_base', '.account.logout') />
+								<cfoutput>
+									<a href="#theURL.getAccount()#">Username</a> | <a href="#theURL.getLogout()#">Logout</a>
+								</cfoutput>
+							</p>
+						</div>
+						
+						<div>
+							<p>
+								<!--- Output the user stats --->
+								<cfoutput>#template.getStats()#</cfoutput>
+							</p>
+						</div>
 					</div>
-					
-					<div>
-						<p>
-							<!--- Output the user stats --->
-							<cfoutput>#template.getStats()#</cfoutput>
-						</p>
-					</div>
-				</div>
+				</cfif>
 				
 				<div class="clear"><!-- clear --></div>
 			</div>
 			
-			<div class="grid_12 no-print">
-				<cfset hasNavigation = true />
-				<cfset navLevel = 1 />
-				
-				<cfloop condition="hasNavigation">
-					<cfset options = {
-							navClasses = ['menu horizontal float-right']
-						} />
+			<!--- TODO This should really be controlled by the navigation permissions...? --->
+			<cfif SESSION.managers.singleton.getUser().getUserID() NEQ 0>
+				<div class="grid_12 no-print">
+					<cfset hasNavigation = true />
+					<cfset navLevel = 1 />
 					
-					<cfoutput>#template.getNavigation(navLevel + 1, 'action', options)#</cfoutput>
-					
-					<cfset options = {
-							navClasses = ['menu horizontal']
-						} />
-					
-					<cfset mainNav = trim(template.getNavigation(navLevel, 'main', options)) />
-					
-					<cfoutput>#mainNav#</cfoutput>
-					
-					<cfset hasNavigation = mainNav NEQ '' />
-					<cfset navLevel++ />
-					
-					<div class="clear"><!-- clear --></div>
-				</cfloop>
-			</div>
+					<cfloop condition="hasNavigation">
+						<cfset options = {
+								navClasses = ['menu horizontal float-right']
+							} />
+						
+						<cfoutput>#template.getNavigation(navLevel + 1, 'action', options, SESSION.managers.singleton.getUser())#</cfoutput>
+						
+						<cfset options = {
+								navClasses = ['menu horizontal']
+							} />
+						
+						<cfset mainNav = trim(template.getNavigation(navLevel, 'main', options, SESSION.managers.singleton.getUser())) />
+						
+						<cfoutput>#mainNav#</cfoutput>
+						
+						<cfset hasNavigation = mainNav NEQ '' />
+						<cfset navLevel++ />
+						
+						<div class="clear"><!-- clear --></div>
+					</cfloop>
+				</div>
+			</cfif>
 			
 			<div class="clear"><!-- clear --></div>
 			

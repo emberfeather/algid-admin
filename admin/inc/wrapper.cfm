@@ -11,6 +11,16 @@
 	<!--- Create URL object --->
 	<cfset theURL = application.factories.transient.getURLForAdmin(URL) />
 	
+	<!--- Check for a valid user or send to the login page --->
+	<cfif (NOT SESSION.managers.singleton.hasUser() OR SESSION.managers.singleton.getUser().getUserID() EQ 0) AND theURL.search('_base') NEQ '.account.login'>
+		<!--- Store the original page requested --->
+		<cfset SESSION.redirect = theURL.get( false ) />
+		
+		<!--- Redirect to the login page --->
+		<cfset theURL.setRedirect('_base', '.account.login') />
+		<cflocation url="#theURL.getRedirect(false)#" addtoken="false" />
+	</cfif>
+	
 	<cfset profiler.stop('startup') />
 	
 	<cfset profiler.start('template') />
