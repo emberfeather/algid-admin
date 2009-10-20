@@ -3,16 +3,25 @@
 	
 	<cfset profiler.start('startup') />
 	
-	<cfset i18n = application.managers.singleton.getI18N() />
+	<!--- Setup a transport object --->
+	<cfset transport = {
+			applicationSingletons = application.managers.singleton,
+			applicationTransients = application.factories.transient,
+			sessionSingletons = SESSION.managers.singleton,
+			sessionTransients = SESSION.factories.transient,
+			locale = SESSION.locale
+		} />
+	
+	<cfset i18n = transport.applicationSingletons.getI18N() />
 	
 	<!--- Retrieve the admin navigation object --->
-	<cfset navigation = application.managers.singleton.getAdminNavigation() />
+	<cfset navigation = transport.applicationSingletons.getAdminNavigation() />
 	
 	<!--- Create URL object --->
-	<cfset theURL = application.factories.transient.getURLForAdmin(URL) />
+	<cfset theURL = transport.applicationTransients.getURLForAdmin(URL) />
 	
 	<!--- Check for a valid user or send to the login page --->
-	<cfif (NOT SESSION.managers.singleton.hasUser() OR SESSION.managers.singleton.getUser().getUserID() EQ 0) AND theURL.search('_base') NEQ '.account.login'>
+	<cfif (NOT transport.sessionSingletons.hasUser() OR transport.sessionSingletons.getUser().getUserID() EQ 0) AND theURL.search('_base') NEQ '.account.login'>
 		<!--- Store the original page requested --->
 		<cfset SESSION.redirect = theURL.get( false ) />
 		
@@ -32,7 +41,7 @@
 			]
 		} />
 	
-	<cfset template = application.factories.transient.getTemplateForAdmin(navigation, theURL, SESSION.locale, options) />
+	<cfset template = transport.applicationTransients.getTemplateForAdmin(navigation, theURL, SESSION.locale, options) />
 	
 	<!--- Include minified files for production --->
 	<cfif application.app.getEnvironment() EQ 'production'>
