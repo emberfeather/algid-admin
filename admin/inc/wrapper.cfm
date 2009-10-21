@@ -9,6 +9,8 @@
 			applicationTransients = application.factories.transient,
 			sessionSingletons = SESSION.managers.singleton,
 			sessionTransients = SESSION.factories.transient,
+			requestSingletons = application.factories.transient.getManagerSingleton(application.app.getEnvironment() NEQ 'production'),
+			requestTransients = application.factories.transient.getFactoryTransient(application.app.getEnvironment() NEQ 'production'),
 			locale = SESSION.locale
 		} />
 	
@@ -19,6 +21,9 @@
 	
 	<!--- Create URL object --->
 	<cfset theURL = transport.applicationTransients.getURLForAdmin(URL) />
+	
+	<!--- Store the URL object in the request singletons --->
+	<cfset transport.requestSingletons.setUrl(theURL) />
 	
 	<!--- Check for a valid user or send to the login page --->
 	<cfif (NOT transport.sessionSingletons.hasUser() OR transport.sessionSingletons.getUser().getUserID() EQ 0) AND theURL.search('_base') NEQ '.account.login'>
