@@ -22,7 +22,8 @@
 	<!--- Create URL object --->
 	<cfset theURL = transport.applicationTransients.getURLForAdmin(URL) />
 	
-	<!--- Store the URL object in the request singletons --->
+	<!--- Store the request singletons --->
+	<cfset transport.requestSingletons.setProfiler(profiler) />
 	<cfset transport.requestSingletons.setUrl(theURL) />
 	
 	<!--- Check for a valid user or send to the login page --->
