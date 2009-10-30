@@ -14,9 +14,8 @@
 			locale = SESSION.locale
 		} />
 	
+	<!--- Retrieve the admin objects --->
 	<cfset i18n = transport.applicationSingletons.getI18N() />
-	
-	<!--- Retrieve the admin navigation object --->
 	<cfset navigation = transport.applicationSingletons.getAdminNavigation() />
 	
 	<!--- Create URL object --->
@@ -25,6 +24,15 @@
 	<!--- Store the request singletons --->
 	<cfset transport.requestSingletons.setProfiler(profiler) />
 	<cfset transport.requestSingletons.setUrl(theURL) />
+	
+	<!--- Check for a change to the number of records per page --->
+	<cfif theURL.searchID('numPerPage')>
+		<cfset SESSION.numPerPage = theURL.searchID('numPerPage') />
+		
+		<cfcookie name="numPerPage" value="#SESSION.numPerPage#" />
+		
+		<cfset theURL.remove('numPerPage') />
+	</cfif>
 	
 	<!--- Check for a valid user or send to the login page --->
 	<cfif (NOT transport.sessionSingletons.hasUser() OR transport.sessionSingletons.getUser().getUserID() EQ 0) AND theURL.search('_base') NEQ '.account.login'>
