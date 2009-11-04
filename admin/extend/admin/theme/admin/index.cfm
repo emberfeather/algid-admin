@@ -76,6 +76,14 @@
 			<div class="clear"><!-- clear --></div>
 			
 			<div class="content">
+				<div class="grid_12">
+					<div id="breadcrumb" class="float-right">
+						<cfoutput>#template.getBreadcrumb()#</cfoutput>
+					</div>
+					
+					<h2><cfoutput>#template.getPageTitle()#</cfoutput></h2>
+				</div>
+				
 				<cfif trim(template.getSide()) EQ ''>
 					<cfset mainGrid = 12 />
 				<cfelse>
@@ -88,11 +96,6 @@
 				</cfif>
 			
 				<div class="grid_<cfoutput>#mainGrid#</cfoutput>">
-					<div id="breadcrumb" class="float-right">
-						<cfoutput>#template.getBreadcrumb()#</cfoutput>
-					</div>
-					
-					<h2><cfoutput>#template.getPageTitle()#</cfoutput></h2>
 					
 					<!--- Output the main content --->
 					<cfoutput>#template.getContent()#</cfoutput>
