@@ -89,12 +89,12 @@
 	
 	<cfset profiler.start('stats') />
 	
-	<!--- TODO Add in caching --->
-	<cfsavecontent variable="stats">
-		<cfinclude template="/plugins/user/extend/admin/content/widgUsers.cfm" />
-	</cfsavecontent>
+	<!--- Retrieve and generate the User Stats --->
+	<cfset userStats = SESSION.managers.singleton.getUserStat() />
 	
-	<cfset template.setStats(stats) />
+	<cfset viewUserStats = application.factories.transient.getViewUserStatForUser( transport ) />
+	
+	<cfset template.setStats(viewUserStats.stats(SESSION.managers.singleton.getUser())) />
 	
 	<cfset profiler.stop('stats') />
 	

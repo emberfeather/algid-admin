@@ -27,7 +27,7 @@
 								<cfset theURL.setAccount('_base', '.account') />
 								<cfset theURL.setLogout('_base', '.account.logout') />
 								<cfoutput>
-									<a href="#theURL.getAccount()#">Username</a> | <a href="#theURL.getLogout()#">Logout</a>
+									<a href="#theURL.getAccount()#">#SESSION.managers.singleton.getUser().getUsername()#</a> | <a href="#theURL.getLogout()#">Logout</a>
 								</cfoutput>
 							</p>
 						</div>
