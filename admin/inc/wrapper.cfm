@@ -17,7 +17,7 @@
 	<!--- Retrieve the admin objects --->
 	<cfset i18n = transport.applicationSingletons.getI18N() />
 	<cfset navigation = transport.applicationSingletons.getAdminNavigation() />
-	<cfset viewMaster = transport.applicationSingletons.getMasterViewForAdmin() />
+	<cfset viewMaster = transport.applicationSingletons.getViewMasterForAdmin() />
 	
 	<!--- Create URL object --->
 	<cfset theURL = transport.applicationTransients.getURLForAdmin(URL) />
