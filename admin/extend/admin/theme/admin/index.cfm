@@ -88,18 +88,22 @@
 					<cfset mainGrid = 12 />
 				<cfelse>
 					<cfset mainGrid = 9 />
+				</cfif>
+				
+				<div class="grid_<cfoutput>#mainGrid#</cfoutput>">
+					
+					<!--- Output the main content --->
+					<cfoutput>#template.getContent()#</cfoutput>
+				</div>
+				
+				<!--- Display the side if it exists --->
+				<cfif mainGrid EQ 9>
 					<div class="grid_3">
 						<div class="box">
 							<cfoutput>#template.getSide()#</cfoutput>
 						</div>
 					</div>
 				</cfif>
-			
-				<div class="grid_<cfoutput>#mainGrid#</cfoutput>">
-					
-					<!--- Output the main content --->
-					<cfoutput>#template.getContent()#</cfoutput>
-				</div>
 				
 				<div class="clear"><!-- clear --></div>
 			</div>
