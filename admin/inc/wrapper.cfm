@@ -17,6 +17,7 @@
 	<!--- Retrieve the admin objects --->
 	<cfset i18n = transport.applicationSingletons.getI18N() />
 	<cfset navigation = transport.applicationSingletons.getAdminNavigation() />
+	<cfset viewMaster = transport.applicationSingletons.getMasterViewForAdmin() />
 	
 	<!--- Create URL object --->
 	<cfset theURL = transport.applicationTransients.getURLForAdmin(URL) />
@@ -42,15 +43,6 @@
 		<!--- Redirect to the login page --->
 		<cfset theURL.setRedirect('_base', '.account.login') />
 		<cflocation url="#theURL.getRedirect(false)#" addtoken="false" />
-	</cfif>
-	
-	<!--- Check for the master view singleton --->
-	<cfif NOT transport.applicationSingletons.hasViewMaster()>
-		<cfset viewMaster = transport.applicationTransients.getViewForAdmin(transport) />
-		
-		<cfset transport.applicationSingletons.setViewMaster(viewMaster) />
-	<cfelse>
-		<cfset viewMaster = transport.applicationSingletons.getViewMaster() />
 	</cfif>
 	
 	<cfset profiler.stop('startup') />
