@@ -44,6 +44,15 @@
 		<cflocation url="#theURL.getRedirect(false)#" addtoken="false" />
 	</cfif>
 	
+	<!--- Check for the master view singleton --->
+	<cfif NOT transport.applicationSingletons.hasViewMaster()>
+		<cfset viewMaster = transport.applicationTransients.getViewForAdmin(transport) />
+		
+		<cfset transport.applicationSingletons.setViewMaster(viewMaster) />
+	<cfelse>
+		<cfset viewMaster = transport.applicationSingletons.getViewMaster() />
+	</cfif>
+	
 	<cfset profiler.stop('startup') />
 	
 	<cfset profiler.start('template') />
