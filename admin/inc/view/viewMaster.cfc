@@ -14,8 +14,8 @@
 		<cfset var html = '' />
 		<cfset var theURL = '' />
 		
-		<cfset datagridFilter = arguments.transport.sessionSingletons.getAdminDatagridFilter() />
-		<cfset theURL = arguments.transport.requestSingletons.getURL() />
+		<cfset datagridFilter = arguments.transport.theSession.managers.singleton.getAdminDatagridFilter() />
+		<cfset theURL = arguments.transport.theRequest.managers.singleton.getURL() />
 		
 		<cfsavecontent variable="html">
 			<cfoutput>
