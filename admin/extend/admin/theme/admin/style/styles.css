@@ -182,6 +182,11 @@ ul, ol {
 	min-height: 25em;
 }
 
+.pagination a {
+	-moz-border-radius: .5em;
+	-webkit-border-radius: .5em;
+}
+
 /*
 	boxes
 */
