@@ -59,7 +59,7 @@
 			<cfset SESSION.numPerPage = 25 />
 		</cfif>
 		
-		<cfset filter = arguments.theApplication.factories.transient.getFilter(arguments.theApplication.managers.singleton.getI18N()) />
+		<cfset filter = arguments.theApplication.factories.transient.getFilterVertical(arguments.theApplication.managers.singleton.getI18N()) />
 		
 		<!--- Add the resource bundle for the view --->
 		<cfset filter.addI18NBundle('plugins/admin/i18n/', 'admin') />
