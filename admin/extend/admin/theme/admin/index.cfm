@@ -66,6 +66,12 @@
 			<div class="clear"><!-- clear --></div>
 			
 			<div class="content">
+				<div id="breadcrumb" class="grid_12">
+					<cfoutput>#template.getBreadcrumb({ topLevel = 2 })#</cfoutput>
+					
+					<div class="clear"><!-- clear --></div>
+				</div>
+				
 				<div class="grid_12 no-print">
 					<cfset navLevel = template.getLevel() />
 					
@@ -87,10 +93,6 @@
 				</div>
 				
 				<div class="grid_12">
-					<div id="breadcrumb" class="float-right">
-						<cfoutput>#template.getBreadcrumb()#</cfoutput>
-					</div>
-					
 					<h2><cfoutput>#template.getPageTitle()#</cfoutput></h2>
 				</div>
 				

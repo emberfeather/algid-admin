@@ -139,9 +139,19 @@ ul, ol {
 }
 
 #breadcrumb {
-	font-size: .9em;
-	padding: 0 .5em;
-	line-height: 5em;
+	font-size: .85em;
+	color: #fff;
+	background: #0084c2;
+	line-height: 2.25em;
+	-moz-border-radius-bottomright: .5em;
+	-moz-border-radius-bottomleft: .5em;
+	-webkit-border-bottom-right-radius: .5em;
+	-webkit-border-bottom-left-radius: .5em;
+}
+
+#breadcrumb a {
+	padding: 0 1em;
+	color: #fff;
 }
 
 /*
@@ -222,6 +232,10 @@ ul, ol {
 	list-style: none;
 }
 
+.submenu.horizontal {
+	margin: 0 1em;
+}
+
 .menu.horizontal li,
 .submenu.horizontal li {
 	margin: 0;
@@ -234,8 +248,16 @@ ul, ol {
 .submenu.horizontal a {
 	display: block;
 	padding: .5em 1em;
+	margin: 0 .25em 0 0;
 	color: #fff;
 	text-decoration: none;
+}
+
+.menu.horizontal a {
+	-moz-border-radius-topright: .5em;
+	-moz-border-radius-topleft: .5em;
+	-webkit-border-top-right-radius: .5em;
+	-webkit-border-top-left-radius: .5em;
 }
 
 .menu.horizontal a.selected,
