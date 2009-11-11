@@ -261,3 +261,8 @@ ul, ol {
 	background: none;
 	text-decoration: underline;
 }
+
+.submenu.horizontal.action a.selected,
+.submenu.horizontal.action a:hover {
+	color: #0084c2;
+}
