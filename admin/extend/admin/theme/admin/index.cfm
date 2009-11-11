@@ -47,35 +47,45 @@
 			<!--- TODO This should really be controlled by the navigation permissions...? --->
 			<cfif SESSION.managers.singleton.getUser().getUserID() NEQ 0>
 				<div class="grid_12 no-print">
-					<cfset hasNavigation = true />
-					<cfset navLevel = 1 />
+					<cfset options = {
+							navClasses = ['menu horizontal float-right']
+						} />
 					
-					<cfloop condition="hasNavigation">
-						<cfset options = {
-								navClasses = ['menu horizontal float-right']
-							} />
-						
-						<cfoutput>#template.getNavigation(navLevel + 1, 'action', options, SESSION.managers.singleton.getUser())#</cfoutput>
-						
-						<cfset options = {
-								navClasses = ['menu horizontal']
-							} />
-						
-						<cfset mainNav = trim(template.getNavigation(navLevel, 'main', options, SESSION.managers.singleton.getUser())) />
-						
-						<cfoutput>#mainNav#</cfoutput>
-						
-						<cfset hasNavigation = mainNav NEQ '' />
-						<cfset navLevel++ />
-						
-						<div class="clear"><!-- clear --></div>
-					</cfloop>
+					<cfoutput>#template.getNavigation(2, 'action', options, SESSION.managers.singleton.getUser())#</cfoutput>
+					
+					<cfset options = {
+							navClasses = ['menu horizontal']
+						} />
+					
+					<cfoutput>#template.getNavigation(1, 'main', options, SESSION.managers.singleton.getUser())#</cfoutput>
+					
+					<div class="clear"><!-- clear --></div>
 				</div>
 			</cfif>
 			
 			<div class="clear"><!-- clear --></div>
 			
 			<div class="content">
+				<div class="grid_12 no-print">
+					<cfset navLevel = template.getLevel() />
+					
+					<cfif navLevel GT 1>
+						<cfset options = {
+								navClasses = ['submenu horizontal float-right']
+							} />
+						
+						<cfoutput>#template.getNavigation( navLevel + 1, 'action', options, SESSION.managers.singleton.getUser())#</cfoutput>
+					</cfif>
+					
+					<cfset options = {
+							navClasses = ['submenu horizontal']
+						} />
+					
+					<cfoutput>#trim(template.getNavigation(navLevel + 1, 'main', options, SESSION.managers.singleton.getUser()))#</cfoutput>
+					
+					<div class="clear"><!-- clear --></div>
+				</div>
+				
 				<div class="grid_12">
 					<div id="breadcrumb" class="float-right">
 						<cfoutput>#template.getBreadcrumb()#</cfoutput>
