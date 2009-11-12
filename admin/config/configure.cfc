@@ -62,7 +62,7 @@
 		<cfset filter = arguments.theApplication.factories.transient.getFilter(arguments.theApplication.managers.singleton.getI18N()) />
 		
 		<!--- Add the resource bundle for the view --->
-		<cfset filter.addI18NBundle('plugins/admin/i18n/', 'admin') />
+		<cfset filter.addBundle('plugins/admin/i18n/', 'admin') />
 		
 		<!--- Number Per Page --->
 		<cfset options = arguments.theApplication.factories.transient.getOptions() />
