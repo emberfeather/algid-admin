@@ -10,5 +10,8 @@
 		
 		// Focus on the first input in the content.
 		$('.content input[type=text]').focus();
+		
+		// Use the timeago plugin
+		$('abbr.timeago').timeago();
 	});
 })(jQuery);

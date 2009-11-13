@@ -8,7 +8,6 @@
 		<cfset template.addStyles('../plugins/admin/style/960/reset#midfix#.css', '../plugins/admin/style/960/960#midfix#.css"', '../plugins/admin/extend/admin/theme/admin/style/styles#midfix#.css') />
 		<cfset template.addStyle('../plugins/admin/extend/admin/theme/admin/style/print#midfix#.css', 'print') />
 		
-		<cfset template.addScripts('../cf-compendium/script/jquery.datagrid#midfix#.js') />
 		<cfset template.addScripts('../plugins/admin/extend/admin/theme/admin/script/admin#midfix#.js') />
 		
 		<cfoutput>#template.getStyles()#</cfoutput>

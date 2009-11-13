@@ -70,7 +70,7 @@
 	</cfif>
 	
 	<!--- Add the scripts and styles --->
-	<cfset template.addScripts('../cf-compendium/script/form#midfix#.js', '../cf-compendium/script/list#midfix#.js', '../cf-compendium/script/datagrid#midfix#.js', '../plugins/admin/script/admin#midfix#.js') />
+	<cfset template.addScripts('../cf-compendium/script/form#midfix#.js', '../cf-compendium/script/list#midfix#.js', '../cf-compendium/script/jquery.datagrid#midfix#.js', '../cf-compendium/script/jquery.timeago#midfix#.js') />
 	<cfset template.addStyles('../cf-compendium/style/styles#midfix#.css', '../cf-compendium/style/form#midfix#.css', '../cf-compendium/style/list#midfix#.css', '../cf-compendium/style/datagrid#midfix#.css') />
 	
 	<cfset profiler.stop('template') />
