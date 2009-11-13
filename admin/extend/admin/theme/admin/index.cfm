@@ -100,11 +100,13 @@
 					
 					<!--- If there is not any navigation showing then show the actions for the current level --->
 					<cfif navLevel GT 1 AND NOT showingNavigation>
-						<cfset options = {
-								navClasses = ['submenu horizontal float-right']
-							} />
-						
-						<cfoutput>#template.getNavigation( navLevel, 'action', options, SESSION.managers.singleton.getUser())#</cfoutput>
+						<cfif navLevel GT 2>
+							<cfset options = {
+									navClasses = ['submenu horizontal float-right']
+								} />
+							
+							<cfoutput>#template.getNavigation( navLevel, 'action', options, SESSION.managers.singleton.getUser())#</cfoutput>
+						</cfif>
 						
 						<cfset options = {
 								navClasses = ['submenu horizontal']
