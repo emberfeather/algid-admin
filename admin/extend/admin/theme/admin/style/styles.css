@@ -211,6 +211,11 @@ ul, ol {
 	-webkit-border-radius: .5em;
 }
 
+.box h3 {
+	font-size: 1.25em;
+	border-bottom: 1px solid #016392;
+}
+
 .box ul,
 .box ol,
 .box p {
