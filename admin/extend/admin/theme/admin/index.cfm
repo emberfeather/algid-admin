@@ -73,6 +73,7 @@
 				</div>
 				
 				<div class="grid_12 no-print">
+					<cfset showingNavigation = false />
 					<cfset navLevel = template.getLevel() />
 					
 					<cfif navLevel GT 1>
@@ -80,14 +81,37 @@
 								navClasses = ['submenu horizontal float-right']
 							} />
 						
-						<cfoutput>#template.getNavigation( navLevel + 1, 'action', options, SESSION.managers.singleton.getUser())#</cfoutput>
+						<cfset subNav = trim(template.getNavigation( navLevel + 1, 'action', options, SESSION.managers.singleton.getUser())) />
+						
+						<cfset showingNavigation = showingNavigation OR subNav NEQ '' />
+						
+						<cfoutput>#subNav#</cfoutput>
 					</cfif>
 					
 					<cfset options = {
 							navClasses = ['submenu horizontal']
 						} />
 					
-					<cfoutput>#trim(template.getNavigation(navLevel + 1, 'main', options, SESSION.managers.singleton.getUser()))#</cfoutput>
+					<cfset subNav = trim(template.getNavigation(navLevel + 1, 'main', options, SESSION.managers.singleton.getUser())) />
+					
+					<cfset showingNavigation = showingNavigation OR subNav NEQ '' />
+					
+					<cfoutput>#subNav#</cfoutput>
+					
+					<!--- If there is not any navigation showing then show the actions for the current level --->
+					<cfif navLevel GT 1 AND NOT showingNavigation>
+						<cfset options = {
+								navClasses = ['submenu horizontal float-right']
+							} />
+						
+						<cfoutput>#template.getNavigation( navLevel, 'action', options, SESSION.managers.singleton.getUser())#</cfoutput>
+						
+						<cfset options = {
+								navClasses = ['submenu horizontal']
+							} />
+						
+						<cfoutput>#template.getNavigation( navLevel, 'main', options, SESSION.managers.singleton.getUser())#</cfoutput>
+					</cfif>
 					
 					<div class="clear"><!-- clear --></div>
 				</div>
