@@ -118,6 +118,23 @@
 				</div>
 				
 				<div class="grid_12">
+					<!--- Show any messages, errors, or successes --->
+					<cfset messages = SESSION.managers.singleton.getError() />
+					
+					<cfoutput>#messages.toHTML()#</cfoutput>
+					
+					<cfset messages = SESSION.managers.singleton.getSuccess() />
+					
+					<cfoutput>#messages.toHTML()#</cfoutput>
+					
+					<cfset messages = SESSION.managers.singleton.getMessage() />
+					
+					<cfoutput>#messages.toHTML()#</cfoutput>
+					
+					<div class="clear"><!-- clear --></div>
+				</div>
+				
+				<div class="grid_12">
 					<h2><cfoutput>#template.getPageTitle()#</cfoutput></h2>
 				</div>
 				
