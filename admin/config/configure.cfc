@@ -1,5 +1,5 @@
 <cfcomponent extends="algid.inc.resource.plugin.configure" output="false">
-	<cffunction name="configureApplication" access="public" returntype="void" output="false">
+	<cffunction name="onApplicationStart" access="public" returntype="void" output="false">
 		<cfargument name="newApplication" type="struct" required="true" />
 		
 		<cfset var bundleName = '' />
@@ -45,7 +45,7 @@
 		<cfset arguments.newApplication.managers.singleton.setAdminNavigation(navigation) />
 	</cffunction>
 	
-	<cffunction name="configureSession" access="public" returntype="void" output="false">
+	<cffunction name="onSessionStart" access="public" returntype="void" output="false">
 		<cfargument name="theApplication" type="struct" required="true" />
 		<cfargument name="newSession" type="struct" required="true" />
 		
