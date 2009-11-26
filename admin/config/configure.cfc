@@ -1,6 +1,6 @@
 <cfcomponent extends="algid.inc.resource.plugin.configure" output="false">
 	<cffunction name="onApplicationStart" access="public" returntype="void" output="false">
-		<cfargument name="newApplication" type="struct" required="true" />
+		<cfargument name="theApplication" type="struct" required="true" />
 		
 		<cfset var bundleName = '' />
 		<cfset var contentDirectory = '' />
@@ -14,11 +14,11 @@
 		<cfset var search = '' />
 		
 		<!--- Create the admin navigation singleton --->
-		<cfset navigation = arguments.newApplication.factories.transient.getNavigationForAdmin(arguments.newApplication.managers.singleton.getI18N()) />
+		<cfset navigation = arguments.theApplication.factories.transient.getNavigationForAdmin(arguments.theApplication.managers.singleton.getI18N()) />
 		
 		<!--- Update the plugins and setup the transient and singleton information --->
-		<cfloop array="#arguments.newApplication.app.getPrecedence()#" index="i">
-			<cfset plugin = arguments.newApplication.managers.plugins.get(i) />
+		<cfloop array="#arguments.theApplication.app.getPrecedence()#" index="i">
+			<cfset plugin = arguments.theApplication.managers.plugins.get(i) />
 			
 			<cfset contentDirectory = '/plugins/' & i & '/extend/admin/content/' />
 			<cfset i18nDirectory = '/plugins/' & i & '/i18n/extend/admin/navigation/' />
@@ -42,12 +42,12 @@
 		<!--- Verify the content files exist --->
 		<cfset navigation.validate('proc,cont,side') />
 		
-		<cfset arguments.newApplication.managers.singleton.setAdminNavigation(navigation) />
+		<cfset arguments.theApplication.managers.singleton.setAdminNavigation(navigation) />
 	</cffunction>
 	
 	<cffunction name="onSessionStart" access="public" returntype="void" output="false">
 		<cfargument name="theApplication" type="struct" required="true" />
-		<cfargument name="newSession" type="struct" required="true" />
+		<cfargument name="theSession" type="struct" required="true" />
 		
 		<cfset var filter = '' />
 		<cfset var options = '' />
@@ -75,6 +75,6 @@
 		
 		<cfset filter.addFilter('numPerPage', options) />
 		
-		<cfset arguments.newSession.managers.singleton.setAdminDatagridFilter( filter ) />
+		<cfset arguments.theSession.managers.singleton.setAdminDatagridFilter( filter ) />
 	</cffunction>
 </cfcomponent>
