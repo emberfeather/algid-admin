@@ -19,6 +19,10 @@
 		"algid": "@prerequisites.algid@",
 		"user": "@prerequisites.user@"
 	},
+	"requestSingletons": {
+	},
+	"requestTransients": {
+	},
 	"sessionSingletons": {
 	},
 	"sessionTransients": {

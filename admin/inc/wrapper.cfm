@@ -1,5 +1,5 @@
 <cfsilent>
-	<cfset profiler = application.factories.transient.getProfiler(application.app.getEnvironment() NEQ 'production') />
+	<cfset profiler = request.managers.singleton.getProfiler() />
 	
 	<cfset profiler.start('startup') />
 	
@@ -7,14 +7,7 @@
 	<cfset transport = {
 			theApplication = application,
 			theSession = SESSION,
-			theRequest = {
-				managers = {
-					singleton = application.factories.transient.getManagerSingleton(application.app.getEnvironment() NEQ 'production')
-				},
-				factories = {
-					transient = application.factories.transient.getFactoryTransient(application.app.getEnvironment() NEQ 'production')
-				}
-			},
+			theRequest = request,
 			locale = SESSION.locale
 		} />
 	
@@ -22,13 +15,7 @@
 	<cfset i18n = transport.theApplication.managers.singleton.getI18N() />
 	<cfset navigation = transport.theApplication.managers.singleton.getAdminNavigation() />
 	<cfset viewMaster = transport.theApplication.managers.singleton.getViewMasterForAdmin() />
-	
-	<!--- Create URL object --->
-	<cfset theURL = transport.theApplication.factories.transient.getURLForAdmin(URL) />
-	
-	<!--- Store the request singletons --->
-	<cfset transport.theRequest.managers.singleton.setProfiler(profiler) />
-	<cfset transport.theRequest.managers.singleton.setUrl(theURL) />
+	<cfset theURL = request.managers.singleton.getUrlForAdmin() />
 	
 	<!--- Check for a change to the number of records per page --->
 	<cfif theURL.searchID('numPerPage')>
@@ -46,6 +33,7 @@
 		
 		<!--- Redirect to the login page --->
 		<cfset theURL.setRedirect('_base', '.account.login') />
+		
 		<cflocation url="#theURL.getRedirect(false)#" addtoken="false" />
 	</cfif>
 	
@@ -63,7 +51,7 @@
 	<cfset template = transport.theApplication.factories.transient.getTemplateForAdmin(navigation, theURL, SESSION.locale, options) />
 	
 	<!--- Include minified files for production --->
-	<cfif application.app.getEnvironment() EQ 'production'>
+	<cfif transport.theApplication.app.getEnvironment() EQ 'production'>
 		<cfset midfix = '-min' />
 	<cfelse>
 		<cfset midfix = '' />
@@ -97,7 +85,7 @@
 	<!--- Retrieve and generate the User Stats --->
 	<cfset userStats = SESSION.managers.singleton.getUserStat() />
 	
-	<cfset viewUserStats = application.factories.transient.getViewUserStatForUser( transport ) />
+	<cfset viewUserStats = transport.theApplication.factories.transient.getViewUserStatForUser( transport ) />
 	
 	<cfset template.setStats(viewUserStats.stats(SESSION.managers.singleton.getUser())) />
 	

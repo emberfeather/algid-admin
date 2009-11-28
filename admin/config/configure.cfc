@@ -77,4 +77,23 @@
 		
 		<cfset arguments.theSession.managers.singleton.setAdminDatagridFilter( filter ) />
 	</cffunction>
+	
+	<cffunction name="onRequestStart" access="public" returntype="void" output="false">
+		<cfargument name="theApplication" type="struct" required="true" />
+		<cfargument name="theSession" type="struct" required="true" />
+		<cfargument name="theRequest" type="struct" required="true" />
+		<cfargument name="targetPage" type="string" required="true" />
+		
+		<cfset var temp = '' />
+		
+		<!--- Create a profiler object --->
+		<cfset temp = application.factories.transient.getProfiler(application.app.getEnvironment() NEQ 'production') />
+		
+		<cfset arguments.theRequest.managers.singleton.setProfiler( temp ) />
+		
+		<!--- Create the URL object --->
+		<cfset temp = arguments.theApplication.factories.transient.getUrlForAdmin(URL) />
+		
+		<cfset arguments.theRequest.managers.singleton.setUrlForAdmin( temp ) />
+	</cffunction>
 </cfcomponent>
