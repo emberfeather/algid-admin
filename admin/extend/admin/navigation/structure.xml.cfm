@@ -23,14 +23,6 @@
 	</admin>
 	
 	<support position="main">
-		<documentation position="main">
-			<list position="action"/>
-			
-			<display position="main">
-				<source position="main"/>
-			</display>
-		</documentation>
-		
 		<navigation position="main">
 			<list position="action"/>
 		</navigation>
