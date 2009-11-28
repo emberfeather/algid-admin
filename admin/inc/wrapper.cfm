@@ -11,11 +11,15 @@
 			locale = SESSION.locale
 		} />
 	
+	<!--- Create the URL object for all the admin requests --->
+	<cfset theURL = transport.theApplication.factories.transient.getUrlForAdmin(URL) />
+	
+	<cfset transport.theRequest.managers.singleton.setUrl( theURL ) />\
+	
 	<!--- Retrieve the admin objects --->
 	<cfset i18n = transport.theApplication.managers.singleton.getI18N() />
 	<cfset navigation = transport.theApplication.managers.singleton.getAdminNavigation() />
 	<cfset viewMaster = transport.theApplication.managers.singleton.getViewMasterForAdmin() />
-	<cfset theURL = request.managers.singleton.getUrlForAdmin() />
 	
 	<!--- Check for a change to the number of records per page --->
 	<cfif theURL.searchID('numPerPage')>

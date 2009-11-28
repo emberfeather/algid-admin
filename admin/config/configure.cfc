@@ -90,10 +90,5 @@
 		<cfset temp = application.factories.transient.getProfiler(application.app.getEnvironment() NEQ 'production') />
 		
 		<cfset arguments.theRequest.managers.singleton.setProfiler( temp ) />
-		
-		<!--- Create the URL object --->
-		<cfset temp = arguments.theApplication.factories.transient.getUrlForAdmin(URL) />
-		
-		<cfset arguments.theRequest.managers.singleton.setUrlForAdmin( temp ) />
 	</cffunction>
 </cfcomponent>
