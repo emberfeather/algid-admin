@@ -1,8 +1,8 @@
 <!--- If we have the tracker plugin show the recent events --->
 <cfif application.app.hasPlugin('tracker')>
-	<cfset servEvent = application.factories.transient.getServEventForTracker(application.app.getDSUpdate(), transport) />
+	<cfset servEvent = transport.theApplication.factories.transient.getServEventForTracker(application.app.getDSUpdate(), transport) />
 	
-	<cfset viewEvent = application.factories.transient.getViewEventForTracker( transport ) />
+	<cfset viewEvent = transport.theApplication.factories.transient.getViewEventForTracker( transport ) />
 	
 	<cfset filter = {
 			'limit' = 7,

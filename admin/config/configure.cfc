@@ -87,7 +87,7 @@
 		<cfset var temp = '' />
 		
 		<!--- Create a profiler object --->
-		<cfset temp = application.factories.transient.getProfiler(application.app.getEnvironment() NEQ 'production') />
+		<cfset temp = arguments.theApplication.factories.transient.getProfiler(application.app.getEnvironment() NEQ 'production') />
 		
 		<cfset arguments.theRequest.managers.singleton.setProfiler( temp ) />
 	</cffunction>
