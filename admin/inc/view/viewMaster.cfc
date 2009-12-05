@@ -9,6 +9,7 @@
 		<cfargument name="view" type="component" required="true" />
 		<cfargument name="paginate" type="component" required="true" />
 		<cfargument name="filter" type="struct" default="#{}#" />
+		<cfargument name="options" type="struct" default="#{}#" />
 		
 		<cfset var datagridFilter = '' />
 		<cfset var html = '' />
@@ -16,6 +17,10 @@
 		
 		<cfset datagridFilter = arguments.transport.theSession.managers.singleton.getAdminDatagridFilter() />
 		<cfset theURL = arguments.transport.theRequest.managers.singleton.getURL() />
+		
+		<!--- Set the options for the pagination --->
+		<cfset arguments.options.startRow = arguments.paginate.getStartRow() />
+		<cfset arguments.options.numPerPage = arguments.paginate.getNumPerPage() />
 		
 		<cfsavecontent variable="html">
 			<cfoutput>
@@ -27,10 +32,7 @@
 					#arguments.view.filterActive( arguments.filter )#
 				</cfif>
 				
-				#arguments.view.list( arguments.data, {
-					startRow = arguments.paginate.getStartRow(),
-					numPerPage = arguments.paginate.getNumPerPage()
-				} )#
+				#arguments.view.list( arguments.data, arguments.options )#
 				
 				#datagridFilter.toHTML( theURL, { submit = 'update' } )#
 			</cfoutput>
