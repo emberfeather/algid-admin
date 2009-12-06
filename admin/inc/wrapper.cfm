@@ -55,11 +55,7 @@
 	<cfset template = transport.theApplication.factories.transient.getTemplateForAdmin(navigation, theURL, SESSION.locale, options) />
 	
 	<!--- Include minified files for production --->
-	<cfif transport.theApplication.app.getEnvironment() EQ 'production'>
-		<cfset midfix = '-min' />
-	<cfelse>
-		<cfset midfix = '' />
-	</cfif>
+	<cfset midfix = (transport.theApplication.app.getEnvironment() EQ 'production' ? '-min' : '') />
 	
 	<!--- Add the scripts and styles --->
 	<cfset template.addScripts('../cf-compendium/script/form#midfix#.js', '../cf-compendium/script/list#midfix#.js', '../cf-compendium/script/jquery.datagrid#midfix#.js', '../cf-compendium/script/jquery.timeago#midfix#.js') />
