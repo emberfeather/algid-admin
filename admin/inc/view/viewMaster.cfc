@@ -32,7 +32,7 @@
 					#arguments.view.filterActive( arguments.filter )#
 				</cfif>
 				
-				#arguments.view.list( arguments.data, arguments.options )#
+				#arguments.view.datagrid( arguments.data, arguments.options )#
 				
 				#datagridFilter.toHTML( theURL, { submit = 'update' } )#
 			</cfoutput>
