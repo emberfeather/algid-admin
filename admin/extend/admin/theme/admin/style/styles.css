@@ -160,6 +160,14 @@ ul, ol {
 ====================
 */
 
+.message,
+.warning,
+.error,
+.success {
+	-moz-border-radius: .5em;
+	-webkit-border-radius: .5em;
+}
+
 /*
 	General Classes
 */

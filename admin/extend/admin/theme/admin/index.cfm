@@ -118,8 +118,12 @@
 				</div>
 				
 				<div class="grid_12">
-					<!--- Show any messages, errors, or successes --->
+					<!--- Show any messages, errors, warnings, or successes --->
 					<cfset messages = SESSION.managers.singleton.getError() />
+					
+					<cfoutput>#messages.toHTML()#</cfoutput>
+					
+					<cfset messages = SESSION.managers.singleton.getWarning() />
 					
 					<cfoutput>#messages.toHTML()#</cfoutput>
 					
