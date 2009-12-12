@@ -6,7 +6,9 @@
 		"navigationForAdmin": "algid.inc.resource.structure.navigationFile",
 		"profiler": "cf-compendium.inc.resource.utility.profiler",
 		"templateForAdmin": "algid.inc.resource.structure.template",
-		"urlForAdmin": "cf-compendium.inc.resource.utility.url"
+		"servAppForAdmin": "plugins.admin.inc.service.servApp",
+		"urlForAdmin": "cf-compendium.inc.resource.utility.url",
+		"viewAppForAdmin": "plugins.admin.inc.view.viewApp"
 	},
 	"i18n": {
 		"locales": [

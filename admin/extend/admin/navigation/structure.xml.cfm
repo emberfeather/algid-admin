@@ -1,7 +1,7 @@
 <navigation>
 	<index position="main" orderBy="0"/>
 	
-	<admin position="main">
+	<admin position="main" override="true">
 		<app position="main"/>
 		
 		<tools position="main">
