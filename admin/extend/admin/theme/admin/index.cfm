@@ -19,14 +19,14 @@
 					<a href="?"><img src="../plugins/admin/extend/admin/theme/admin/img/algid-admin.png" alt="Admin" /></a>
 				</div>
 				
-				<cfif SESSION.managers.singleton.getUser().getUserID() NEQ 0>
+				<cfif session.managers.singleton.getUser().getUserID() NEQ 0>
 					<div class="grid_9">
 						<div class="float-right">
 							<p>
 								<cfset theURL.setAccount('_base', '.account') />
 								<cfset theURL.setLogout('_base', '.account.logout') />
 								<cfoutput>
-									<a href="#theURL.getAccount()#">#SESSION.managers.singleton.getUser().getUsername()#</a> | <a href="#theURL.getLogout()#">Logout</a>
+									<a href="#theURL.getAccount()#">#session.managers.singleton.getUser().getUsername()#</a> | <a href="#theURL.getLogout()#">Logout</a>
 								</cfoutput>
 							</p>
 						</div>
@@ -44,19 +44,19 @@
 			</div>
 			
 			<!--- TODO This should really be controlled by the navigation permissions...? --->
-			<cfif SESSION.managers.singleton.getUser().getUserID() NEQ 0>
+			<cfif session.managers.singleton.getUser().getUserID() NEQ 0>
 				<div class="grid_12 no-print">
 					<cfset options = {
 							navClasses = ['menu horizontal float-right']
 						} />
 					
-					<cfoutput>#template.getNavigation(2, 'action', options, SESSION.managers.singleton.getUser())#</cfoutput>
+					<cfoutput>#template.getNavigation(2, 'action', options, session.managers.singleton.getUser())#</cfoutput>
 					
 					<cfset options = {
 							navClasses = ['menu horizontal']
 						} />
 					
-					<cfoutput>#template.getNavigation(1, 'main', options, SESSION.managers.singleton.getUser())#</cfoutput>
+					<cfoutput>#template.getNavigation(1, 'main', options, session.managers.singleton.getUser())#</cfoutput>
 					
 					<div class="clear"><!-- clear --></div>
 				</div>
@@ -80,7 +80,7 @@
 								navClasses = ['submenu horizontal float-right']
 							} />
 						
-						<cfset subNav = trim(template.getNavigation( navLevel + 1, 'action', options, SESSION.managers.singleton.getUser())) />
+						<cfset subNav = trim(template.getNavigation( navLevel + 1, 'action', options, session.managers.singleton.getUser())) />
 						
 						<cfset showingNavigation = showingNavigation OR subNav NEQ '' />
 						
@@ -91,7 +91,7 @@
 							navClasses = ['submenu horizontal']
 						} />
 					
-					<cfset subNav = trim(template.getNavigation(navLevel + 1, 'main', options, SESSION.managers.singleton.getUser())) />
+					<cfset subNav = trim(template.getNavigation(navLevel + 1, 'main', options, session.managers.singleton.getUser())) />
 					
 					<cfset showingNavigation = showingNavigation OR subNav NEQ '' />
 					
@@ -104,14 +104,14 @@
 									navClasses = ['submenu horizontal float-right']
 								} />
 							
-							<cfoutput>#template.getNavigation( navLevel, 'action', options, SESSION.managers.singleton.getUser())#</cfoutput>
+							<cfoutput>#template.getNavigation( navLevel, 'action', options, session.managers.singleton.getUser())#</cfoutput>
 						</cfif>
 						
 						<cfset options = {
 								navClasses = ['submenu horizontal']
 							} />
 						
-						<cfoutput>#template.getNavigation( navLevel, 'main', options, SESSION.managers.singleton.getUser())#</cfoutput>
+						<cfoutput>#template.getNavigation( navLevel, 'main', options, session.managers.singleton.getUser())#</cfoutput>
 					</cfif>
 					
 					<div class="clear"><!-- clear --></div>
@@ -119,19 +119,19 @@
 				
 				<div class="grid_12">
 					<!--- Show any messages, errors, warnings, or successes --->
-					<cfset messages = SESSION.managers.singleton.getError() />
+					<cfset messages = session.managers.singleton.getError() />
 					
 					<cfoutput>#messages.toHTML()#</cfoutput>
 					
-					<cfset messages = SESSION.managers.singleton.getWarning() />
+					<cfset messages = session.managers.singleton.getWarning() />
 					
 					<cfoutput>#messages.toHTML()#</cfoutput>
 					
-					<cfset messages = SESSION.managers.singleton.getSuccess() />
+					<cfset messages = session.managers.singleton.getSuccess() />
 					
 					<cfoutput>#messages.toHTML()#</cfoutput>
 					
-					<cfset messages = SESSION.managers.singleton.getMessage() />
+					<cfset messages = session.managers.singleton.getMessage() />
 					
 					<cfoutput>#messages.toHTML()#</cfoutput>
 					

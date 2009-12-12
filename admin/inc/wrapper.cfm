@@ -3,12 +3,16 @@
 	
 	<cfset profiler.start('startup') />
 	
-	<!--- Setup a transport object --->
+	<!--- Setup a transport object to transport scopes --->
 	<cfset transport = {
 			theApplication = application,
-			theSession = SESSION,
+			theCGI = cgi,
+			theCookie = cookie,
+			theForm = form,
 			theRequest = request,
-			locale = SESSION.locale
+			theServer = server,
+			theSession = session,
+			theUrl = url
 		} />
 	
 	<!--- Create the URL object for all the admin requests --->
@@ -23,9 +27,9 @@
 	
 	<!--- Check for a change to the number of records per page --->
 	<cfif theURL.searchID('numPerPage')>
-		<cfset SESSION.numPerPage = theURL.searchID('numPerPage') />
+		<cfset session.numPerPage = theURL.searchID('numPerPage') />
 		
-		<cfcookie name="numPerPage" value="#SESSION.numPerPage#" />
+		<cfcookie name="numPerPage" value="#session.numPerPage#" />
 		
 		<cfset theURL.remove('numPerPage') />
 	</cfif>
@@ -33,7 +37,7 @@
 	<!--- Check for a valid user or send to the login page --->
 	<cfif (NOT transport.theSession.managers.singleton.hasUser() OR transport.theSession.managers.singleton.getUser().getUserID() EQ 0) AND theURL.search('_base') NEQ '.account.login'>
 		<!--- Store the original page requested --->
-		<cfset SESSION.redirect = theURL.get( false ) />
+		<cfset session.redirect = theURL.get( false ) />
 		
 		<!--- Redirect to the login page --->
 		<cfset theURL.setRedirect('_base', '.account.login') />
@@ -52,7 +56,7 @@
 			]
 		} />
 	
-	<cfset template = transport.theApplication.factories.transient.getTemplateForAdmin(navigation, theURL, SESSION.locale, options) />
+	<cfset template = transport.theApplication.factories.transient.getTemplateForAdmin(navigation, theURL, session.locale, options) />
 	
 	<!--- Include minified files for production --->
 	<cfset midfix = (transport.theApplication.app.getEnvironment() EQ 'production' ? '-min' : '') />
@@ -73,7 +77,7 @@
 		<cfcatch type="validation">
 			<!--- Add the errors that happened from validations to errors --->
 			<cfloop list="#cfcatch.message#" index="i" delimiters="|">
-				<cfset SESSION.notification.error.addMessages(i) />
+				<cfset session.notification.error.addMessages(i) />
 			</cfloop>
 		</cfcatch>
 	</cftry>
@@ -83,11 +87,11 @@
 	<cfset profiler.start('stats') />
 	
 	<!--- Retrieve and generate the User Stats --->
-	<cfset userStats = SESSION.managers.singleton.getUserStat() />
+	<cfset userStats = session.managers.singleton.getUserStat() />
 	
 	<cfset viewUserStats = transport.theApplication.factories.transient.getViewUserStatForUser( transport ) />
 	
-	<cfset template.setStats(viewUserStats.stats(SESSION.managers.singleton.getUser())) />
+	<cfset template.setStats(viewUserStats.stats(session.managers.singleton.getUser())) />
 	
 	<cfset profiler.stop('stats') />
 	

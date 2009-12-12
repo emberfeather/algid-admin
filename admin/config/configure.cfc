@@ -54,9 +54,9 @@
 		
 		<!--- Set the number per page --->
 		<cfif structKeyExists(cookie, 'numPerPage')>
-			<cfset SESSION.numPerPage = cookie.numPerPage />
+			<cfset session.numPerPage = cookie.numPerPage />
 		<cfelse>
-			<cfset SESSION.numPerPage = 25 />
+			<cfset session.numPerPage = 25 />
 		</cfif>
 		
 		<cfset filter = arguments.theApplication.factories.transient.getFilter(arguments.theApplication.managers.singleton.getI18N()) />

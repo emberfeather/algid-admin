@@ -6,7 +6,7 @@
 	
 	<cfset filter = {
 			'limit' = 7,
-			'userID' = SESSION.managers.singleton.getUser().getUserID()
+			'userID' = session.managers.singleton.getUser().getUserID()
 		} />
 	
 	<cfset events = servEvent.readEvents( filter ) />
