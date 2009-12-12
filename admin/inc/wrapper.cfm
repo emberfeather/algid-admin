@@ -56,7 +56,7 @@
 			]
 		} />
 	
-	<cfset template = transport.theApplication.factories.transient.getTemplateForAdmin(navigation, theURL, session.locale, options) />
+	<cfset template = transport.theApplication.factories.transient.getTemplateForAdmin(navigation, theURL, transport.theSession.locale, options) />
 	
 	<!--- Include minified files for production --->
 	<cfset midfix = (transport.theApplication.app.getEnvironment() eq 'production' ? '-min' : '') />
