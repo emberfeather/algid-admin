@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		
-		<title><cfoutput>#template.getHTMLTitle()#</cfoutput></title>
+		<title><cfoutput>#template.getHTMltitle()#</cfoutput></title>
 		
 		<cfset template.addStyles('../plugins/admin/style/960/reset#midfix#.css', '../plugins/admin/style/960/960#midfix#.css"', '../plugins/admin/extend/admin/theme/admin/style/styles#midfix#.css') />
 		<cfset template.addStyle('../plugins/admin/extend/admin/theme/admin/style/print#midfix#.css', 'print') />
@@ -19,7 +19,7 @@
 					<a href="?"><img src="../plugins/admin/extend/admin/theme/admin/img/algid-admin.png" alt="Admin" /></a>
 				</div>
 				
-				<cfif session.managers.singleton.getUser().getUserID() NEQ 0>
+				<cfif session.managers.singleton.getUser().getUserID() neq 0>
 					<div class="grid_9">
 						<div class="float-right">
 							<p>
@@ -44,7 +44,7 @@
 			</div>
 			
 			<!--- TODO This should really be controlled by the navigation permissions...? --->
-			<cfif session.managers.singleton.getUser().getUserID() NEQ 0>
+			<cfif session.managers.singleton.getUser().getUserID() neq 0>
 				<div class="grid_12 no-print">
 					<cfset options = {
 							navClasses = ['menu horizontal float-right']
@@ -75,14 +75,14 @@
 					<cfset showingNavigation = false />
 					<cfset navLevel = template.getLevel() />
 					
-					<cfif navLevel GT 1>
+					<cfif navLevel gt 1>
 						<cfset options = {
 								navClasses = ['submenu horizontal float-right']
 							} />
 						
 						<cfset subNav = trim(template.getNavigation( navLevel + 1, 'action', options, session.managers.singleton.getUser())) />
 						
-						<cfset showingNavigation = showingNavigation OR subNav NEQ '' />
+						<cfset showingNavigation = showingNavigation or subNav neq '' />
 						
 						<cfoutput>#subNav#</cfoutput>
 					</cfif>
@@ -93,13 +93,13 @@
 					
 					<cfset subNav = trim(template.getNavigation(navLevel + 1, 'main', options, session.managers.singleton.getUser())) />
 					
-					<cfset showingNavigation = showingNavigation OR subNav NEQ '' />
+					<cfset showingNavigation = showingNavigation or subNav neq '' />
 					
 					<cfoutput>#subNav#</cfoutput>
 					
 					<!--- If there is not any navigation showing then show the actions for the current level --->
-					<cfif navLevel GT 1 AND NOT showingNavigation>
-						<cfif navLevel GT 2>
+					<cfif navLevel gt 1 and not showingNavigation>
+						<cfif navLevel gt 2>
 							<cfset options = {
 									navClasses = ['submenu horizontal float-right']
 								} />
@@ -142,7 +142,7 @@
 					<h2><cfoutput>#template.getPageTitle()#</cfoutput></h2>
 				</div>
 				
-				<cfif trim(template.getSide()) EQ ''>
+				<cfif trim(template.getSide()) eq ''>
 					<cfset mainGrid = 12 />
 				<cfelse>
 					<cfset mainGrid = 9 />
@@ -155,7 +155,7 @@
 				</div>
 				
 				<!--- Display the side if it exists --->
-				<cfif mainGrid EQ 9>
+				<cfif mainGrid eq 9>
 					<div class="grid_3">
 						<div class="box">
 							<cfoutput>#template.getSide()#</cfoutput>

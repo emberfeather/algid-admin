@@ -35,7 +35,7 @@
 	</cfif>
 	
 	<!--- Check for a valid user or send to the login page --->
-	<cfif (NOT transport.theSession.managers.singleton.hasUser() OR transport.theSession.managers.singleton.getUser().getUserID() EQ 0) AND theURL.search('_base') NEQ '.account.login'>
+	<cfif (not transport.theSession.managers.singleton.hasUser() or transport.theSession.managers.singleton.getUser().getUserID() eq 0) and theURL.search('_base') neq '.account.login'>
 		<!--- Store the original page requested --->
 		<cfset session.redirect = theURL.get( false ) />
 		
@@ -59,7 +59,7 @@
 	<cfset template = transport.theApplication.factories.transient.getTemplateForAdmin(navigation, theURL, session.locale, options) />
 	
 	<!--- Include minified files for production --->
-	<cfset midfix = (transport.theApplication.app.getEnvironment() EQ 'production' ? '-min' : '') />
+	<cfset midfix = (transport.theApplication.app.getEnvironment() eq 'production' ? '-min' : '') />
 	
 	<!--- Add the scripts and styles --->
 	<cfset template.addScripts('../cf-compendium/script/form#midfix#.js', '../cf-compendium/script/list#midfix#.js', '../cf-compendium/script/jquery.datagrid#midfix#.js', '../cf-compendium/script/jquery.timeago#midfix#.js') />
