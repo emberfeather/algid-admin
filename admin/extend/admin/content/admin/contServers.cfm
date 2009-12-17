@@ -4,5 +4,5 @@
 </p>
 
 <p>
-	Last reinitialized: <cfoutput>#transport.theApplication.app.getStartedOn()#</cfoutput>
+	Last reinitialized: <cfoutput>#transport.theApplication.managers.singleton.getApplication().getStartedOn()#</cfoutput>
 </p>

@@ -17,8 +17,8 @@
 		<cfset navigation = arguments.theApplication.factories.transient.getNavigationForAdmin(arguments.theApplication.managers.singleton.getI18N()) />
 		
 		<!--- Update the plugins and setup the transient and singleton information --->
-		<cfloop array="#arguments.theApplication.app.getPrecedence()#" index="i">
-			<cfset plugin = arguments.theApplication.managers.plugins.get(i) />
+		<cfloop array="#arguments.theApplication.managers.singleton.getApplication().getPrecedence()#" index="i">
+			<cfset plugin = arguments.theApplication.managers.plugin.get(i) />
 			
 			<cfset contentDirectory = '/plugins/' & i & '/extend/admin/content/' />
 			<cfset i18nDirectory = '/plugins/' & i & '/i18n/extend/admin/navigation/' />
@@ -87,7 +87,7 @@
 		<cfset var temp = '' />
 		
 		<!--- Create a profiler object --->
-		<cfset temp = arguments.theApplication.factories.transient.getProfiler(application.app.getEnvironment() neq 'production') />
+		<cfset temp = arguments.theApplication.factories.transient.getProfiler(arguments.theApplication.managers.singleton.getApplication().getEnvironment() neq 'production') />
 		
 		<cfset arguments.theRequest.managers.singleton.setProfiler( temp ) />
 	</cffunction>

@@ -56,10 +56,10 @@
 			]
 		} />
 	
-	<cfset template = transport.theApplication.factories.transient.getTemplateForAdmin(navigation, theURL, transport.theSession.locale, options) />
+	<cfset template = transport.theApplication.factories.transient.getTemplateForAdmin(navigation, theURL, transport.theSession.managers.singleton.getSession().getLocale(), options) />
 	
 	<!--- Include minified files for production --->
-	<cfset midfix = (transport.theApplication.app.getEnvironment() eq 'production' ? '-min' : '') />
+	<cfset midfix = (transport.theApplication.managers.singleton.getApplication().getEnvironment() eq 'production' ? '-min' : '') />
 	
 	<!--- Add the scripts and styles --->
 	<cfset template.addScripts('../cf-compendium/script/form#midfix#.js', '../cf-compendium/script/list#midfix#.js', '../cf-compendium/script/jquery.datagrid#midfix#.js', '../cf-compendium/script/jquery.timeago#midfix#.js') />

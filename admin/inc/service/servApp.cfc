@@ -11,11 +11,11 @@
 		
 		<cfset results = queryNew('plugin,version') />
 		
-		<cfloop array="#variables.transport.theApplication.app.getPlugins()#" index="plugin">
+		<cfloop array="#variables.transport.theApplication.managers.singleton.getApplication().getPlugins()#" index="plugin">
 			<cfset queryAddRow(results) />
 			
 			<cfset querySetCell(results, 'plugin', plugin) />
-			<cfset querySetCell(results, 'version', variables.transport.theApplication.managers.plugins.get(plugin).getVersion()) />
+			<cfset querySetCell(results, 'version', variables.transport.theApplication.managers.plugin.get(plugin).getVersion()) />
 		</cfloop>
 		
 		<cfquery name="results" dbtype="query">
