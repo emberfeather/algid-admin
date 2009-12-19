@@ -65,7 +65,7 @@
 			<div class="clear"><!-- clear --></div>
 			
 			<div class="content">
-				<div id="breadcrumb" class="grid_12">
+				<div id="breadcrumb" class="grid_12 no-print">
 					<cfoutput>#template.getBreadcrumb({ topLevel = 2 })#</cfoutput>
 					
 					<div class="clear"><!-- clear --></div>
@@ -118,6 +118,10 @@
 				</div>
 				
 				<div class="grid_12">
+					<h2><cfoutput>#template.getPageTitle()#</cfoutput></h2>
+				</div>
+				
+				<div class="grid_12">
 					<!--- Show any messages, errors, warnings, or successes --->
 					<cfset messages = session.managers.singleton.getError() />
 					
@@ -136,10 +140,6 @@
 					<cfoutput>#messages.toHTML()#</cfoutput>
 					
 					<div class="clear"><!-- clear --></div>
-				</div>
-				
-				<div class="grid_12">
-					<h2><cfoutput>#template.getPageTitle()#</cfoutput></h2>
 				</div>
 				
 				<cfif trim(template.getSide()) eq ''>

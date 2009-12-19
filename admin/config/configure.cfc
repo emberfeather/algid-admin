@@ -1,4 +1,18 @@
 <cfcomponent extends="algid.inc.resource.plugin.configure" output="false">
+	<cffunction name="inAdmin" access="public" returntype="boolean" output="false">
+		<cfargument name="theApplication" type="struct" required="true" />
+		<cfargument name="targetPage" type="string" required="true" />
+		
+		<cfset var path = '' />
+		
+		<!--- Get the path to the base --->
+		<cfset path = arguments.theApplication.managers.singleton.getApplication().getPath()
+			& arguments.theApplication.managers.plugin.getAdmin().getPath() />
+		
+		<!--- Only pages in the root of the path qualify --->
+		<cfreturn reFind('^' & path & '[a-zA-Z0-9-\.]*.cfm$', arguments.targetPage) GT 0 />
+	</cffunction>
+	
 	<cffunction name="onApplicationStart" access="public" returntype="void" output="false">
 		<cfargument name="theApplication" type="struct" required="true" />
 		
@@ -75,7 +89,7 @@
 		
 		<cfset filter.addFilter('numPerPage', options) />
 		
-		<cfset arguments.theSession.managers.singleton.setAdminDatagridFilter( filter ) />
+		<cfset arguments.theSession.managers.singleton.setDatagridFilterForAdmin( filter ) />
 	</cffunction>
 	
 	<cffunction name="onRequestStart" access="public" returntype="void" output="false">
@@ -85,10 +99,19 @@
 		<cfargument name="targetPage" type="string" required="true" />
 		
 		<cfset var temp = '' />
+		<cfset var adminPage = '' />
 		
-		<!--- Create a profiler object --->
-		<cfset temp = arguments.theApplication.factories.transient.getProfiler(arguments.theApplication.managers.singleton.getApplication().getEnvironment() neq 'production') />
-		
-		<cfset arguments.theRequest.managers.singleton.setProfiler( temp ) />
+		<!--- Only do the following if in the admin area --->
+		<cfif inAdmin( arguments.theApplication, arguments.targetPage )>
+			<!--- Create a profiler object --->
+			<cfset temp = arguments.theApplication.factories.transient.getProfiler(arguments.theApplication.managers.singleton.getApplication().getEnvironment() neq 'production') />
+			
+			<cfset arguments.theRequest.managers.singleton.setProfiler( temp ) />
+			
+			<!--- Create the URL object for all the admin requests --->
+			<cfset temp = arguments.theApplication.factories.transient.getUrlForAdmin(URL) />
+			
+			<cfset arguments.theRequest.managers.singleton.setUrl( temp ) />
+		</cfif>
 	</cffunction>
 </cfcomponent>

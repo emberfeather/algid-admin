@@ -15,13 +15,9 @@
 			theUrl = url
 		} />
 	
-	<!--- Create the URL object for all the admin requests --->
-	<cfset theURL = transport.theApplication.factories.transient.getUrlForAdmin(URL) />
-	
-	<cfset transport.theRequest.managers.singleton.setUrl( theURL ) />\
-	
 	<!--- Retrieve the admin objects --->
 	<cfset i18n = transport.theApplication.managers.singleton.getI18N() />
+	<cfset theURL = transport.theRequest.managers.singleton.getURL() />
 	<cfset navigation = transport.theApplication.managers.singleton.getAdminNavigation() />
 	<cfset viewMaster = transport.theApplication.managers.singleton.getViewMasterForAdmin() />
 	
@@ -120,6 +116,7 @@
 	<cfset profiler.start('theme') />
 </cfsilent>
 
-<cfinclude template="/plugins/admin/extend/admin/theme/admin/index.cfm" />
+<!--- Include the theme --->
+<cfinclude template="/plugins/#transport.theApplication.managers.plugin.getAdmin().getTheme()#/index.cfm" />
 
 <cfset profiler.stop('theme') />

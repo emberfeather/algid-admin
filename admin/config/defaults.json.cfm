@@ -16,6 +16,7 @@
 			"en_US"
 		]
 	},
+	"path": "admin/",
 	"requestSingletons": {
 	},
 	"requestTransients": {
@@ -23,5 +24,6 @@
 	"sessionSingletons": {
 	},
 	"sessionTransients": {
-	}
+	},
+	"theme": "admin/extend/admin/theme/admin"
 }
