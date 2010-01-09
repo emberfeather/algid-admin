@@ -17,6 +17,7 @@
 	
 	<!--- Retrieve the admin objects --->
 	<cfset i18n = transport.theApplication.managers.singleton.getI18N() />
+	<cfset objectSerial = transport.theApplication.managers.singleton.getObjectSerial() />
 	<cfset theURL = transport.theRequest.managers.singleton.getURL() />
 	<cfset navigation = transport.theApplication.managers.singleton.getAdminNavigation() />
 	<cfset viewMaster = transport.theApplication.managers.singleton.getViewMasterForAdmin() />
@@ -31,7 +32,7 @@
 	</cfif>
 	
 	<!--- Check for a valid user or send to the login page --->
-	<cfif (not transport.theSession.managers.singleton.hasUser() or transport.theSession.managers.singleton.getUser().getUserID() eq 0) and theURL.search('_base') neq '.account.login'>
+	<cfif (not transport.theSession.managers.singleton.hasUser() or transport.theSession.managers.singleton.getUser().getUserID() eq '') and theURL.search('_base') neq '.account.login'>
 		<!--- Store the original page requested --->
 		<cfset transport.theSession.redirect = theURL.get( false ) />
 		

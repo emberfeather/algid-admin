@@ -1,4 +1,5 @@
 {
+	"__fullname": "algid.inc.resource.plugin.plugin",
 	"key": "admin",
 	"prerequisites": {
 		"algid": "0.1.1",
