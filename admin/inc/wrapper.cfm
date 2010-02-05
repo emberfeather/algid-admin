@@ -39,7 +39,7 @@
 		<!--- Redirect to the login page --->
 		<cfset theURL.setRedirect('_base', '.account.login') />
 		
-		<cflocation url="#theURL.getRedirect(false)#" addtoken="false" />
+		<cfset theURL.redirectRedirect() />
 	</cfif>
 	
 	<cfset profiler.stop('startup') />

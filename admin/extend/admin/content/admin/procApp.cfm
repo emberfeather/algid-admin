@@ -6,7 +6,7 @@
 		<cfset theURL.set('', field, form[field]) />
 	</cfloop>
 	
-	<cflocation url="#theURL.get('', false)#" addtoken="false" />
+	<cfset theURL.redirect() />
 </cfif>
 
 <!--- Show a message if the current environment is not production --->
