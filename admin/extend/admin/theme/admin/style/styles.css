@@ -217,7 +217,10 @@ ul, ol {
 	min-height: 1em;
 	-moz-border-radius: .5em;
 	-webkit-border-radius: .5em;
+	background-image: -moz-linear-gradient(top, #ededed, #cdcdcd);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#cdcdcd));
 }
+
 
 .box h3 {
 	font-size: 1.25em;
