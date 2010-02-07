@@ -83,20 +83,8 @@
 	
 	<cfset profiler.stop('process') />
 	
-	<cfset profiler.start('stats') />
-	
-	<!--- Retrieve and generate the User Stats --->
-	<cfset userStats = session.managers.singleton.getUserStat() />
-	
-	<cfset viewUserStats = transport.theApplication.factories.transient.getViewUserStatForUser( transport ) />
-	
-	<cfset template.setStats(viewUserStats.stats(session.managers.singleton.getUser())) />
-	
-	<cfset profiler.stop('stats') />
-	
 	<cfset profiler.start('side') />
 	
-	<!--- TODO Add in caching --->
 	<cfsavecontent variable="side">
 		<cfinclude template="#template.getContentPath('side')#" />
 	</cfsavecontent>
@@ -107,7 +95,6 @@
 	
 	<cfset profiler.start('content') />
 	
-	<!--- TODO Add in caching --->
 	<cfsavecontent variable="content">
 		<cfinclude template="#template.getContentPath('cont')#" />
 	</cfsavecontent>

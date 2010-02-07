@@ -33,13 +33,6 @@
 								</cfoutput>
 							</p>
 						</div>
-						
-						<div>
-							<p>
-								<!--- Output the user stats --->
-								<cfoutput>#template.getStats()#</cfoutput>
-							</p>
-						</div>
 					</div>
 				</cfif>
 				
