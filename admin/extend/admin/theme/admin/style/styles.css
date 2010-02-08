@@ -238,6 +238,16 @@ ul, ol {
 }
 
 /*
+	Pagination
+*/
+
+.pagination a:hover,
+.pagination .selected a {
+	background-image: -moz-linear-gradient(top, #cdcdcd, #ededed);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#cdcdcd), to(#ededed));
+}
+
+/*
 	primary navigation
 */
 

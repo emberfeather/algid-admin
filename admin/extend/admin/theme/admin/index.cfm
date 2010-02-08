@@ -22,7 +22,7 @@
 					<a href="?"><img src="../plugins/admin/extend/admin/theme/admin/img/algid-admin.png" alt="Admin" /></a>
 				</div>
 				
-				<cfif session.managers.singleton.getUser().getUserID() neq 0>
+				<cfif session.managers.singleton.getUser().getUserID() neq ''>
 					<div class="grid_9">
 						<div class="float-right">
 							<p>
@@ -40,7 +40,7 @@
 			</div>
 			
 			<!--- TODO This should really be controlled by the navigation permissions...? --->
-			<cfif session.managers.singleton.getUser().getUserID() neq 0>
+			<cfif session.managers.singleton.getUser().getUserID() neq ''>
 				<div class="grid_12 no-print">
 					<cfset options = {
 							navClasses = ['menu horizontal float-right']
