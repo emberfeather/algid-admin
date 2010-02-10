@@ -76,7 +76,7 @@
 		<cfcatch type="validation">
 			<!--- Add the errors that happened from validations to errors --->
 			<cfloop list="#cfcatch.message#" index="i" delimiters="|">
-				<cfset session.notification.error.addMessages(i) />
+				<cfset session.managers.singleton.getError().addMessages(i) />
 			</cfloop>
 		</cfcatch>
 	</cftry>
