@@ -32,12 +32,12 @@
 	</cfif>
 	
 	<!--- Check for a valid user or send to the login page --->
-	<cfif (not transport.theSession.managers.singleton.hasUser() or transport.theSession.managers.singleton.getUser().getUserID() eq '') and theURL.search('_base') neq '.account.login'>
+	<cfif (not transport.theSession.managers.singleton.hasUser() or transport.theSession.managers.singleton.getUser().getUserID() eq '') and theURL.search('_base') neq '/account/login'>
 		<!--- Store the original page requested --->
 		<cfset transport.theSession.redirect = theURL.get( false ) />
 		
 		<!--- Redirect to the login page --->
-		<cfset theURL.setRedirect('_base', '.account.login') />
+		<cfset theURL.setRedirect('_base', '/account/login') />
 		
 		<cfset theURL.redirectRedirect() />
 	</cfif>
