@@ -1,1 +1,1 @@
-(function(a){a(function(){a(".datagrid").datagrid();a(".content input[type=text]").focus();a("form").submit(function(){a("input[type=submit]",a(this)).attr("disabled","disabled")});a("abbr.timeago").timeago()})})(jQuery);
+(function(a){a(function(){a(".datagrid").datagrid();a(".content input[type=text]:first").focus();a("form").submit(function(){a("input[type=submit]",a(this)).attr("disabled","disabled")});a("abbr.timeago").timeago()})})(jQuery);
