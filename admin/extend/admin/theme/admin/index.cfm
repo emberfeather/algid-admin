@@ -26,8 +26,12 @@
 					<div class="grid_9">
 						<div class="float-right">
 							<p>
+								<cfset theURL.cleanAccount() />
 								<cfset theURL.setAccount('_base', '/account') />
+								
+								<cfset theURL.cleanLogout() />
 								<cfset theURL.setLogout('_base', '/account/logout') />
+								
 								<cfoutput>
 									<a href="#theURL.getAccount()#">#session.managers.singleton.getUser().getUsername()#</a> | <a href="#theURL.getLogout()#">Logout</a>
 								</cfoutput>
