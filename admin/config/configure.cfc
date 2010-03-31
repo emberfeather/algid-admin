@@ -91,27 +91,31 @@
 		
 		<cfset arguments.theSession.managers.singleton.setDatagridFilterForAdmin( filter ) />
 	</cffunction>
-	
-	<cffunction name="onRequestStart" access="public" returntype="void" output="false">
-		<cfargument name="theApplication" type="struct" required="true" />
-		<cfargument name="theSession" type="struct" required="true" />
-		<cfargument name="theRequest" type="struct" required="true" />
-		<cfargument name="targetPage" type="string" required="true" />
+<cfscript>
+	/* required theApplication */
+	/* required theSession */
+	/* required theRequest */
+	/* required targetPage */
+	public void function onRequestStart(struct theApplication, struct theSession, struct theRequest, string targetPage) {
+		var temp = '';
 		
-		<cfset var temp = '' />
-		<cfset var adminPage = '' />
-		
-		<!--- Only do the following if in the admin area --->
-		<cfif inAdmin( arguments.theApplication, arguments.targetPage )>
-			<!--- Create a profiler object --->
-			<cfset temp = arguments.theApplication.factories.transient.getProfiler(not arguments.theApplication.managers.singleton.getApplication().isProduction()) />
+		// Only do the following if in the admin area
+		if (inAdmin( arguments.theApplication, arguments.targetPage )) {
+			// Create a profiler object
+			temp = arguments.theApplication.factories.transient.getProfiler(not arguments.theApplication.managers.singleton.getApplication().isProduction());
 			
-			<cfset arguments.theRequest.managers.singleton.setProfiler( temp ) />
+			arguments.theRequest.managers.singleton.setProfiler( temp );
 			
-			<!--- Create the URL object for all the admin requests --->
-			<cfset temp = arguments.theApplication.factories.transient.getUrlForAdmin(URL) />
+			// Default base
+			if ( !structKeyExists(url, '_base') ) {
+				url['_base'] = '/';
+			}
 			
-			<cfset arguments.theRequest.managers.singleton.setUrl( temp ) />
-		</cfif>
-	</cffunction>
+			// Create the URL object for all the admin requests
+			temp = arguments.theApplication.factories.transient.getUrlForAdmin(URL);
+			
+			arguments.theRequest.managers.singleton.setUrl( temp );
+		}
+	}
+</cfscript>
 </cfcomponent>
