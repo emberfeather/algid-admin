@@ -108,7 +108,7 @@
 			
 			// Default base
 			if ( !structKeyExists(url, '_base') ) {
-				url['_base'] = '/';
+				url['_base'] = '/index';
 			}
 			
 			// Create the URL object for all the admin requests
