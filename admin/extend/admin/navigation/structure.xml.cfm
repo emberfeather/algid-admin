@@ -28,10 +28,6 @@
 	</admin>
 	
 	<support position="main">
-		<navigation position="main">
-			<list position="action"/>
-		</navigation>
-		
 		<contact position="main">
 			<list position="action"/>
 			<email position="main"/>
