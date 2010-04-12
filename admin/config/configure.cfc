@@ -97,6 +97,8 @@
 	/* required theRequest */
 	/* required targetPage */
 	public void function onRequestStart(struct theApplication, struct theSession, struct theRequest, string targetPage) {
+		var app = '';
+		var plugin = '';
 		var temp = '';
 		
 		// Only do the following if in the admin area
@@ -112,7 +114,9 @@
 			}
 			
 			// Create the URL object for all the admin requests
-			temp = arguments.theApplication.factories.transient.getUrlForAdmin(URL);
+			app = arguments.theApplication.managers.singleton.getApplication();
+			plugin = arguments.theApplication.managers.plugin.getAdmin();
+			temp = arguments.theApplication.factories.transient.getUrlForAdmin(url, , { start = app.getPath() & plugin.getPath() & '?' });
 			
 			arguments.theRequest.managers.singleton.setUrl( temp );
 		}
