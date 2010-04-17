@@ -9,7 +9,7 @@
 			'userID' = session.managers.singleton.getUser().getUserID()
 		} />
 	
-	<cfset events = servEvent.readEvents( filter ) />
+	<cfset events = servEvent.getEvents( filter ) />
 	
 	<cfoutput>#viewEvent.recent(events)#</cfoutput>
 </cfif>
