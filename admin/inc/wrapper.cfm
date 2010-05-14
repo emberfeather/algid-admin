@@ -54,7 +54,7 @@
 			]
 		} />
 	
-	<cfset template = transport.theApplication.factories.transient.getTemplateForAdmin(navigation, theURL, transport.theSession.managers.singleton.getSession().getLocale(), options) />
+	<cfset template = transport.theApplication.factories.transient.getTemplateForAdmin(transport.theCGI.server_name, navigation, theURL, transport.theSession.managers.singleton.getSession().getLocale(), options) />
 	
 	<!--- Include minified files for production --->
 	<cfif transport.theApplication.managers.singleton.getApplication().isProduction()>
