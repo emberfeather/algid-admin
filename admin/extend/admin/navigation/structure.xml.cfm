@@ -27,6 +27,8 @@
 		</servers>
 	</admin>
 	
+	<search position="main"/>
+	
 	<support position="main">
 		<contact position="main">
 			<list position="action"/>

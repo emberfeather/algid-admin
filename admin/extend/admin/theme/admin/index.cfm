@@ -37,6 +37,18 @@
 								</cfoutput>
 							</p>
 						</div>
+						
+						<div>
+							<cfset theURL.cleanSearch() />
+							<cfset theURL.setSearch('_base', '/search') />
+							
+							<cfoutput>
+								<form action="#theUrl.getSearch()#" method="post" id="adminSearch">
+									<input type="text" name="term" />
+									<input type="submit" value="Search" />
+								</form>
+							</cfoutput>
+						</div>
 					</div>
 				</cfif>
 				
