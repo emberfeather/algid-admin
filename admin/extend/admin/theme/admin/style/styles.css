@@ -138,6 +138,18 @@ ul, ol {
 	color: #fff;
 }
 
+#adminSearch {
+	padding: .5em;
+}
+
+#adminSearch input[type=text] {
+	width: 30em;
+}
+
+#adminSearch input[type=submit] {
+	display: none;
+}
+
 #breadcrumb {
 	font-size: .85em;
 	color: #fff;

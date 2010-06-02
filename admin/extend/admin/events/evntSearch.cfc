@@ -24,7 +24,6 @@
 				AND (
 					title LIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#arguments.term#%" />
 					OR description LIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#arguments.term#%" />
-					OR path LIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#arguments.term#%" />
 				)
 		</cfquery>
 		
@@ -36,6 +35,29 @@
 			
 			<cfset result.setTitle(results['title']) />
 			<cfset result.setCategory('Navigation') />
+			<cfset result.setDescription(results['description']) />
+			<cfset result.setLink(theUrl.getSearch()) />
+			
+			<cfset arguments.results.addResults(result) />
+		</cfloop>
+		
+		<!--- Use the search term to find the matches --->
+		<cfquery name="results" dbtype="query">
+			SELECT title, path, description
+			FROM navigation
+			WHERE locale = <cfqueryparam cfsqltype="cf_sql_varchar" value="#locale#" />
+				AND path LIKE <cfqueryparam cfsqltype="cf_sql_varchar" value="%#arguments.term#%" />
+				AND navTitle <> <cfqueryparam cfsqltype="cf_sql_varchar" value="" />
+		</cfquery>
+		
+		<!--- Add the found results to the main search results --->
+		<cfloop query="results">
+			<cfset theUrl.setSearch('_base', results.path) />
+			
+			<cfset result = arguments.transport.theApplication.factories.transient.getModSearchResultForAdmin( i18n, locale ) />
+			
+			<cfset result.setTitle(results['path']) />
+			<cfset result.setCategory('Navigation Paths') />
 			<cfset result.setDescription(results['description']) />
 			<cfset result.setLink(theUrl.getSearch()) />
 			
