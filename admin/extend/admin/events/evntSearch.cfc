@@ -5,6 +5,8 @@
 		<cfargument name="results" type="component" required="true" />
 		<cfargument name="term" type="string" required="true" />
 		
+		<cfset var admin = '' />
+		<cfset var app = '' />
 		<cfset var i = 0 />
 		<cfset var i18n = arguments.transport.theApplication.managers.singleton.getI18N() />
 		<cfset var locale = arguments.transport.theSession.managers.singleton.getSession().getLocale() />
@@ -12,6 +14,10 @@
 		<cfset var result = '' />
 		<cfset var results = '' />
 		<cfset var theURL = arguments.transport.theRequest.managers.singleton.getURL() />
+		
+		<cfset app = arguments.transport.theApplication.managers.singleton.getApplication() />
+		<cfset admin = arguments.transport.theApplication.managers.plugin.getAdmin() />
+		<cfset theUrl = arguments.transport.theApplication.factories.transient.getUrlForAdmin('', { start = app.getPath() & admin.getPath() & '?' } ) />
 		
 		<!--- Retrieve the navigation query --->
 		<cfset navigation = transport.theApplication.managers.singleton.getAdminNavigation().getNavigation() />

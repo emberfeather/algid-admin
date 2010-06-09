@@ -32,6 +32,10 @@
 	},
 	"requestTransients": {
 	},
+	"search": {
+		"threshold": 3,
+		"url": "/api/"
+	},
 	"sessionSingletons": {
 	},
 	"sessionTransients": {

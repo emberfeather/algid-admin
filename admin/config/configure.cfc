@@ -116,7 +116,7 @@
 			// Create the URL object for all the admin requests
 			app = arguments.theApplication.managers.singleton.getApplication();
 			plugin = arguments.theApplication.managers.plugin.getAdmin();
-			temp = arguments.theApplication.factories.transient.getUrlForAdmin(url, { start = app.getPath() & plugin.getPath() & '?' });
+			temp = arguments.theApplication.factories.transient.getUrlForAdmin(arguments.theUrl, { start = app.getPath() & plugin.getPath() & '?' });
 			
 			arguments.theRequest.managers.singleton.setUrl( temp );
 		}
