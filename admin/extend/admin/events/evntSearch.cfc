@@ -13,7 +13,7 @@
 		<cfset var navigation = '' />
 		<cfset var result = '' />
 		<cfset var results = '' />
-		<cfset var theURL = arguments.transport.theRequest.managers.singleton.getURL() />
+		<cfset var theURL = '' />
 		
 		<cfset app = arguments.transport.theApplication.managers.singleton.getApplication() />
 		<cfset admin = arguments.transport.theApplication.managers.plugin.getAdmin() />
@@ -42,7 +42,7 @@
 			<cfset result.setTitle(results['title']) />
 			<cfset result.setCategory('Navigation') />
 			<cfset result.setDescription(results['description']) />
-			<cfset result.setLink(theUrl.getSearch()) />
+			<cfset result.setLink(theUrl.getSearch(false)) />
 			
 			<cfset arguments.results.addResults(result) />
 		</cfloop>
@@ -65,7 +65,7 @@
 			<cfset result.setTitle(results['path']) />
 			<cfset result.setCategory('Navigation Paths') />
 			<cfset result.setDescription(results['description']) />
-			<cfset result.setLink(theUrl.getSearch()) />
+			<cfset result.setLink(theUrl.getSearch(false)) />
 			
 			<cfset arguments.results.addResults(result) />
 		</cfloop>

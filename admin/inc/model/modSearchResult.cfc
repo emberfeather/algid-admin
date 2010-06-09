@@ -37,7 +37,7 @@ component extends="algid.inc.resource.base.model" {
 		html = '<dt>';
 		
 		if( hasLink ) {
-			html = '<a href="' & this.getLink() & '">';
+			html = '<a href="' & htmlEditFormat(this.getLink()) & '">';
 		}
 		
 		html &= this.getTitle();
