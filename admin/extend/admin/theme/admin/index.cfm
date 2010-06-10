@@ -20,8 +20,8 @@
 		<cfsavecontent variable="adminSearch">
 			<cfoutput>
 				;(function($){
+					$.algid.admin.options.base.url = '#transport.theApplication.managers.singleton.getApplication().getPath()#';
 					$.algid.admin.options.search.threshold = #searchSettings.threshold#;
-					$.algid.admin.options.search.url = '#searchSettings.url#';
 				})(jQuery);
 			</cfoutput>
 		</cfsavecontent>

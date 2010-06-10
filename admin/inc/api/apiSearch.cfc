@@ -1,5 +1,4 @@
 component extends="plugins.api.inc.resource.base.api" {
-	/* required term */
 	public component function search() {
 		var i = '';
 		var servSearch = '';

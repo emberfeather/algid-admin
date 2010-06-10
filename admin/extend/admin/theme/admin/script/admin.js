@@ -8,9 +8,12 @@
 	
 	$.algid.admin = {
 		options: {
+			base: {
+				api: 'api/',
+				url: '/'
+			},
 			search: {
-				threshold: 5,
-				url: '/api/'
+				threshold: 5
 			}
 		}
 	};
@@ -44,7 +47,7 @@
 				}
 				
 				$.ajax({
-					url: $.algid.admin.options.search.url,
+					url: $.algid.admin.options.base.url + $.algid.admin.options.base.api,
 					dataType: 'json',
 					type: 'post',
 					data: {
@@ -60,8 +63,6 @@
 					success: function( data ) {
 						if(data.HEAD.result) {
 							searchCache[ request.term ] = data.BODY;
-							
-							window.console.log(data.BODY);
 							
 							response( data.BODY );
 						} else {
