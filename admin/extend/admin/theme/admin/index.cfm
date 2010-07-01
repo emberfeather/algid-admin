@@ -98,51 +98,54 @@
 					<div class="clear"><!-- clear --></div>
 				</div>
 				
-				<div class="grid_12 no-print">
-					<cfset showingNavigation = false />
-					<cfset navLevel = template.getLevel() />
-					
-					<cfif navLevel gt 1>
-						<cfset options = {
-								navClasses = ['submenu horizontal float-right']
-							} />
+				<!--- TODO This should really be controlled by the navigation permissions...? --->
+				<cfif session.managers.singleton.getUser().getUserID() neq ''>
+					<div class="grid_12 no-print">
+						<cfset showingNavigation = false />
+						<cfset navLevel = template.getLevel() />
 						
-						<cfset subNav = trim(template.getNavigation( navLevel + 1, 'action', options, session.managers.singleton.getUser())) />
-						
-						<cfset showingNavigation = showingNavigation or subNav neq '' />
-						
-						<cfoutput>#subNav#</cfoutput>
-					</cfif>
-					
-					<cfset options = {
-							navClasses = ['submenu horizontal']
-						} />
-					
-					<cfset subNav = trim(template.getNavigation(navLevel + 1, 'main', options, session.managers.singleton.getUser())) />
-					
-					<cfset showingNavigation = showingNavigation or subNav neq '' />
-					
-					<cfoutput>#subNav#</cfoutput>
-					
-					<!--- If there is not any navigation showing then show the actions for the current level --->
-					<cfif navLevel gt 1 and not showingNavigation>
-						<cfif navLevel gt 2>
+						<cfif navLevel gt 1>
 							<cfset options = {
 									navClasses = ['submenu horizontal float-right']
 								} />
 							
-							<cfoutput>#template.getNavigation( navLevel, 'action', options, session.managers.singleton.getUser())#</cfoutput>
+							<cfset subNav = trim(template.getNavigation( navLevel + 1, 'action', options, session.managers.singleton.getUser())) />
+							
+							<cfset showingNavigation = showingNavigation or subNav neq '' />
+							
+							<cfoutput>#subNav#</cfoutput>
 						</cfif>
 						
 						<cfset options = {
 								navClasses = ['submenu horizontal']
 							} />
 						
-						<cfoutput>#template.getNavigation( navLevel, 'main', options, session.managers.singleton.getUser())#</cfoutput>
-					</cfif>
-					
-					<div class="clear"><!-- clear --></div>
-				</div>
+						<cfset subNav = trim(template.getNavigation(navLevel + 1, 'main', options, session.managers.singleton.getUser())) />
+						
+						<cfset showingNavigation = showingNavigation or subNav neq '' />
+						
+						<cfoutput>#subNav#</cfoutput>
+						
+						<!--- If there is not any navigation showing then show the actions for the current level --->
+						<cfif navLevel gt 1 and not showingNavigation>
+							<cfif navLevel gt 2>
+								<cfset options = {
+										navClasses = ['submenu horizontal float-right']
+									} />
+								
+								<cfoutput>#template.getNavigation( navLevel, 'action', options, session.managers.singleton.getUser())#</cfoutput>
+							</cfif>
+							
+							<cfset options = {
+									navClasses = ['submenu horizontal']
+								} />
+							
+							<cfoutput>#template.getNavigation( navLevel, 'main', options, session.managers.singleton.getUser())#</cfoutput>
+						</cfif>
+						
+						<div class="clear"><!-- clear --></div>
+					</div>
+				</cfif>
 				
 				<cfinclude template="partial.cfm" />
 			</div>
