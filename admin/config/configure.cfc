@@ -100,6 +100,7 @@
 		var app = '';
 		var plugin = '';
 		var temp = '';
+		var theUrl = '';
 		
 		// Only do the following if in the admin area
 		if (inAdmin( arguments.theApplication, arguments.targetPage )) {
@@ -116,9 +117,21 @@
 			// Create the URL object for all the admin requests
 			app = arguments.theApplication.managers.singleton.getApplication();
 			plugin = arguments.theApplication.managers.plugin.getAdmin();
-			temp = arguments.theApplication.factories.transient.getUrlForAdmin(arguments.theUrl, { start = app.getPath() & plugin.getPath() & '?' });
 			
-			arguments.theRequest.managers.singleton.setUrl( temp );
+			theUrl = arguments.theApplication.factories.transient.getUrlForAdmin(arguments.theUrl, { start = app.getPath() & plugin.getPath() & '?' });
+			
+			arguments.theRequest.managers.singleton.setUrl( theUrl );
+			
+			// Check for a valid user or send to the login page
+			if ( app.hasPlugin('user') and (not arguments.theSession.managers.singleton.hasUser() or arguments.theSession.managers.singleton.getUser().getUserID() eq '') and theURL.search('_base') neq '/account/login') {
+				// Store the original page requested
+				transport.theSession.redirect = theURL.get( false );
+				
+				// Redirect to the login page
+				theURL.setRedirect('_base', '/account/login');
+				
+				theURL.redirectRedirect();
+			}
 		}
 	}
 </cfscript>
