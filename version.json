@@ -1,1 +1,6 @@
-0.1.000
+{
+	"releaseNotes": "http://wiki.github.com/emberfeather/algid-admin/ReleaseNotes",
+	"releaseURL": "http://github.com/emberfeather/algid-admin/zipball/0.1.1",
+	"URL": "http://github.com/emberfeather/algid-admin",
+	"version": "0.1.1"
+}
