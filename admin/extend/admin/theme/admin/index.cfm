@@ -37,21 +37,23 @@
 					<a href="?"><img src="../plugins/admin/extend/admin/theme/admin/img/algid-admin.png" alt="Admin" /></a>
 				</div>
 				
-				<cfif session.managers.singleton.getUser().getUserID() neq ''>
+				<cfif not template.getIsSimple()>
 					<div class="grid_9">
-						<div class="float-right">
-							<p>
-								<cfset theURL.cleanAccount() />
-								<cfset theURL.setAccount('_base', '/account') />
-								
-								<cfset theURL.cleanLogout() />
-								<cfset theURL.setLogout('_base', '/account/logout') />
-								
-								<cfoutput>
-									<a href="#theURL.getAccount()#">#session.managers.singleton.getUser().getDisplayName()#</a> | <a href="#theURL.getLogout()#">Logout</a>
-								</cfoutput>
-							</p>
-						</div>
+						<cfif transport.theSession.managers.singleton.hasUser()>
+							<div class="float-right">
+								<p>
+									<cfset theURL.cleanAccount() />
+									<cfset theURL.setAccount('_base', '/account') />
+									
+									<cfset theURL.cleanLogout() />
+									<cfset theURL.setLogout('_base', '/account/logout') />
+									
+									<cfoutput>
+										<a href="#theURL.getAccount()#">#session.managers.singleton.getUser().getDisplayName()#</a> | <a href="#theURL.getLogout()#">Logout</a>
+									</cfoutput>
+								</p>
+							</div>
+						</cfif>
 						
 						<div>
 							<cfset theURL.cleanSearch() />
@@ -70,20 +72,27 @@
 				<div class="clear"><!-- clear --></div>
 			</div>
 			
-			<!--- TODO This should really be controlled by the navigation permissions...? --->
-			<cfif session.managers.singleton.getUser().getUserID() neq ''>
+			<cfif not template.getIsSimple()>
 				<div class="grid_12 no-print">
 					<cfset options = {
 							navClasses = ['menu horizontal float-right']
 						} />
 					
-					<cfoutput>#template.getNavigation(2, 'action', options, session.managers.singleton.getUser())#</cfoutput>
+					<cfif transport.theSession.managers.singleton.hasUser()>
+						<cfoutput>#template.getNavigation(2, 'action', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
+					<cfelse>
+						<cfoutput>#template.getNavigation(2, 'action', options)#</cfoutput>
+					</cfif>
 					
 					<cfset options = {
 							navClasses = ['menu horizontal']
 						} />
 					
-					<cfoutput>#template.getNavigation(1, 'main', options, session.managers.singleton.getUser())#</cfoutput>
+					<cfif transport.theSession.managers.singleton.hasUser()>
+						<cfoutput>#template.getNavigation(1, 'main', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
+					<cfelse>
+						<cfoutput>#template.getNavigation(1, 'main', options)#</cfoutput>
+					</cfif>
 					
 					<div class="clear"><!-- clear --></div>
 				</div>
@@ -98,8 +107,7 @@
 					<div class="clear"><!-- clear --></div>
 				</div>
 				
-				<!--- TODO This should really be controlled by the navigation permissions...? --->
-				<cfif session.managers.singleton.getUser().getUserID() neq ''>
+				<cfif not template.getIsSimple()>
 					<div class="grid_12 no-print">
 						<cfset showingNavigation = false />
 						<cfset navLevel = template.getLevel() />
@@ -109,9 +117,13 @@
 									navClasses = ['submenu horizontal float-right']
 								} />
 							
-							<cfset subNav = trim(template.getNavigation( navLevel + 1, 'action', options, session.managers.singleton.getUser())) />
+							<cfif transport.theSession.managers.singleton.hasUser()>
+								<cfset subNav = template.getNavigation( navLevel + 1, 'action', options, transport.theSession.managers.singleton.getUser()) />
+							<cfelse>
+								<cfset subNav = template.getNavigation( navLevel + 1, 'action', options) />
+							</cfif>
 							
-							<cfset showingNavigation = showingNavigation or subNav neq '' />
+							<cfset showingNavigation = showingNavigation or trim(subNav) neq '' />
 							
 							<cfoutput>#subNav#</cfoutput>
 						</cfif>
@@ -120,9 +132,13 @@
 								navClasses = ['submenu horizontal']
 							} />
 						
-						<cfset subNav = trim(template.getNavigation(navLevel + 1, 'main', options, session.managers.singleton.getUser())) />
+						<cfif transport.theSession.managers.singleton.hasUser()>
+							<cfset subNav = (template.getNavigation(navLevel + 1, 'main', options, transport.theSession.managers.singleton.getUser())) />
+						<cfelse>
+							<cfset subNav = (template.getNavigation(navLevel + 1, 'main', options)) />
+						</cfif>
 						
-						<cfset showingNavigation = showingNavigation or subNav neq '' />
+						<cfset showingNavigation = showingNavigation or trim(subNav) neq '' />
 						
 						<cfoutput>#subNav#</cfoutput>
 						
@@ -133,14 +149,22 @@
 										navClasses = ['submenu horizontal float-right']
 									} />
 								
-								<cfoutput>#template.getNavigation( navLevel, 'action', options, session.managers.singleton.getUser())#</cfoutput>
+								<cfif transport.theSession.managers.singleton.hasUser()>
+									<cfoutput>#template.getNavigation( navLevel, 'action', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
+								<cfelse>
+									<cfoutput>#template.getNavigation( navLevel, 'action', options)#</cfoutput>
+								</cfif>
 							</cfif>
 							
 							<cfset options = {
 									navClasses = ['submenu horizontal']
 								} />
 							
-							<cfoutput>#template.getNavigation( navLevel, 'main', options, session.managers.singleton.getUser())#</cfoutput>
+							<cfif transport.theSession.managers.singleton.hasUser()>
+								<cfoutput>#template.getNavigation( navLevel, 'main', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
+							<cfelse>
+								<cfoutput>#template.getNavigation( navLevel, 'main', options)#</cfoutput>
+							</cfif>
 						</cfif>
 						
 						<div class="clear"><!-- clear --></div>
