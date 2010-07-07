@@ -25,8 +25,7 @@
 	"path": "admin/",
 	"prerequisites": {
 		"algid": "0.1.1",
-		"api": "0.1.0",
-		"user": "0.1.1"
+		"api": "0.1.0"
 	},
 	"requestSingletons": {
 	},
