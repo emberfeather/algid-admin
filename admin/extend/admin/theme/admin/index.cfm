@@ -1,3 +1,7 @@
+<cfsilent>
+	<cfset hasUser = transport.theSession.managers.singleton.hasUser() />
+	<cfset isLoggedIn = hasUser and transport.theSession.managers.singleton.getUser().isLoggedIn() />
+</cfsilent>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -39,7 +43,7 @@
 				
 				<cfif not template.getIsSimple()>
 					<div class="grid_9">
-						<cfif transport.theSession.managers.singleton.hasUser()>
+						<cfif isLoggedIn>
 							<div class="float-right">
 								<p>
 									<cfset theURL.cleanAccount() />
@@ -78,9 +82,9 @@
 							navClasses = ['menu horizontal float-right']
 						} />
 					
-					<cfif transport.theSession.managers.singleton.hasUser()>
+					<cfif isLoggedIn>
 						<cfoutput>#template.getNavigation(2, 'action', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
-					<cfelse>
+					<cfelseif not hasUser>
 						<cfoutput>#template.getNavigation(2, 'action', options)#</cfoutput>
 					</cfif>
 					
@@ -88,9 +92,9 @@
 							navClasses = ['menu horizontal']
 						} />
 					
-					<cfif transport.theSession.managers.singleton.hasUser()>
+					<cfif isLoggedIn>
 						<cfoutput>#template.getNavigation(1, 'main', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
-					<cfelse>
+					<cfelseif not hasUser>
 						<cfoutput>#template.getNavigation(1, 'main', options)#</cfoutput>
 					</cfif>
 					
@@ -117,10 +121,12 @@
 									navClasses = ['submenu horizontal float-right']
 								} />
 							
-							<cfif transport.theSession.managers.singleton.hasUser()>
+							<cfif isLoggedIn>
 								<cfset subNav = template.getNavigation( navLevel + 1, 'action', options, transport.theSession.managers.singleton.getUser()) />
-							<cfelse>
+							<cfelseif not hasUser>
 								<cfset subNav = template.getNavigation( navLevel + 1, 'action', options) />
+							<cfelse>
+								<cfset subNav = '' />
 							</cfif>
 							
 							<cfset showingNavigation = showingNavigation or trim(subNav) neq '' />
@@ -132,10 +138,12 @@
 								navClasses = ['submenu horizontal']
 							} />
 						
-						<cfif transport.theSession.managers.singleton.hasUser()>
+						<cfif isLoggedIn>
 							<cfset subNav = (template.getNavigation(navLevel + 1, 'main', options, transport.theSession.managers.singleton.getUser())) />
-						<cfelse>
+						<cfelseif not hasUser>
 							<cfset subNav = (template.getNavigation(navLevel + 1, 'main', options)) />
+						<cfelse>
+							<cfset subNav = '' />
 						</cfif>
 						
 						<cfset showingNavigation = showingNavigation or trim(subNav) neq '' />
@@ -149,9 +157,9 @@
 										navClasses = ['submenu horizontal float-right']
 									} />
 								
-								<cfif transport.theSession.managers.singleton.hasUser()>
+								<cfif isLoggedIn>
 									<cfoutput>#template.getNavigation( navLevel, 'action', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
-								<cfelse>
+								<cfelseif not hasUser>
 									<cfoutput>#template.getNavigation( navLevel, 'action', options)#</cfoutput>
 								</cfif>
 							</cfif>
@@ -160,9 +168,9 @@
 									navClasses = ['submenu horizontal']
 								} />
 							
-							<cfif transport.theSession.managers.singleton.hasUser()>
+							<cfif isLoggedIn>
 								<cfoutput>#template.getNavigation( navLevel, 'main', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
-							<cfelse>
+							<cfelseif not hasUser>
 								<cfoutput>#template.getNavigation( navLevel, 'main', options)#</cfoutput>
 							</cfif>
 						</cfif>

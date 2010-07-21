@@ -54,7 +54,7 @@
 		<cfset template.addStyles('/cf-compendium/style/base.css', '/cf-compendium/style/form.css', '/cf-compendium/style/list.css', '/cf-compendium/style/datagrid.css', '/cf-compendium/style/code.css') />
 	</cfif>
 	
-	<cfset template.setIsSimple(transport.theApplication.managers.singleton.getApplication().hasPlugin('user') and transport.theSession.managers.singleton.getUser().getUserID() neq '') />
+	<cfset template.setIsSimple(not (transport.theApplication.managers.singleton.getApplication().hasPlugin('user') and transport.theSession.managers.singleton.getUser().isLoggedIn())) />
 	
 	<cfset profiler.stop('template') />
 	
