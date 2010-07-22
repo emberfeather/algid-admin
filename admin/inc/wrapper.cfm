@@ -70,7 +70,7 @@
 			<cfloop list="#cfcatch.message#" index="i" delimiters="|">
 				<cfset session.managers.singleton.getError().addMessages(i) />
 			</cfloop>
-		</cfcatch>template
+		</cfcatch>
 	</cftry>
 	
 	<cfset profiler.stop('process') />
