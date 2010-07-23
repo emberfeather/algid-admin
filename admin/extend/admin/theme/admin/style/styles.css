@@ -14,7 +14,9 @@
 */
 
 body {
-	background: #FFF url(../img/back.jpg) repeat-x top;
+	background: #FFF;
+	background: -webkit-gradient(linear, 0% 0, 0% 750, from(#0083C1), to(#FFFFFF), color-stop(.13,#0b5f8b),color-stop(.13,#ced9df));
+	background: -moz-linear-gradient(0px 750px 90deg,#FFFFFF, #FFFFFF, #CED9DF 87%, #0b5f8b 87%, #0083C1 100%);
 	color: #333;
 	font: 11px/15px Century Gothic, Apple Gothic, sans-serif;
 }
