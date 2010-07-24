@@ -183,10 +183,6 @@
 					<cfinclude template="partial.cfm" />
 				</div>
 				
-				<div class="grid_12 align-center">
-					Powered by <a href="http://github.com/emberfeather/algid" title="Algid CFML Framework">Algid</a>.
-				</div>
-				
 				<div class="clear"><!-- clear --></div>
 			</div>
 		</div>
