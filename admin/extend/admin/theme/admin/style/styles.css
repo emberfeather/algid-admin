@@ -200,8 +200,8 @@ ul, ol {
 	Structure
 */
 .container-outer {
-	background: -webkit-gradient(linear, 0% 0, 0% 350, from(#0083C1), to(#FFFFFF), color-stop(.21,#0b5f8b),color-stop(.21,#ced9df));
-	background: -moz-linear-gradient(0px 350px 90deg,#FFFFFF, #FFFFFF, #CED9DF 79%, #0b5f8b 79%, #0083C1 100%);
+	background: -webkit-gradient(linear, 0% 0, 0% 350, from(#0083C1), to(#FFFFFF), color-stop(.27,#0b5f8b),color-stop(.27,#ced9df));
+	background: -moz-linear-gradient(0px 350px 90deg,#FFFFFF, #FFFFFF, #CED9DF 73%, #0b5f8b 73%, #0083C1 100%);
 	min-height: 350px;
 }
 
