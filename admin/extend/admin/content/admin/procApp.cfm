@@ -1,4 +1,4 @@
-<cfset servApp = transport.theApplication.factories.transient.getServAppForAdmin(transport.theApplication.managers.singleton.getApplication().getDSUpdate(), transport) />
+<cfset servApp = services.get('admin', 'app') />
 
 <cfif cgi.request_method eq 'post'>
 	<!--- Update the URL and redirect --->

@@ -9,8 +9,6 @@
 		"profiler": "cf-compendium.inc.resource.utility.profiler",
 		"searchResultsForAdmin": "plugins.admin.inc.resource.base.searchResults",
 		"templateForAdmin": "algid.inc.resource.structure.template",
-		"servAppForAdmin": "plugins.admin.inc.service.servApp",
-		"servSearchForAdmin": "plugins.admin.inc.service.servSearch",
 		"urlForAdmin": "cf-compendium.inc.resource.utility.url",
 		"viewAppForAdmin": "plugins.admin.inc.view.viewApp",
 		"viewSearchForAdmin": "plugins.admin.inc.view.viewSearch"

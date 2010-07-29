@@ -15,6 +15,10 @@
 			theUrl = url
 		} />
 	
+	<!--- Create and store the services manager --->
+	<cfset services = transport.theApplication.factories.transient.getManagerService(transport) />
+	<cfset transport.theRequest.managers.singleton.setManagerService(services) />
+	
 	<!--- Retrieve the admin objects --->
 	<cfset i18n = transport.theApplication.managers.singleton.getI18N() />
 	<cfset objectSerial = transport.theApplication.managers.singleton.getObjectSerial() />
