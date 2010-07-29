@@ -4,7 +4,6 @@
 	},
 	"applicationTransients": {
 		"apiSearchForAdmin": "plugins.admin.inc.api.apiSearch",
-		"modSearchResultForAdmin": "plugins.admin.inc.model.modSearchResult",
 		"navigationForAdmin": "algid.inc.resource.structure.navigationFile",
 		"profiler": "cf-compendium.inc.resource.utility.profiler",
 		"searchResultsForAdmin": "plugins.admin.inc.resource.base.searchResults",

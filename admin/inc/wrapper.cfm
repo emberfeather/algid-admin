@@ -15,6 +15,14 @@
 			theUrl = url
 		} />
 	
+	<!--- Retrieve the admin objects --->
+	<cfset i18n = transport.theApplication.managers.singleton.getI18N() />
+	<cfset locale = transport.theSession.managers.singleton.getSession().getLocale() />
+	<cfset objectSerial = transport.theApplication.managers.singleton.getObjectSerial() />
+	<cfset theURL = transport.theRequest.managers.singleton.getURL() />
+	<cfset navigation = transport.theApplication.managers.singleton.getAdminNavigation() />
+	<cfset viewMaster = transport.theApplication.managers.singleton.getViewMasterForAdmin() />
+	
 	<!--- Create and store the services manager --->
 	<cfset services = transport.theApplication.factories.transient.getManagerService(transport) />
 	<cfset transport.theRequest.managers.singleton.setManagerService(services) />
@@ -23,12 +31,9 @@
 	<cfset views = transport.theApplication.factories.transient.getManagerView(transport) />
 	<cfset transport.theRequest.managers.singleton.setManagerView(views) />
 	
-	<!--- Retrieve the admin objects --->
-	<cfset i18n = transport.theApplication.managers.singleton.getI18N() />
-	<cfset objectSerial = transport.theApplication.managers.singleton.getObjectSerial() />
-	<cfset theURL = transport.theRequest.managers.singleton.getURL() />
-	<cfset navigation = transport.theApplication.managers.singleton.getAdminNavigation() />
-	<cfset viewMaster = transport.theApplication.managers.singleton.getViewMasterForAdmin() />
+	<!--- Create and store the model manager --->
+	<cfset models = transport.theApplication.factories.transient.getManagerModel(transport, i18n, locale) />
+	<cfset transport.theRequest.managers.singleton.setManagerModel(models) />
 	
 	<!--- Check for a change to the number of records per page --->
 	<cfif theURL.searchID('numPerPage')>
