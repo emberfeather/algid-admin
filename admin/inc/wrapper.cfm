@@ -19,6 +19,10 @@
 	<cfset services = transport.theApplication.factories.transient.getManagerService(transport) />
 	<cfset transport.theRequest.managers.singleton.setManagerService(services) />
 	
+	<!--- Create and store the views manager --->
+	<cfset views = transport.theApplication.factories.transient.getManagerView(transport) />
+	<cfset transport.theRequest.managers.singleton.setManagerView(views) />
+	
 	<!--- Retrieve the admin objects --->
 	<cfset i18n = transport.theApplication.managers.singleton.getI18N() />
 	<cfset objectSerial = transport.theApplication.managers.singleton.getObjectSerial() />

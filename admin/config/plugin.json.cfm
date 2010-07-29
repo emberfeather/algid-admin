@@ -9,9 +9,7 @@
 		"profiler": "cf-compendium.inc.resource.utility.profiler",
 		"searchResultsForAdmin": "plugins.admin.inc.resource.base.searchResults",
 		"templateForAdmin": "algid.inc.resource.structure.template",
-		"urlForAdmin": "cf-compendium.inc.resource.utility.url",
-		"viewAppForAdmin": "plugins.admin.inc.view.viewApp",
-		"viewSearchForAdmin": "plugins.admin.inc.view.viewSearch"
+		"urlForAdmin": "cf-compendium.inc.resource.utility.url"
 	},
 	"i18n": {
 		"locales": [

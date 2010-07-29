@@ -1,4 +1,4 @@
-<cfset viewApp = transport.theApplication.factories.transient.getViewAppForAdmin( transport ) />
+<cfset viewApp = views.get('admin', 'app') />
 
 <cfset filter = {
 		'search' = theURL.search('search')
