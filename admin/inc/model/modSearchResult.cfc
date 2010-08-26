@@ -25,7 +25,7 @@ component extends="algid.inc.resource.base.model" {
 			);
 		
 		// Set the bundle information for translation
-		setI18NBundle('plugins/admin/i18n/inc/model', 'modSearchResult');
+		addBundle('plugins/admin/i18n/inc/model', 'modSearchResult');
 		
 		return this;
 	}
