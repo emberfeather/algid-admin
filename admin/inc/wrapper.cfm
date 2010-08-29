@@ -52,8 +52,8 @@
 	<cfset template = transport.theApplication.factories.transient.getTemplateForAdmin(transport.theCGI.server_name, navigation, theURL, transport.theSession.managers.singleton.getSession().getLocale()) />
 	
 	<!--- Add the main jquery scripts with fallbacks --->
-	<cfset template.addScript('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', { condition = '!window.jQuery', script = '/algid/script/jquery.min.js' }) />
-	<cfset template.addScript('https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js', { condition = '!window.jQuery.ui', script = '/algid/script/jquery-ui.min.js' }) />
+	<cfset template.addScript('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', { condition = '!window.jQuery', script = '/algid/script/jquery-min.js' }) />
+	<cfset template.addScript('https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js', { condition = '!window.jQuery.ui', script = '/algid/script/jquery-ui-min.js' }) />
 	
 	<!--- Include minified files for production --->
 	<cfif transport.theApplication.managers.singleton.getApplication().isProduction()>
