@@ -13,7 +13,10 @@
 		
 		<cfset var datagridFilter = '' />
 		<cfset var html = '' />
+		<cfset var result = '' />
 		<cfset var theURL = '' />
+		
+		<cfparam name="arguments.options.function" default="datagrid" />
 		
 		<cfset datagridFilter = arguments.transport.theSession.managers.singleton.getAdminDatagridFilter() />
 		<cfset theURL = arguments.transport.theRequest.managers.singleton.getURL() />
@@ -32,7 +35,12 @@
 					#arguments.view.filterActive( arguments.filter )#
 				</cfif>
 				
-				#arguments.view.datagrid( arguments.data, arguments.options )#
+				<cfinvoke component="#arguments.view#" method="#arguments.options.function#" returnvariable="result">
+					<cfinvokeargument name="data" value="#arguments.data#" />
+					<cfinvokeargument name="options" value="#arguments.options#" />
+				</cfinvoke>
+				
+				#result#
 				
 				#datagridFilter.toHTML( theURL, { submit = 'update' } )#
 			</cfoutput>
