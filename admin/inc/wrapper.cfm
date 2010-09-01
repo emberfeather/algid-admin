@@ -109,6 +109,6 @@
 </cfsilent>
 
 <!--- Include the theme --->
-<cfinclude template="/plugins/#transport.theApplication.managers.plugin.getAdmin().getTheme()#/#(template.getIsPartial() ? 'partial' : 'index' )#.cfm" />
+<cfinclude template="/plugins/#transport.theApplication.managers.plugin.getAdmin().getTheme()#/template/#template.getTemplate()#.cfm" />
 
 <cfset profiler.stop('theme') />
