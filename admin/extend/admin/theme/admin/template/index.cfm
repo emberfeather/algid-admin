@@ -216,8 +216,10 @@
 					
 					<!--- Display the side if it exists --->
 					<cfif mainGrid eq 9>
+						<cfset useBox = not template.hasUseBox() or template.getUseBox() eq true />
+						
 						<div class="grid_3">
-							<div class="box">
+							<div class="<cfif useBox>box</cfif>">
 								<cfoutput>#template.getSide()#</cfoutput>
 							</div>
 						</div>
