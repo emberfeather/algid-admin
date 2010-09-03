@@ -10,6 +10,7 @@
 		<cfset var i = 0 />
 		<cfset var i18n = arguments.transport.theApplication.managers.singleton.getI18N() />
 		<cfset var locale = arguments.transport.theSession.managers.singleton.getSession().getLocale() />
+		<cfset var models = arguments.transport.theRequest.managers.singleton.getManagerModel() />
 		<cfset var navigation = '' />
 		<cfset var result = '' />
 		<cfset var results = '' />
@@ -37,7 +38,7 @@
 		<cfloop query="results">
 			<cfset theUrl.setSearch('_base', results.path) />
 			
-			<cfset result = arguments.transport.theApplication.factories.transient.getModSearchResultForAdmin( i18n, locale ) />
+			<cfset result = models.get('admin', 'searchResult') />
 			
 			<cfset result.setTitle(results['title']) />
 			<cfset result.setCategory('Navigation') />
@@ -60,7 +61,7 @@
 		<cfloop query="results">
 			<cfset theUrl.setSearch('_base', results.path) />
 			
-			<cfset result = arguments.transport.theApplication.factories.transient.getModSearchResultForAdmin( i18n, locale ) />
+			<cfset result = models.get('admin', 'searchResult') />
 			
 			<cfset result.setTitle(results['path']) />
 			<cfset result.setCategory('Navigation Paths') />

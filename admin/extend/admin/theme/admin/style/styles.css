@@ -276,6 +276,10 @@ ul, ol {
 	border: 1px solid #0083C1;
 }
 
+.sortable {
+	min-height: 5em;
+}
+
 .dragarea {
 	background: #dcdcdc;
 	margin: 0 0 1em 0;
