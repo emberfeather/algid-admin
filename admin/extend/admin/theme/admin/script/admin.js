@@ -46,20 +46,13 @@
 					return;
 				}
 				
-				$.ajax({
-					url: $.algid.admin.options.base.url + $.algid.admin.options.base.api,
-					dataType: 'json',
-					type: 'post',
-					data: {
-						HEAD: JSON.stringify({
-							plugin: 'admin',
-							service: 'search',
-							action: 'search'
-						}),
-						BODY: JSON.stringify({
-							term: request.term
-						})
-					},
+				$.api({
+					plugin: 'admin',
+					service: 'search',
+					action: 'search'
+				}, {
+					term: request.term
+				}, {
 					success: function( data ) {
 						if(data.HEAD.result) {
 							searchCache[ request.term ] = data.BODY;
