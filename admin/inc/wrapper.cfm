@@ -70,6 +70,8 @@
 	
 	<cfset profiler.start('process') />
 	
+	<cfset isBlocked = false />
+	
 	<!--- Capture any validation errors --->
 	<cftry>
 		<!--- Include Processing --->
@@ -77,9 +79,14 @@
 		
 		<cfcatch type="validation">
 			<!--- Add the errors that happened from validations to errors --->
-			<cfloop list="#cfcatch.message#" index="i" delimiters="|">
-				<cfset session.managers.singleton.getError().addMessages(i) />
-			</cfloop>
+			<cfset session.managers.singleton.getError().addMessages(argumentCollection = listToArray(cfcatch.message, '|')) />
+		</cfcatch>
+		
+		<cfcatch type="forbidden">
+			<!--- Add the errors that happened from validations to errors --->
+			<cfset session.managers.singleton.getError().addMessages(argumentCollection = listToArray(cfcatch.message, '|')) />
+			
+			<cfset isBlocked = true />
 		</cfcatch>
 	</cftry>
 	
@@ -88,7 +95,9 @@
 	<cfset profiler.start('side') />
 	
 	<cfsavecontent variable="side">
-		<cfinclude template="#template.getContentPath('side')#" />
+		<cfif not isBlocked>
+			<cfinclude template="#template.getContentPath('side')#" />
+		</cfif>
 	</cfsavecontent>
 	
 	<cfset template.setSide(side) />
@@ -98,7 +107,9 @@
 	<cfset profiler.start('content') />
 	
 	<cfsavecontent variable="content">
-		<cfinclude template="#template.getContentPath('cont')#" />
+		<cfif not isBlocked>
+			<cfinclude template="#template.getContentPath('cont')#" />
+		</cfif>
 	</cfsavecontent>
 	
 	<cfset template.setContent(content) />
