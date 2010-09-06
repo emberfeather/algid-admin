@@ -15,7 +15,7 @@
 		<cfset template.addStyles('http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css', '../plugins/admin/style/960/reset#midfix#.css', '../plugins/admin/style/960/960#midfix#.css"', '../plugins/admin/extend/admin/theme/admin/style/styles#midfix#.css') />
 		<cfset template.addStyle('../plugins/admin/extend/admin/theme/admin/style/print#midfix#.css', 'print') />
 		
-		<cfset template.addScripts('../plugins/admin/extend/admin/theme/admin/script/admin#midfix#.js', '../plugins/api/script/api#midfix#.js') />
+		<cfset template.addScripts('../plugins/admin/extend/admin/theme/admin/script/admin#midfix#.js') />
 		
 		<!--- Setup admin search settings --->
 		<cfset adminPlugin = transport.theApplication.managers.plugin.getAdmin() />
@@ -31,6 +31,8 @@
 		</cfsavecontent>
 		
 		<cfset template.addScripts(adminSearch) />
+		
+		<cfset template.addScripts('../plugins/api/script/jquery.api#midfix#.js') />
 		
 		<cfoutput>#template.getStyles()#</cfoutput>
 	</head>
