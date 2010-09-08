@@ -3,7 +3,6 @@
 		"viewMasterForAdmin": "plugins.admin.inc.view.viewMaster"
 	},
 	"applicationTransients": {
-		"apiSearchForAdmin": "plugins.admin.inc.api.apiSearch",
 		"navigationForAdmin": "algid.inc.resource.structure.navigationFile",
 		"profiler": "cf-compendium.inc.resource.utility.profiler",
 		"searchResultsForAdmin": "plugins.admin.inc.resource.base.searchResults",
