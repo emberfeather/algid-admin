@@ -1,13 +1,8 @@
 component extends="plugins.api.inc.resource.base.api" {
-	public component function search() {
+	public component function search(required string term) {
 		var i = '';
 		var servSearch = '';
 		var results = '';
-		
-		// Validate required arguments
-		if( !structKeyExists(variables.apiRequestBody, 'term') || !len(trim(variables.apiRequestBody.term)) ) {
-			throw('validation', 'Missing search term', 'The search requires a non-blank search term');
-		}
 		
 		servSearch = variables.services.get('admin', 'search');
 		
