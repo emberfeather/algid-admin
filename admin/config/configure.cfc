@@ -121,9 +121,10 @@
 			// Check for a valid user or send to the login page
 			if ( app.hasPlugin('user') and (not arguments.theSession.managers.singleton.hasUser() or arguments.theSession.managers.singleton.getUser().getUserID() eq '') and theURL.search('_base') neq '/account/login') {
 				// Store the original page requested
-				arguments.theSession.redirect = theURL.get( false );
+				arguments.theSession.redirect = theURL.get( '', false );
 				
 				// Redirect to the login page
+				theUrl.cleanRedirect();
 				theURL.setRedirect('_base', '/account/login');
 				
 				theURL.redirectRedirect();
