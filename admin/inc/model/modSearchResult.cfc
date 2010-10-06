@@ -1,7 +1,5 @@
 component extends="algid.inc.resource.base.model" {
-	/* required i18n */
-	/* required locale */
-	public component function init(component i18n, string locale) {
+	public component function init(required component i18n, required string locale) {
 		super.init(arguments.i18n, arguments.locale);
 		
 		// Category

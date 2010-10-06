@@ -92,11 +92,7 @@
 		<cfset arguments.theSession.managers.singleton.setDatagridFilterForAdmin( filter ) />
 	</cffunction>
 <cfscript>
-	/* required theApplication */
-	/* required theSession */
-	/* required theRequest */
-	/* required targetPage */
-	public void function onRequestStart(struct theApplication, struct theSession, struct theRequest, string targetPage) {
+	public void function onRequestStart(required struct theApplication, required struct theSession, required struct theRequest, required string targetPage) {
 		var app = '';
 		var plugin = '';
 		var temp = '';
