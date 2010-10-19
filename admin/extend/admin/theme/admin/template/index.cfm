@@ -117,7 +117,7 @@
 					<cfif not template.getIsSimple()>
 						<div class="grid_12 no-print">
 							<cfset showingNavigation = false />
-							<cfset navLevel = template.getLevel() />
+							<cfset navLevel = template.getCurrentLevel() />
 							
 							<cfif navLevel gt 1>
 								<cfset options = {
