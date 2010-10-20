@@ -58,10 +58,18 @@
 	<!--- Include minified files for production --->
 	<cfif transport.theApplication.managers.singleton.getApplication().isProduction()>
 		<cfset template.addScripts('/cf-compendium/script/jquery.cf-compendium-min.js') />
+		<cfset template.addScripts('/algid/script/markitup/jquery.markitup-min.js') />
+		<cfset template.addScripts('/algid/script/jquery.algid-min.js') />
 		<cfset template.addStyles('/cf-compendium/style/cf-compendium-min.css') />
+		<cfset template.addStyles('/algid/style/markItUp/style-min.css') />
+		<cfset template.addStyles('/algid/style/algid-min.css') />
 	<cfelse>
 		<cfset template.addScripts('/cf-compendium/script/jquery.base.js', '/cf-compendium/script/jquery.form.js', '/cf-compendium/script/jquery.list.js', '/cf-compendium/script/jquery.datagrid.js', '/cf-compendium/script/jquery.timeago.js') />
+		<cfset template.addScripts('/algid/script/markitup/jquery.markitup.js') />
+		<cfset template.addScripts('/algid/script/jquery.base.js', '/algid/script/jquery.richtext.js') />
 		<cfset template.addStyles('/cf-compendium/style/base.css', '/cf-compendium/style/form.css', '/cf-compendium/style/list.css', '/cf-compendium/style/datagrid.css', '/cf-compendium/style/code.css') />
+		<cfset template.addStyles('/algid/style/markItUp/style.css') />
+		<cfset template.addStyles('/algid/style/base.css', '/algid/style/richtext.css') />
 	</cfif>
 	
 	<cfset template.setIsSimple(not (transport.theApplication.managers.singleton.getApplication().hasPlugin('user') and transport.theSession.managers.singleton.getUser().isLoggedIn())) />
