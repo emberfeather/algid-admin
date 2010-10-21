@@ -68,7 +68,7 @@
 								
 								<cfoutput>
 									<form action="#theUrl.getSearch()#" method="post" id="adminSearch">
-										<input type="text" name="term" placeholder="Search..." />
+										<input type="search" name="term" placeholder="Search..." />
 										<input type="submit" value="Search" />
 									</form>
 								</cfoutput>

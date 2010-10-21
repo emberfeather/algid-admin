@@ -142,7 +142,7 @@ ul, ol {
 	padding: .5em;
 }
 
-#adminSearch input[type=text] {
+#adminSearch input[type=search] {
 	width: 30em;
 }
 
