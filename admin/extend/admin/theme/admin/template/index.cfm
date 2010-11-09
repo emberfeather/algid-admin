@@ -46,12 +46,12 @@
 		<div class="container-outer">
 			<div class="container_12">
 				<div id="header" class="no-print">
-					<div class="grid_3">
+					<div class="grid_5">
 						<h1><a href="?"><cfoutput>#transport.theApplication.managers.singleton.getApplication().getName()#</cfoutput></a></h1>
 					</div>
 					
 					<cfif not template.getIsSimple()>
-						<div class="grid_9">
+						<div class="grid_7">
 							<cfif isLoggedIn>
 								<div class="float-right">
 									<p>
