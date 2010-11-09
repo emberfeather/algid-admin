@@ -1,6 +1,37 @@
 <cfsilent>
 	<cfset hasUser = transport.theSession.managers.singleton.hasUser() />
 	<cfset isLoggedIn = hasUser and transport.theSession.managers.singleton.getUser().isLoggedIn() />
+	
+	<!--- Include minified files for production --->
+	<cfset midfix = (transport.theApplication.managers.singleton.getApplication().isProduction() ? '-min' : '') />
+	
+	<cfset template.addStyles(
+		'http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css',
+		'http://fonts.googleapis.com/css?family=Philosopher&subset=latin',
+		'../plugins/admin/style/960/reset#midfix#.css',
+		'../plugins/admin/style/960/960#midfix#.css"',
+		'../plugins/admin/extend/admin/theme/admin/style/styles#midfix#.css'
+	) />
+	<cfset template.addStyle('../plugins/admin/extend/admin/theme/admin/style/print#midfix#.css', 'print') />
+	
+	<cfset template.addScripts('../plugins/admin/extend/admin/theme/admin/script/admin#midfix#.js') />
+	
+	<!--- Setup admin search settings --->
+	<cfset adminPlugin = transport.theApplication.managers.plugin.getAdmin() />
+	<cfset searchSettings = adminPlugin.getSearch() />
+	
+	<cfsavecontent variable="adminSearch">
+		<cfoutput>
+			;(function($){
+				$.algid.admin.options.base.url = '#transport.theApplication.managers.singleton.getApplication().getPath()#';
+				$.algid.admin.options.search.threshold = #searchSettings.threshold#;
+			})(jQuery);
+		</cfoutput>
+	</cfsavecontent>
+	
+	<cfset template.addScripts(adminSearch) />
+	
+	<cfset template.addScripts('../plugins/api/script/jquery.api#midfix#.js') />
 </cfsilent>
 <!DOCTYPE html>
 <html>
@@ -9,31 +40,6 @@
 		
 		<title><cfoutput>#template.getHTMltitle()#</cfoutput></title>
 		
-		<!--- Include minified files for production --->
-		<cfset midfix = (transport.theApplication.managers.singleton.getApplication().isProduction() ? '-min' : '') />
-		
-		<cfset template.addStyles('http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css', '../plugins/admin/style/960/reset#midfix#.css', '../plugins/admin/style/960/960#midfix#.css"', '../plugins/admin/extend/admin/theme/admin/style/styles#midfix#.css') />
-		<cfset template.addStyle('../plugins/admin/extend/admin/theme/admin/style/print#midfix#.css', 'print') />
-		
-		<cfset template.addScripts('../plugins/admin/extend/admin/theme/admin/script/admin#midfix#.js') />
-		
-		<!--- Setup admin search settings --->
-		<cfset adminPlugin = transport.theApplication.managers.plugin.getAdmin() />
-		<cfset searchSettings = adminPlugin.getSearch() />
-		
-		<cfsavecontent variable="adminSearch">
-			<cfoutput>
-				;(function($){
-					$.algid.admin.options.base.url = '#transport.theApplication.managers.singleton.getApplication().getPath()#';
-					$.algid.admin.options.search.threshold = #searchSettings.threshold#;
-				})(jQuery);
-			</cfoutput>
-		</cfsavecontent>
-		
-		<cfset template.addScripts(adminSearch) />
-		
-		<cfset template.addScripts('../plugins/api/script/jquery.api#midfix#.js') />
-		
 		<cfoutput>#template.getStyles()#</cfoutput>
 	</head>
 	<body>
@@ -41,7 +47,7 @@
 			<div class="container_12">
 				<div id="header" class="no-print">
 					<div class="grid_3">
-						<a href="?"><img src="../plugins/admin/extend/admin/theme/admin/img/algid-admin.png" alt="Admin" /></a>
+						<h1><a href="?"><cfoutput>#transport.theApplication.managers.singleton.getApplication().getName()#</cfoutput></a></h1>
 					</div>
 					
 					<cfif not template.getIsSimple()>
