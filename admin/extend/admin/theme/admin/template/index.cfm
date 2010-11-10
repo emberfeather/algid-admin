@@ -44,8 +44,8 @@
 	</head>
 	<body>
 		<div class="container-outer">
-			<div class="container_12">
-				<div id="header" class="no-print">
+			<div class="container_12 respect-float">
+				<div id="header" class="no-print respect-float">
 					<div class="grid_5">
 						<h1><a href="?"><cfoutput>#transport.theApplication.managers.singleton.getApplication().getName()#</cfoutput></a></h1>
 					</div>
@@ -81,12 +81,10 @@
 							</div>
 						</div>
 					</cfif>
-					
-					<div class="clear"><!-- clear --></div>
 				</div>
 				
 				<cfif not template.getIsSimple()>
-					<div class="grid_12 no-print">
+					<div class="grid_12 no-print respect-float">
 						<cfset options = {
 								navClasses = ['menu horizontal float-right']
 							} />
@@ -106,18 +104,14 @@
 						<cfelseif not hasUser>
 							<cfoutput>#template.getNavigation(1, 'main', options)#</cfoutput>
 						</cfif>
-						
-						<div class="clear"><!-- clear --></div>
 					</div>
 				</cfif>
 				
 				<div class="clear"><!-- clear --></div>
 				
-				<div class="content">
-					<div id="breadcrumb" class="grid_12 no-print">
+				<div class="content respect-float">
+					<div id="breadcrumb" class="grid_12 no-print respect-float">
 						<cfoutput>#template.getBreadcrumb({ topLevel = 2 })#</cfoutput>
-						
-						<div class="clear"><!-- clear --></div>
 					</div>
 					
 					<cfif not template.getIsSimple()>
@@ -183,12 +177,10 @@
 									<cfoutput>#template.getNavigation( navLevel, 'main', options)#</cfoutput>
 								</cfif>
 							</cfif>
-							
-							<div class="clear"><!-- clear --></div>
 						</div>
 					</cfif>
 					
-					<div class="grid_12">
+					<div class="grid_12 respect-float">
 						<h2><cfoutput>#template.getPageTitle()#</cfoutput></h2>
 						<!--- Show any messages, errors, warnings, or successes --->
 						<cfset messages = session.managers.singleton.getError() />
@@ -206,8 +198,6 @@
 						<cfset messages = session.managers.singleton.getMessage() />
 						
 						<cfoutput>#messages.toHTML()#</cfoutput>
-						
-						<div class="clear"><!-- clear --></div>
 					</div>
 					
 					<cfif trim(template.getSide()) eq ''>
@@ -232,11 +222,7 @@
 							</div>
 						</div>
 					</cfif>
-					
-					<div class="clear"><!-- clear --></div>
 				</div>
-				
-				<div class="clear"><!-- clear --></div>
 			</div>
 		</div>
 		
