@@ -3,7 +3,7 @@
  * 
  * Used to unobtrusively enhance the admin experience for the user.
  */
-;(function($) {
+(function($) {
 	$.algid = $.algid || {};
 	
 	$.algid.admin = {
@@ -81,8 +81,8 @@
 			var currentCategoryCount = -1;
 			
 			$.each( items, function( index, item ) {
-				var isDifferentCategory = item.category != currentCategory;
-				var isLastItem = index == items.length - 1;
+				var isDifferentCategory = item.category !== currentCategory;
+				var isLastItem = index === items.length - 1;
 				var isPastThreshold = currentCategoryCount >= $.algid.admin.options.search.threshold;
 				
 				// Check if the count is higher than the threshold and we are changing categories or ending
@@ -111,4 +111,4 @@
 			});
 		}
 	});
-})(jQuery);
+}(jQuery));

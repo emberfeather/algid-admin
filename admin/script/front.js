@@ -3,7 +3,7 @@
  * 
  * Making administration cool again.
  */
-;(function($) {
+(function($) {
 	$adminMenu = null;
 	
 	$(function() {
@@ -24,4 +24,4 @@
 	/**
 	 * TODO Extend jQuery to have a function for adding options to the menu
 	 */
-})(jQuery);
+}(jQuery));
