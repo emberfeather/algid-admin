@@ -54,6 +54,7 @@
 					term: request.term
 				}, {
 					success: function( data ) {
+						
 						if(data.HEAD.result) {
 							searchCache[ request.term ] = data.BODY;
 							

@@ -1,1 +1,1 @@
-(function(b){$adminMenu=null;b(function(){a();$adminMenu.text("Administration")});function a(){var c='<div id="admin-menu"></div>';b(c).appendTo(b("body"));$adminMenu=b("#admin-menu")}})(jQuery);
+(function(a){$adminMenu=null;a(function(){a('<div id="admin-menu"></div>').appendTo(a("body"));$adminMenu=a("#admin-menu");$adminMenu.text("Administration")})})(jQuery);
