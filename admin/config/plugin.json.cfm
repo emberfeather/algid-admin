@@ -17,6 +17,7 @@
 	},
 	"key": "admin",
 	"path": "admin/",
+	"plugin": "Administration",
 	"prerequisites": {
 		"algid": "0.1.1",
 		"api": "0.1.0"
