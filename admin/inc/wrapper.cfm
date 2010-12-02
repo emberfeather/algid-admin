@@ -72,7 +72,7 @@
 		<cfset template.addStyles('/algid/style/base.css', '/algid/style/richtext.css') />
 	</cfif>
 	
-	<cfset template.setIsSimple(not (transport.theApplication.managers.singleton.getApplication().hasPlugin('user') and transport.theSession.managers.singleton.getUser().isLoggedIn())) />
+	<cfset template.setIsSimple(transport.theApplication.managers.singleton.getApplication().hasPlugin('user') and not transport.theSession.managers.singleton.getUser().isLoggedIn()) />
 	
 	<cfset profiler.stop('template') />
 	
