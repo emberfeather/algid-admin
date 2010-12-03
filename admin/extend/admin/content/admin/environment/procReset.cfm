@@ -1,5 +1,5 @@
-<!--- Only on non production systems --->
-<cfif not transport.theApplication.managers.singleton.getApplication().isProduction()>
+<!--- Only on non development systems --->
+<cfif transport.theApplication.managers.singleton.getApplication().isDevelopment()>
 	<!--- Check for confirmation --->
 	<cfif theUrl.search('doReset') eq true>
 		<!--- Uninstall all the plugins --->

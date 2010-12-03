@@ -1,6 +1,6 @@
-<cfif transport.theApplication.managers.singleton.getApplication().isProduction()>
+<cfif not transport.theApplication.managers.singleton.getApplication().isDevelopment()>
 	<p>
-		This action is only available to non-production systems.
+		This action is only available to development systems.
 	</p>
 <cfelse>
 	<p>
