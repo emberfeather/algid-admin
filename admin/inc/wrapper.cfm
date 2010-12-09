@@ -18,7 +18,7 @@
 	<!--- Retrieve the admin objects --->
 	<cfset i18n = transport.theApplication.managers.singleton.getI18N() />
 	<cfset locale = transport.theSession.managers.singleton.getSession().getLocale() />
-	<cfset objectSerial = transport.theApplication.managers.singleton.getObjectSerial() />
+	<cfset modelSerial = transport.theApplication.factories.transient.getModelSerial(transport) />
 	<cfset theURL = transport.theRequest.managers.singleton.getURL() />
 	<cfset navigation = transport.theApplication.managers.singleton.getAdminNavigation() />
 	<cfset viewMaster = transport.theApplication.managers.singleton.getViewMasterForAdmin() />
