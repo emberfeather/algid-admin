@@ -1,9 +1,10 @@
 <cfsilent>
 	<cfset hasUser = transport.theSession.managers.singleton.hasUser() />
 	<cfset isLoggedIn = hasUser and transport.theSession.managers.singleton.getUser().isLoggedIn() />
+	<cfset app = transport.theApplication.managers.singleton.getApplication() />
 	
 	<!--- Include minified files for production --->
-	<cfset midfix = (transport.theApplication.managers.singleton.getApplication().isProduction() ? '-min' : '') />
+	<cfset midfix = (app.isProduction() ? '-min' : '') />
 	
 	<cfset template.addStyles(
 		'http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css',
@@ -23,7 +24,7 @@
 	<cfsavecontent variable="adminSearch">
 		<cfoutput>
 			;(function($){
-				$.algid.admin.options.base.url = '#transport.theApplication.managers.singleton.getApplication().getPath()#';
+				$.algid.admin.options.base.url = '#app.getPath()#';
 				$.algid.admin.options.search.threshold = #searchSettings.threshold#;
 			})(jQuery);
 		</cfoutput>
@@ -43,11 +44,11 @@
 		<cfoutput>#template.getStyles()#</cfoutput>
 	</head>
 	<body>
-		<div class="container-outer">
+		<div class="container-outer <cfoutput>#app.getEnvironment()#</cfoutput>">
 			<div class="container_12 respect-float">
 				<div id="header" class="no-print respect-float">
 					<div class="grid_5">
-						<h1><a href="?"><cfoutput>#transport.theApplication.managers.singleton.getApplication().getName()#</cfoutput></a></h1>
+						<h1><a href="?"><cfoutput>#app.getName()#</cfoutput></a></h1>
 					</div>
 					
 					<cfif not template.getIsSimple()>
