@@ -427,6 +427,7 @@ ul, ol {
 .container-outer.maintenance .submenu.horizontal.action a.selected,
 .container-outer.maintenance .submenu.horizontal.action a:hover {
 	color: #c18f00;
+	background: none;
 }
 
 .container-outer.development {
@@ -466,4 +467,10 @@ ul, ol {
 .container-outer.development .submenu.horizontal.action a.selected,
 .container-outer.development .submenu.horizontal.action a:hover {
 	color: #21c100;
+	background: none;
+}
+
+.container-outer.maintenance a.delete,
+.container-outer.development a.delete {
+	color: #F33;
 }
