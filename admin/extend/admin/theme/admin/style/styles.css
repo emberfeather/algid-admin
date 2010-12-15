@@ -48,6 +48,18 @@ h1 {
 	letter-spacing: .1em;
 	font-size: 27px;
 	font-weight: normal;
+	-moz-transition: opacity .25s ease-in-out;
+	-webkit-transition: opacity .25s ease-in-out;
+	-o-transition: opacity .25s ease-in-out;
+	transition: opacity .25s ease-in-out;
+}
+
+h1:hover {
+	opacity:0.65;
+}
+
+h1 a:hover {
+	text-decoration: none;
 }
 
 h2 {
@@ -334,6 +346,10 @@ ul, ol {
 	-moz-border-radius-topleft: .5em;
 	border-top-right-radius: .5em;
 	border-top-left-radius: .5em;
+	-moz-transition: background .25s ease-in;
+	-webkit-transition: background .25s ease-in;
+	-o-transition: background .25s ease-in;
+	transition: background .25s ease-in;
 }
 
 .menu.horizontal a.selected,
