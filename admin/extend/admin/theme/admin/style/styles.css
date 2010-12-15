@@ -346,10 +346,6 @@ ul, ol {
 	-moz-border-radius-topleft: .5em;
 	border-top-right-radius: .5em;
 	border-top-left-radius: .5em;
-	-moz-transition: background .25s ease-in;
-	-webkit-transition: background .25s ease-in;
-	-o-transition: background .25s ease-in;
-	transition: background .25s ease-in;
 }
 
 .menu.horizontal a.selected,
@@ -379,6 +375,13 @@ ul, ol {
 .submenu.horizontal.action a.selected,
 .submenu.horizontal.action a:hover {
 	color: #0083C1;
+}
+
+.menu.horizontal a {
+	-moz-transition: all .25s ease-in;
+	-webkit-transition: all .25s ease-in;
+	-o-transition: all .25s ease-in;
+	transition: all .25s ease-in;
 }
 
 .ui-autocomplete {
