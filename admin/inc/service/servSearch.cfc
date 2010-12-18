@@ -1,7 +1,5 @@
 component extends="algid.inc.resource.base.service" {
-	/* required currUser */
-	/* required term */
-	public component function search(component currUser, string term) {
+	public component function search(required component currUser, required string term) {
 		var observer = '';
 		var results = '';
 		

@@ -1,1 +1,8 @@
-0.1.000
+{
+	"archive": "http://github.com/emberfeather/algid-admin/tarball/0.1.1",
+	"key": "admin",
+	"releaseNotes": "http://github.com/emberfeather/algid-admin/wiki/Release-Notes",
+	"title": "Admin",
+	"URL": "http://github.com/emberfeather/algid-admin",
+	"version": "0.1.1"
+}

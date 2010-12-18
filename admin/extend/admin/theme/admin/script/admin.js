@@ -3,14 +3,17 @@
  * 
  * Used to unobtrusively enhance the admin experience for the user.
  */
-;(function($) {
+(function($) {
 	$.algid = $.algid || {};
 	
 	$.algid.admin = {
 		options: {
+			base: {
+				api: 'api/',
+				url: '/'
+			},
 			search: {
-				threshold: 5,
-				url: '/api/'
+				threshold: 5
 			}
 		}
 	};
@@ -43,25 +46,17 @@
 					return;
 				}
 				
-				$.ajax({
-					url: $.algid.admin.options.search.url,
-					dataType: 'json',
-					type: 'post',
-					data: {
-						HEAD: JSON.stringify({
-							plugin: 'admin',
-							service: 'search',
-							action: 'search'
-						}),
-						BODY: JSON.stringify({
-							term: request.term
-						})
-					},
+				$.api({
+					plugin: 'admin',
+					service: 'search',
+					action: 'search'
+				}, {
+					term: request.term
+				}, {
 					success: function( data ) {
+						
 						if(data.HEAD.result) {
 							searchCache[ request.term ] = data.BODY;
-							
-							window.console.log(data.BODY);
 							
 							response( data.BODY );
 						} else {
@@ -87,8 +82,8 @@
 			var currentCategoryCount = -1;
 			
 			$.each( items, function( index, item ) {
-				var isDifferentCategory = item.category != currentCategory;
-				var isLastItem = index == items.length - 1;
+				var isDifferentCategory = item.category !== currentCategory;
+				var isLastItem = index === items.length - 1;
 				var isPastThreshold = currentCategoryCount >= $.algid.admin.options.search.threshold;
 				
 				// Check if the count is higher than the threshold and we are changing categories or ending
@@ -117,4 +112,4 @@
 			});
 		}
 	});
-})(jQuery);
+}(jQuery));

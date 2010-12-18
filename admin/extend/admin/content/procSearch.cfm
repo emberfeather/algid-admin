@@ -1,4 +1,4 @@
-<cfset servSearch = transport.theApplication.factories.transient.getServSearchForAdmin(transport.theApplication.managers.singleton.getApplication().getDSUpdate(), transport) />
+<cfset servSearch = services.get('admin', 'search') />
 
 <cfif cgi.request_method eq 'post'>
 	<!--- Update the URL and redirect --->

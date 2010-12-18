@@ -1,4 +1,4 @@
-<cfset viewSearch = transport.theApplication.factories.transient.getViewSearchForAdmin( transport ) />
+<cfset viewSearch = views.get('admin', 'search') />
 
 <cfset searchResults = servSearch.search( transport.theSession.managers.singleton.getUser(), theUrl.search('term')) />
 

@@ -1,16 +1,10 @@
 component extends="plugins.api.inc.resource.base.api" {
-	/* required term */
-	public component function search() {
+	public component function search(required string term) {
 		var i = '';
 		var servSearch = '';
 		var results = '';
 		
-		// Validate required arguments
-		if( !structKeyExists(variables.apiRequestBody, 'term') || !len(trim(variables.apiRequestBody.term)) ) {
-			throw('validation', 'Missing search term', 'The search requires a non-blank search term');
-		}
-		
-		servSearch = variables.transport.theApplication.factories.transient.getServSearchForAdmin(variables.transport.theApplication.managers.singleton.getApplication().getDSUpdate(), variables.transport);
+		servSearch = variables.services.get('admin', 'search');
 		
 		// Retrieve the search results
 		results = servSearch.search( variables.transport.theSession.managers.singleton.getUser(), variables.apiRequestBody.term);

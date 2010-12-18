@@ -3,17 +3,11 @@
 		"viewMasterForAdmin": "plugins.admin.inc.view.viewMaster"
 	},
 	"applicationTransients": {
-		"apiSearchForAdmin": "plugins.admin.inc.api.apiSearch",
-		"modSearchResultForAdmin": "plugins.admin.inc.model.modSearchResult",
 		"navigationForAdmin": "algid.inc.resource.structure.navigationFile",
 		"profiler": "cf-compendium.inc.resource.utility.profiler",
 		"searchResultsForAdmin": "plugins.admin.inc.resource.base.searchResults",
 		"templateForAdmin": "algid.inc.resource.structure.template",
-		"servAppForAdmin": "plugins.admin.inc.service.servApp",
-		"servSearchForAdmin": "plugins.admin.inc.service.servSearch",
-		"urlForAdmin": "cf-compendium.inc.resource.utility.url",
-		"viewAppForAdmin": "plugins.admin.inc.view.viewApp",
-		"viewSearchForAdmin": "plugins.admin.inc.view.viewSearch"
+		"urlForAdmin": "cf-compendium.inc.resource.utility.url"
 	},
 	"i18n": {
 		"locales": [
@@ -23,18 +17,17 @@
 	},
 	"key": "admin",
 	"path": "admin/",
+	"plugin": "Administration",
 	"prerequisites": {
 		"algid": "0.1.1",
-		"api": "0.1.0",
-		"user": "0.1.1"
+		"api": "0.1.0"
 	},
 	"requestSingletons": {
 	},
 	"requestTransients": {
 	},
 	"search": {
-		"threshold": 3,
-		"url": "/api/"
+		"threshold": 3
 	},
 	"sessionSingletons": {
 	},
