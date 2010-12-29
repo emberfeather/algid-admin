@@ -9,6 +9,7 @@
 		"templateForAdmin": "algid.inc.resource.structure.template",
 		"urlForAdmin": "cf-compendium.inc.resource.utility.url"
 	},
+	"forceSSL": true,
 	"i18n": {
 		"locales": [
 			"en_PI",
