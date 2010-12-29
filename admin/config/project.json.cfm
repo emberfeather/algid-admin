@@ -19,7 +19,7 @@
 	"path": "admin/",
 	"plugin": "Administration",
 	"prerequisites": {
-		"algid": "0.1.1",
+		"algid": "0.1.3",
 		"api": "0.1.0"
 	},
 	"requestSingletons": {
