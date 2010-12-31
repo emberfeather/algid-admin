@@ -2,6 +2,7 @@
 	<cfset hasUser = transport.theSession.managers.singleton.hasUser() />
 	<cfset isLoggedIn = hasUser and transport.theSession.managers.singleton.getUser().isLoggedIn() />
 	<cfset app = transport.theApplication.managers.singleton.getApplication() />
+	<cfset plugin = transport.theApplication.managers.plugin.getAdmin() />
 	
 	<!--- Include minified files for production --->
 	<cfset midfix = (app.isProduction() ? '-min' : '') />
@@ -9,17 +10,17 @@
 	<cfset template.addStyles(
 		'http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css',
 		'http://fonts.googleapis.com/css?family=Philosopher&subset=latin',
-		'../plugins/admin/style/960/reset#midfix#.css',
-		'../plugins/admin/style/960/960#midfix#.css"',
-		'../plugins/admin/extend/admin/theme/admin/style/styles#midfix#.css'
+		transport.theRequest.webRoot & 'plugins/admin/style/960/reset#midfix#.css',
+		transport.theRequest.webRoot & 'plugins/admin/style/960/960#midfix#.css"',
+		transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/styles#midfix#.css'
 	) />
-	<cfset template.addStyle('../plugins/admin/extend/admin/theme/admin/style/print#midfix#.css', 'print') />
 	
-	<cfset template.addScripts('../plugins/admin/extend/admin/theme/admin/script/admin#midfix#.js') />
+	<cfset template.addStyle(transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/print#midfix#.css', 'print') />
+	
+	<cfset template.addScripts(transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/admin#midfix#.js') />
 	
 	<!--- Setup admin search settings --->
-	<cfset adminPlugin = transport.theApplication.managers.plugin.getAdmin() />
-	<cfset searchSettings = adminPlugin.getSearch() />
+	<cfset searchSettings = plugin.getSearch() />
 	
 	<cfsavecontent variable="adminSearch">
 		<cfoutput>
