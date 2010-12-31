@@ -10,8 +10,8 @@
 	<cfset template.addStyles(
 		'http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css',
 		'http://fonts.googleapis.com/css?family=Philosopher&subset=latin',
-		transport.theRequest.webRoot & 'plugins/admin/style/960/reset#midfix#.css',
-		transport.theRequest.webRoot & 'plugins/admin/style/960/960#midfix#.css',
+		'/algid/style/960/reset#midfix#.css',
+		'/algid/style/960/960#midfix#.css',
 		transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/styles#midfix#.css'
 	) />
 	
