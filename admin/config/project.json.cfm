@@ -6,8 +6,7 @@
 		"navigationForAdmin": "algid.inc.resource.structure.navigationFile",
 		"profiler": "cf-compendium.inc.resource.utility.profiler",
 		"searchResultsForAdmin": "plugins.admin.inc.resource.base.searchResults",
-		"templateForAdmin": "algid.inc.resource.structure.template",
-		"urlForAdmin": "cf-compendium.inc.resource.utility.url"
+		"templateForAdmin": "algid.inc.resource.structure.template"
 	},
 	"forceSSL": true,
 	"i18n": {
@@ -26,6 +25,10 @@
 	"requestSingletons": {
 	},
 	"requestTransients": {
+	},
+	"rewrite": {
+		"isEnabled": false,
+		"base": "_base"
 	},
 	"search": {
 		"threshold": 3
