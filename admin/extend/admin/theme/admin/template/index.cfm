@@ -49,7 +49,7 @@
 			<div class="container_12 respect-float">
 				<div id="header" class="no-print respect-float">
 					<div class="grid_5">
-						<h1><a href="?"><cfoutput>#app.getName()#</cfoutput></a></h1>
+						<h1><a href="<cfoutput>#transport.theRequest.webRoot & transport.theRequest.requestRoot#</cfoutput>"><cfoutput>#app.getName()#</cfoutput></a></h1>
 					</div>
 					
 					<cfif not template.getIsSimple()>
