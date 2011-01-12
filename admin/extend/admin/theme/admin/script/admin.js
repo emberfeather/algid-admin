@@ -76,6 +76,7 @@
 	});
 	
 	$.widget("custom.searchComplete", $.ui.autocomplete, {
+		delay: 280,
 		_renderMenu: function( ul, items ) {
 			var self = this;
 			var currentCategory = '';
