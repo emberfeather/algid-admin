@@ -88,8 +88,8 @@
 				<cfif not template.getIsSimple()>
 					<div class="grid_12 no-print respect-float">
 						<cfset options = {
-								navClasses = ['menu horizontal float-right']
-							} />
+							navClasses = ['menu horizontal float-right']
+						} />
 						
 						<cfif isLoggedIn>
 							<cfoutput>#template.getNavigation(2, 'action', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
@@ -98,8 +98,8 @@
 						</cfif>
 						
 						<cfset options = {
-								navClasses = ['menu horizontal']
-							} />
+							navClasses = ['menu horizontal']
+						} />
 						
 						<cfif isLoggedIn>
 							<cfoutput>#template.getNavigation(1, 'main', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
@@ -123,8 +123,8 @@
 							
 							<cfif navLevel gt 1>
 								<cfset options = {
-										navClasses = ['submenu horizontal float-right']
-									} />
+									navClasses = ['submenu horizontal float-right']
+								} />
 								
 								<cfif isLoggedIn>
 									<cfset subNav = template.getNavigation( navLevel + 1, 'action', options, transport.theSession.managers.singleton.getUser()) />
@@ -159,8 +159,8 @@
 							<cfif navLevel gt 1 and not showingNavigation>
 								<cfif navLevel gt 2>
 									<cfset options = {
-											navClasses = ['submenu horizontal float-right']
-										} />
+										navClasses = ['submenu horizontal float-right']
+									} />
 									
 									<cfif isLoggedIn>
 										<cfoutput>#template.getNavigation( navLevel, 'action', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
@@ -170,8 +170,8 @@
 								</cfif>
 								
 								<cfset options = {
-										navClasses = ['submenu horizontal']
-									} />
+									navClasses = ['submenu horizontal']
+								} />
 								
 								<cfif isLoggedIn>
 									<cfoutput>#template.getNavigation( navLevel, 'main', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
