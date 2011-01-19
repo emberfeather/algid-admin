@@ -26,7 +26,7 @@
 		$('.datagrid').datagrid();
 		
 		// Focus on the first input in the content.
-		$('.content input[type=text]:first').focus();
+		$('.content :input:first').focus();
 		
 		// Disable submit buttons on submit
 		$('form').submit(function(){
