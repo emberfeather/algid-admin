@@ -34,7 +34,7 @@
 		});
 		
 		// Use the timeago plugin
-		$('abbr.timeago').timeago();
+		$('.timeago').timeago();
 		
 		// Setup the admin search
 		$('#adminSearch input[name=term]').searchComplete({
