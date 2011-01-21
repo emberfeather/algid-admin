@@ -28,13 +28,13 @@
 		<cfif rewrite.isEnabled>
 			<cfset options.rewriteBase = rewrite.base />
 			
-			<cfset theUrl = arguments.theApplication.factories.transient.getUrlRewrite(arguments.theUrl, options) />
+			<cfset theUrl = arguments.transport.theApplication.factories.transient.getUrlRewrite(arguments.transport.theUrl, options) />
 		<cfelse>
-			<cfset theUrl = arguments.theApplication.factories.transient.getUrl(arguments.theUrl, options) />
+			<cfset theUrl = arguments.transport.theApplication.factories.transient.getUrl(arguments.transport.theUrl, options) />
 		</cfif>
 		
 		<!--- Retrieve the navigation query --->
-		<cfset navigation = transport.theApplication.managers.singleton.getAdminNavigation().getNavigation() />
+		<cfset navigation = arguments.transport.theApplication.managers.singleton.getAdminNavigation().getNavigation() />
 		
 		<!--- Use the search term to find the matches --->
 		<cfquery name="results" dbtype="query">
