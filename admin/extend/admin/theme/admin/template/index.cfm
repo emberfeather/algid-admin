@@ -12,12 +12,16 @@
 		'http://fonts.googleapis.com/css?family=Philosopher&subset=latin',
 		'/algid/style/960/reset#midfix#.css',
 		'/algid/style/960/960#midfix#.css',
+		transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/jquery.jgrowl#midfix#.css',
 		transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/styles#midfix#.css'
 	) />
 	
 	<cfset template.addStyle(transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/print#midfix#.css', 'print') />
 	
-	<cfset template.addScripts(transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/admin#midfix#.js') />
+	<cfset template.addScripts(
+		transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/jquery.jgrowl-min.js',
+		transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/admin#midfix#.js'
+	) />
 	
 	<!--- Setup admin search settings --->
 	<cfset searchSettings = plugin.getSearch() />

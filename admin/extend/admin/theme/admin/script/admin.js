@@ -73,6 +73,17 @@
 			},
 			minLength: 2
 		});
+		
+		// Display any api messages triggered
+		$('body').bind('api.errors api.warnings api.successes api.messages', function( event, type, alerts ) {
+			var alert;
+			
+			for( alert in alerts ) {
+				if(alerts.hasOwnProperty(alert)) {
+					$.jGrowl(alerts[alert]);
+				}
+			}
+		});
 	});
 	
 	$.widget("custom.searchComplete", $.ui.autocomplete, {
