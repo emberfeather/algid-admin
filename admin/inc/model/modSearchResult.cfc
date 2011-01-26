@@ -3,27 +3,27 @@ component extends="algid.inc.resource.base.model" {
 		super.init(arguments.i18n, arguments.locale);
 		
 		// Category
-		addAttribute(
+		add__attribute(
 				attribute = 'category'
 			);
 		
 		// Description
-		addAttribute(
+		add__attribute(
 				attribute = 'description'
 			);
 		
 		// Link
-		addAttribute(
+		add__attribute(
 				attribute = 'link'
 			);
 		
 		// Title
-		addAttribute(
+		add__attribute(
 				attribute = 'title'
 			);
 		
 		// Set the bundle information for translation
-		addBundle('plugins/admin/i18n/inc/model', 'modSearchResult');
+		add__bundle('plugins/admin/i18n/inc/model', 'modSearchResult');
 		
 		return this;
 	}
