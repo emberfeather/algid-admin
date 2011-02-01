@@ -64,7 +64,7 @@
 		<cfset template.addStyles('/algid/style/markItUp/style-min.css') />
 		<cfset template.addStyles('/algid/style/algid-min.css') />
 	<cfelse>
-		<cfset template.addScripts('/cf-compendium/script/jquery.base.js', '/cf-compendium/script/jquery.form.js', '/cf-compendium/script/jquery.list.js', '/cf-compendium/script/jquery.datagrid.js', '/cf-compendium/script/jquery.timeago.js') />
+		<cfset template.addScripts('/cf-compendium/script/jquery.base.js', '/cf-compendium/script/jquery.form.js', '/cf-compendium/script/jquery.list.js', '/cf-compendium/script/jquery.datagrid.js', '/cf-compendium/script/jquery.timeago.js', '/cf-compendium/script/jquery.cookie.js') />
 		<cfset template.addScripts('/algid/script/markitup/jquery.markitup.js') />
 		<cfset template.addScripts('/algid/script/jquery.base.js', '/algid/script/jquery.richtext.js') />
 		<cfset template.addStyles('/cf-compendium/style/base.css', '/cf-compendium/style/form.css', '/cf-compendium/style/list.css', '/cf-compendium/style/datagrid.css', '/cf-compendium/style/code.css') />

@@ -2,6 +2,7 @@
 	<cfset hasUser = transport.theSession.managers.singleton.hasUser() />
 	<cfset isLoggedIn = hasUser and transport.theSession.managers.singleton.getUser().isLoggedIn() />
 	<cfset app = transport.theApplication.managers.singleton.getApplication() />
+	<cfset plugin = transport.theApplication.managers.plugin.getAdmin() />
 	
 	<!--- Include minified files for production --->
 	<cfset midfix = (app.isProduction() ? '-min' : '') />
@@ -9,17 +10,21 @@
 	<cfset template.addStyles(
 		'http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css',
 		'http://fonts.googleapis.com/css?family=Philosopher&subset=latin',
-		'../plugins/admin/style/960/reset#midfix#.css',
-		'../plugins/admin/style/960/960#midfix#.css"',
-		'../plugins/admin/extend/admin/theme/admin/style/styles#midfix#.css'
+		'/algid/style/960/reset#midfix#.css',
+		'/algid/style/960/960#midfix#.css',
+		transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/jquery.jgrowl#midfix#.css',
+		transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/styles#midfix#.css'
 	) />
-	<cfset template.addStyle('../plugins/admin/extend/admin/theme/admin/style/print#midfix#.css', 'print') />
 	
-	<cfset template.addScripts('../plugins/admin/extend/admin/theme/admin/script/admin#midfix#.js') />
+	<cfset template.addStyle(transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/print#midfix#.css', 'print') />
+	
+	<cfset template.addScripts(
+		transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/jquery.jgrowl-min.js',
+		transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/admin#midfix#.js'
+	) />
 	
 	<!--- Setup admin search settings --->
-	<cfset adminPlugin = transport.theApplication.managers.plugin.getAdmin() />
-	<cfset searchSettings = adminPlugin.getSearch() />
+	<cfset searchSettings = plugin.getSearch() />
 	
 	<cfsavecontent variable="adminSearch">
 		<cfoutput>
@@ -48,7 +53,7 @@
 			<div class="container_12 respect-float">
 				<div id="header" class="no-print respect-float">
 					<div class="grid_5">
-						<h1><a href="?"><cfoutput>#app.getName()#</cfoutput></a></h1>
+						<h1><a href="<cfoutput>#transport.theRequest.webRoot & transport.theRequest.requestRoot#</cfoutput>"><cfoutput>#app.getName()#</cfoutput></a></h1>
 					</div>
 					
 					<cfif not template.getIsSimple()>
@@ -87,8 +92,8 @@
 				<cfif not template.getIsSimple()>
 					<div class="grid_12 no-print respect-float">
 						<cfset options = {
-								navClasses = ['menu horizontal float-right']
-							} />
+							navClasses = ['menu horizontal float-right']
+						} />
 						
 						<cfif isLoggedIn>
 							<cfoutput>#template.getNavigation(2, 'action', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
@@ -97,8 +102,8 @@
 						</cfif>
 						
 						<cfset options = {
-								navClasses = ['menu horizontal']
-							} />
+							navClasses = ['menu horizontal']
+						} />
 						
 						<cfif isLoggedIn>
 							<cfoutput>#template.getNavigation(1, 'main', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
@@ -122,8 +127,8 @@
 							
 							<cfif navLevel gt 1>
 								<cfset options = {
-										navClasses = ['submenu horizontal float-right']
-									} />
+									navClasses = ['submenu horizontal float-right']
+								} />
 								
 								<cfif isLoggedIn>
 									<cfset subNav = template.getNavigation( navLevel + 1, 'action', options, transport.theSession.managers.singleton.getUser()) />
@@ -158,8 +163,8 @@
 							<cfif navLevel gt 1 and not showingNavigation>
 								<cfif navLevel gt 2>
 									<cfset options = {
-											navClasses = ['submenu horizontal float-right']
-										} />
+										navClasses = ['submenu horizontal float-right']
+									} />
 									
 									<cfif isLoggedIn>
 										<cfoutput>#template.getNavigation( navLevel, 'action', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
@@ -169,8 +174,8 @@
 								</cfif>
 								
 								<cfset options = {
-										navClasses = ['submenu horizontal']
-									} />
+									navClasses = ['submenu horizontal']
+								} />
 								
 								<cfif isLoggedIn>
 									<cfoutput>#template.getNavigation( navLevel, 'main', options, transport.theSession.managers.singleton.getUser())#</cfoutput>

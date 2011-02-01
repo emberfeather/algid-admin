@@ -6,9 +6,9 @@
 		"navigationForAdmin": "algid.inc.resource.structure.navigationFile",
 		"profiler": "cf-compendium.inc.resource.utility.profiler",
 		"searchResultsForAdmin": "plugins.admin.inc.resource.base.searchResults",
-		"templateForAdmin": "algid.inc.resource.structure.template",
-		"urlForAdmin": "cf-compendium.inc.resource.utility.url"
+		"templateForAdmin": "algid.inc.resource.structure.template"
 	},
+	"forceSSL": true,
 	"i18n": {
 		"locales": [
 			"en_PI",
@@ -19,12 +19,16 @@
 	"path": "admin/",
 	"plugin": "Administration",
 	"prerequisites": {
-		"algid": "0.1.1",
+		"algid": "0.1.3",
 		"api": "0.1.0"
 	},
 	"requestSingletons": {
 	},
 	"requestTransients": {
+	},
+	"rewrite": {
+		"isEnabled": false,
+		"base": "_base"
 	},
 	"search": {
 		"threshold": 3
@@ -34,5 +38,5 @@
 	"sessionTransients": {
 	},
 	"theme": "admin/extend/admin/theme/admin",
-	"version": "0.1.1"
+	"version": "0.1.2"
 }

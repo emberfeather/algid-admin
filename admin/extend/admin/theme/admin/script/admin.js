@@ -26,7 +26,7 @@
 		$('.datagrid').datagrid();
 		
 		// Focus on the first input in the content.
-		$('.content input[type=text]:first').focus();
+		$('.content :input:first').focus();
 		
 		// Disable submit buttons on submit
 		$('form').submit(function(){
@@ -34,7 +34,7 @@
 		});
 		
 		// Use the timeago plugin
-		$('abbr.timeago').timeago();
+		$('.timeago').timeago();
 		
 		// Setup the admin search
 		$('#adminSearch input[name=term]').searchComplete({
@@ -73,9 +73,21 @@
 			},
 			minLength: 2
 		});
+		
+		// Display any api messages triggered
+		$('body').bind('api.errors api.warnings api.successes api.messages', function( event, type, alerts ) {
+			var alert;
+			
+			for( alert in alerts ) {
+				if(alerts.hasOwnProperty(alert)) {
+					$.jGrowl(alerts[alert]);
+				}
+			}
+		});
 	});
 	
 	$.widget("custom.searchComplete", $.ui.autocomplete, {
+		delay: 280,
 		_renderMenu: function( ul, items ) {
 			var self = this;
 			var currentCategory = '';

@@ -298,14 +298,18 @@ ul, ol {
 }
 
 /*
-	Editable Content
+	Inline Editing
 */
-[contenteditable=true] {
-	padding: .25em .5em;
+
+.inlineEdit {
+	margin: 0;
+	padding: 1px 0;
+	border: none;
+	background: none;
 }
 
-[contenteditable=true]:hover,
-[contenteditable=true]:focus {
+.inlineEdit:hover,
+.inlineEdit:focus {
 	background: #FFFF99;
 }
 
@@ -313,14 +317,14 @@ ul, ol {
 	primary navigation
 */
 
-.menu.horizontal,
-.submenu.horizontal {
+.menu.horizontal ul,
+.submenu.horizontal ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-.submenu.horizontal {
+.submenu.horizontal ul {
 	margin: 0 1em;
 }
 
