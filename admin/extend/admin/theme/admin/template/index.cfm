@@ -20,7 +20,8 @@
 	
 	<cfset template.addScripts(
 		transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/jquery.jgrowl-min.js',
-		transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/admin#midfix#.js'
+		transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/admin#midfix#.js',
+		transport.theRequest.webRoot & 'plugins/api/script/jquery.api#midfix#.js'
 	) />
 	
 	<!--- Setup admin search settings --->
@@ -36,8 +37,6 @@
 	</cfsavecontent>
 	
 	<cfset template.addScripts(adminSearch) />
-	
-	<cfset template.addScripts('../plugins/api/script/jquery.api#midfix#.js') />
 </cfsilent>
 <!DOCTYPE html>
 <html>
