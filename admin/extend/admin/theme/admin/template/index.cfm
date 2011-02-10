@@ -114,7 +114,7 @@
 				
 				<div class="clear"><!-- clear --></div>
 				
-				<div class="content respect-float">
+				<div class="container-content respect-float">
 					<div id="breadcrumb" class="grid_12 no-print respect-float">
 						<cfoutput>#template.getBreadcrumb({ topLevel = 2 })#</cfoutput>
 					</div>
