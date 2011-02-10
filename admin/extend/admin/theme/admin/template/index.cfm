@@ -2,7 +2,8 @@
 	<cfset hasUser = transport.theSession.managers.singleton.hasUser() />
 	<cfset isLoggedIn = hasUser and transport.theSession.managers.singleton.getUser().isLoggedIn() />
 	<cfset app = transport.theApplication.managers.singleton.getApplication() />
-	<cfset plugin = transport.theApplication.managers.plugin.getAdmin() />
+	<cfset admin = transport.theApplication.managers.plugin.getAdmin() />
+	<cfset api = transport.theApplication.managers.plugin.getApi() />
 	
 	<!--- Include minified files for production --->
 	<cfset midfix = (app.isProduction() ? '-min' : '') />
@@ -25,13 +26,14 @@
 	) />
 	
 	<!--- Setup admin search settings --->
-	<cfset searchSettings = plugin.getSearch() />
+	<cfset searchSettings = admin.getSearch() />
 	
 	<cfsavecontent variable="adminSearch">
 		<cfoutput>
 			;(function($){
 				$.algid.admin.options.base.url = '#app.getPath()#';
 				$.algid.admin.options.search.threshold = #searchSettings.threshold#;
+				$.api.defaults.url = '#app.getPath()##api.getPath()#';
 			})(jQuery);
 		</cfoutput>
 	</cfsavecontent>
