@@ -1,0 +1,9 @@
+h2,.box h3{border-bottom:1px solid #a17700;}
+a,a:visited{color:#a17700;}
+a:hover{color:#6e5100;}
+#breadcrumb{background:#a17700;}
+.container-outer{background:-webkit-gradient(linear, 0% 0, 0% 350, from(#a17700), to(#ffffff), color-stop(0.27, #6e5100), color-stop(0.27, #bfbfbf));background:-moz-linear-gradient(0px 350px 90deg, #ffffff, #bfbfbf, #bfbfbf 73%, #6e5100 73%, #a17700 100%);}
+.submenu.horizontal a{color:#a17700;}
+.menu.horizontal a.selected,.menu.horizontal a:hover,.submenu.horizontal a.selected,.submenu.horizontal a:hover{color:#ffffff;background:#a17700;}
+.submenu.horizontal.action a.selected,.submenu.horizontal.action a:hover{color:#a17700;}
+.sortable li{border:1px solid #a17700;}

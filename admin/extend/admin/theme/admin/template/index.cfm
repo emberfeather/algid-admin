@@ -4,26 +4,45 @@
 	<cfset app = transport.theApplication.managers.singleton.getApplication() />
 	<cfset admin = transport.theApplication.managers.plugin.getAdmin() />
 	<cfset api = transport.theApplication.managers.plugin.getApi() />
-	
-	<!--- Include minified files for production --->
-	<cfset midfix = (app.isProduction() ? '-min' : '') />
+	<cfset isProduction = app.isProduction() />
 	
 	<cfset template.addStyles(
 		'http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css',
 		'http://fonts.googleapis.com/css?family=Philosopher&subset=latin',
-		'/algid/style/960/reset#midfix#.css',
-		'/algid/style/960/960#midfix#.css',
-		transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/jquery.jgrowl#midfix#.css',
-		transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/styles#midfix#.css'
+		'/algid/style/960/reset-min.css',
+		'/algid/style/960/960-min.css'
 	) />
 	
-	<cfset template.addStyle(transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/print#midfix#.css', 'print') />
+	<cfif isProduction>
+		<cfset template.addStyles( transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/admin-min.css' ) />
+		<cfset template.addStyle(transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/print-min.css', 'print') />
+	<cfelse>
+		<cfif app.isMaintenance()>
+			<cfset template.addStyles( transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/maintenance-min.css' ) />
+		<cfelse>
+			<cfset template.addStyles( transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/development-min.css' ) />
+		</cfif>
+		
+		<cfset template.addStyles(
+			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/jquery.jgrowl.css',
+			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/styles-min.css'
+		) />
+		
+		<cfset template.addStyle(transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/print.css', 'print') />
+	</cfif>
 	
-	<cfset template.addScripts(
-		transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/jquery.jgrowl-min.js',
-		transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/admin#midfix#.js',
-		transport.theRequest.webRoot & 'plugins/api/script/jquery.api#midfix#.js'
-	) />
+	<cfif isProduction>
+		<cfset template.addScripts(
+			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/jquery.admin-min.js',
+			transport.theRequest.webRoot & 'plugins/api/script/jquery.api-min.js'
+		) />
+	<cfelse>
+		<cfset template.addScripts(
+			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/jquery.jgrowl-min.js',
+			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/jquery.base.js',
+			transport.theRequest.webRoot & 'plugins/api/script/jquery.api.js'
+		) />
+	</cfif>
 	
 	<!--- Setup admin search settings --->
 	<cfset searchSettings = admin.getSearch() />
