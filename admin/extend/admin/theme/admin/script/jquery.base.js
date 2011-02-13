@@ -80,7 +80,7 @@
 			
 			for( alert in alerts ) {
 				if(alerts.hasOwnProperty(alert)) {
-					$.jGrowl(alerts[alert]);
+					window.console.log(alerts[alert]);
 				}
 			}
 		});
