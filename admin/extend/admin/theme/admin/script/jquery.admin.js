@@ -26,7 +26,7 @@
 		$('.datagrid').datagrid();
 		
 		// Focus on the first input in the content.
-		$('.content :input:first').focus();
+		$('.container-content :input:first').focus();
 		
 		// Disable submit buttons on submit
 		$('form').submit(function(){
@@ -80,7 +80,7 @@
 			
 			for( alert in alerts ) {
 				if(alerts.hasOwnProperty(alert)) {
-					$.jGrowl(alerts[alert]);
+					window.console.log(alerts[alert]);
 				}
 			}
 		});

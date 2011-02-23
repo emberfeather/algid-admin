@@ -8,4 +8,27 @@
 	
 	<!-- Include the master build file -->
 	<import file="${basedir}/build/master/master.xml"/>
+	
+	<target name="minify" depends="prepare,compileLessCSS" description="Minify the CSS and JS files">
+		<echo message="Starting: CSS and JS minification"/>
+		
+		<property name="theme.admin" value="${basedir}/${project.key}/extend/admin/theme/admin" />
+		<property name="theme.admin.script" value="${theme.admin}/script" />
+		<property name="theme.admin.style" value="${theme.admin}/style" />
+		
+		<!-- Create a single, concatenated JS file -->
+		<concat destfile="${theme.admin.script}/jquery.admin.js">
+			<fileset dir="${theme.admin.script}" includes="jquery.base.js,jquery.jgrowl-min.js" />
+		</concat>
+		
+		<!-- Create a single, concatenated CSS file -->
+		<concat destfile="${theme.admin.style}/admin.css">
+			<fileset dir="${theme.admin.style}" includes="jquery.growl.css,styles-min.css,production-min.css" />
+		</concat>
+		
+		<!-- Use the master minify -->
+		<antcall target="ef-ant.minify"/>
+		
+		<echo message="Finished: CSS and JS minification"/>
+	</target>
 </project>

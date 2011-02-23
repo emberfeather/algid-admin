@@ -1,0 +1,386 @@
+@import "colors";
+
+.border-radius (@radius: 0.5em) {
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+}
+
+.border-radius-bottom (@radius: 0.5em) {
+	-moz-border-radius-bottomright: @radius;
+	-moz-border-radius-bottomleft: @radius;
+	border-bottom-right-radius: @radius;
+	border-bottom-left-radius: @radius;
+}
+
+.border-radius-top (@radius: 0.5em) {
+	-moz-border-radius-topright: @radius;
+	-moz-border-radius-topleft: @radius;
+	border-top-right-radius: @radius;
+	border-top-left-radius: @radius;
+}
+
+.transition (@type: all, @duration: .25s, @easing: ease-in-out) {
+	-moz-transition: @type @duration @easing;
+	-webkit-transition: @type @duration @easing;
+	-o-transition: @type @duration @easing;
+	transition: @type @duration @easing;
+}
+
+body {
+	background: @colorBackground;
+	color: @colorBase;
+	font: 11px/15px Century Gothic, Apple Gothic, sans-serif;
+}
+
+p,
+dl,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+pre,
+table,
+address,
+fieldset {
+	margin: .5em 0;
+}
+
+a {
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus {
+	outline: 1px dotted invert;
+}
+
+h1 {
+	font-family: 'Philosopher', arial, serif;
+	letter-spacing: .1em;
+	font-size: 27px;
+	font-weight: normal;
+	.transition(opacity);
+}
+
+h1:hover {
+	opacity:0.65;
+}
+
+h1 a:hover {
+	text-decoration: none;
+}
+
+h2 {
+	font-size: 23px;
+}
+
+h3 {
+	font-size: 21px;
+}
+
+h4 {
+	font-size: 19px;
+}
+
+h5 {
+	font-size: 17px;
+}
+
+h6 {
+	font-size: 15px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height:1.2em;
+	margin: .3em 0;
+}
+
+h2 {
+	margin: .5em 0;
+}
+
+ol {
+	list-style: decimal;
+}
+
+ul {
+	list-style: square;
+}
+
+li {
+	margin-left: 2em;
+}
+
+p {
+	margin-bottom: 1em;
+}
+
+blockquote {
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 1.2em;
+	padding-left: 1.5em;
+	border-left: 4px solid darken(@colorBackground, 66%);
+}
+
+blockquote cite {
+	font-size: .9em;
+}
+
+ul, ol {
+	padding-top: 0;
+}
+
+/*
+====================
+=== IDs
+====================
+*/
+
+#header {
+	height: 60px;
+	color: @colorBackground;
+	line-height: 2.5em;
+	
+	a {
+		color: @colorBackground;
+	}
+}
+
+#adminSearch {
+	padding: .5em;
+	
+	input[type=search] {
+		width: 20em;
+	}
+	
+	input[type=submit] {
+		display: none;
+	}
+}
+
+#breadcrumb {
+	font-size: .85em;
+	color: @colorBackground;
+	line-height: 2.25em;
+	.border-radius-bottom;
+	
+	a {
+		padding: 0 1em;
+		color: @colorBackground;
+	}
+}
+
+/*
+====================
+=== Classes
+====================
+*/
+
+.message,
+.warning,
+.error,
+.success {
+	.border-radius;
+}
+
+/*
+	General Classes
+*/
+
+.float-right {
+	float: right;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.align-right {
+	text-align: right;
+}
+
+/* 
+	Structure
+*/
+.container-outer {
+	min-height: 350px;
+}
+
+.container_12,
+.container_16 {
+	padding: 0;
+}
+
+.container-content {
+	background: @colorBackground;
+	.border-radius;
+	margin-bottom: 1em;
+	min-height: 25em;
+}
+
+.pagination a {
+	.border-radius-top;
+}
+
+/*
+	boxes
+*/
+.box {
+	background: @colorBoxBackground;
+	margin: 0 0 1em 0;
+	padding: 1em;
+	min-height: 1em;
+	.border-radius;
+	background: -webkit-gradient(linear, 0% 0, 0% 350, from(@colorBoxBackground), to(@colorBoxBackgroundGrad));
+	background: -moz-linear-gradient(0px 350px 90deg,@colorBoxBackgroundGrad, @colorBoxBackground);
+}
+
+.box h3 {
+	font-size: 1.25em;
+}
+
+.box ul,
+.box ol,
+.box p {
+	margin: 0;
+}
+
+.section {
+	margin-bottom: 1em;
+}
+
+/*
+	Pagination
+*/
+
+.pagination a:hover,
+.pagination .selected a {
+	background-image: -moz-linear-gradient(top, @colorBoxBackgroundGrad, @colorBoxBackground);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(@colorBoxBackgroundGrad), to(@colorBoxBackground));
+}
+
+/*
+	Sorting
+*/
+
+.sortable li {
+	list-style: none;
+	margin: .25em 0;
+	padding: .25em .5em;
+}
+
+.sortable {
+	min-height: 5em;
+}
+
+.dragarea {
+	background: @colorBackgroundGrad;
+	margin: 0 0 1em 0;
+	padding: 1em;
+	min-height: 1em;
+	.border-radius;
+	background: -webkit-gradient(linear, 0% 0, 0% 350, from(@colorBoxBackground), to(@colorBoxBackgroundGrad));
+	background: -moz-linear-gradient(0px 350px 90deg,@colorBoxBackgroundGrad, @colorBoxBackground);
+}
+
+/*
+	Inline Editing
+*/
+
+.inlineEdit {
+	margin: 0;
+	padding: 1px 0;
+	border: none;
+	background: none;
+	
+	&:hover,
+	&:focus {
+		background: @colorInlineEdit;
+	}
+}
+
+/*
+	primary navigation
+*/
+.menu.horizontal ul,
+.submenu.horizontal ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.submenu.horizontal ul {
+	margin: 0 1em;
+}
+
+.menu.horizontal li,
+.submenu.horizontal li {
+	margin: 0;
+	padding: 0;
+	float:left;
+	display: inline;
+}
+
+.menu.horizontal a,
+.submenu.horizontal a {
+	display: block;
+	padding: .5em 1em;
+	margin: 0 .25em 0 0;
+	text-decoration: none;
+}
+
+.menu.horizontal a {
+	color: @colorBackground;
+	.border-radius-top;
+}
+
+.submenu.horizontal a {
+	.border-radius-bottom;
+}
+
+.menu.horizontal.action a.selected,
+.menu.horizontal.action a:hover,
+.submenu.horizontal.action a.selected,
+.submenu.horizontal.action a:hover {
+	background: none;
+	text-decoration: underline;
+}
+
+.menu.horizontal a {
+	.transition;
+}
+
+.ui-autocomplete {
+	max-width: 30em;
+	
+	a {
+		font-weight: normal;
+	}
+}
+
+.ui-autocomplete-category {
+	margin: 0;
+	padding: .25em;
+	font-weight: bold;
+}
+
+.ui-autocomplete-more {
+	margin: 0;
+	padding: .25em .5em;
+	font-size: .9em;
+	font-style: italic;
+}
