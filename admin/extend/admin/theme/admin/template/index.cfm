@@ -1,10 +1,15 @@
 <cfsilent>
 	<cfset hasUser = transport.theSession.managers.singleton.hasUser() />
-	<cfset isLoggedIn = hasUser and transport.theSession.managers.singleton.getUser().isLoggedIn() />
 	<cfset app = transport.theApplication.managers.singleton.getApplication() />
 	<cfset admin = transport.theApplication.managers.plugin.getAdmin() />
 	<cfset api = transport.theApplication.managers.plugin.getApi() />
 	<cfset isProduction = app.isProduction() />
+	
+	<cfif hasUser>
+		<cfset user = transport.theSession.managers.singleton.getUser() />
+	</cfif>
+	
+	<cfset isLoggedIn = hasUser and user.isLoggedIn() />
 	
 	<cfset template.addStyles(
 		'http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css',
@@ -88,7 +93,7 @@
 										<cfset theURL.setLogout('_base', '/account/logout') />
 										
 										<cfoutput>
-											<a href="#theURL.getAccount()#">#session.managers.singleton.getUser().getDisplayName()#</a> | <a href="#theURL.getLogout()#">#template.getLabel('logout')#</a>
+											<a href="#theURL.getAccount()#">#user.getDisplayName()#</a> | <a href="#theURL.getLogout()#">#template.getLabel('logout')#</a>
 										</cfoutput>
 									</p>
 								</div>
@@ -116,7 +121,7 @@
 						} />
 						
 						<cfif isLoggedIn>
-							<cfoutput>#template.getNavigation(2, 'action', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
+							<cfoutput>#template.getNavigation(2, 'action', options, user)#</cfoutput>
 						<cfelseif not hasUser>
 							<cfoutput>#template.getNavigation(2, 'action', options)#</cfoutput>
 						</cfif>
@@ -126,7 +131,7 @@
 						} />
 						
 						<cfif isLoggedIn>
-							<cfoutput>#template.getNavigation(1, 'main', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
+							<cfoutput>#template.getNavigation(1, 'main', options, user)#</cfoutput>
 						<cfelseif not hasUser>
 							<cfoutput>#template.getNavigation(1, 'main', options)#</cfoutput>
 						</cfif>
@@ -151,7 +156,7 @@
 								} />
 								
 								<cfif isLoggedIn>
-									<cfset subNav = template.getNavigation( navLevel + 1, 'action', options, transport.theSession.managers.singleton.getUser()) />
+									<cfset subNav = template.getNavigation( navLevel + 1, 'action', options, user) />
 								<cfelseif not hasUser>
 									<cfset subNav = template.getNavigation( navLevel + 1, 'action', options) />
 								<cfelse>
@@ -168,7 +173,7 @@
 								} />
 							
 							<cfif isLoggedIn>
-								<cfset subNav = (template.getNavigation(navLevel + 1, 'main', options, transport.theSession.managers.singleton.getUser())) />
+								<cfset subNav = (template.getNavigation(navLevel + 1, 'main', options, user)) />
 							<cfelseif not hasUser>
 								<cfset subNav = (template.getNavigation(navLevel + 1, 'main', options)) />
 							<cfelse>
@@ -187,7 +192,7 @@
 									} />
 									
 									<cfif isLoggedIn>
-										<cfoutput>#template.getNavigation( navLevel, 'action', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
+										<cfoutput>#template.getNavigation( navLevel, 'action', options, user)#</cfoutput>
 									<cfelseif not hasUser>
 										<cfoutput>#template.getNavigation( navLevel, 'action', options)#</cfoutput>
 									</cfif>
@@ -198,7 +203,7 @@
 								} />
 								
 								<cfif isLoggedIn>
-									<cfoutput>#template.getNavigation( navLevel, 'main', options, transport.theSession.managers.singleton.getUser())#</cfoutput>
+									<cfoutput>#template.getNavigation( navLevel, 'main', options, user)#</cfoutput>
 								<cfelseif not hasUser>
 									<cfoutput>#template.getNavigation( navLevel, 'main', options)#</cfoutput>
 								</cfif>
