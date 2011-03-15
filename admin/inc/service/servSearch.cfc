@@ -1,5 +1,5 @@
 component extends="algid.inc.resource.base.service" {
-	public component function search(required component currUser, required string term) {
+	public component function search(required string term) {
 		var observer = '';
 		var results = '';
 		
@@ -10,7 +10,7 @@ component extends="algid.inc.resource.base.service" {
 		results = variables.transport.theApplication.factories.transient.getSearchResultsForAdmin();
 		
 		// On Search Event
-		observer.onSearch(variables.transport, arguments.currUser, results, arguments.term);
+		observer.onSearch(variables.transport, results, arguments.term);
 		
 		return results;
 	}
