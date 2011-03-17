@@ -43,7 +43,6 @@
 		) />
 	<cfelse>
 		<cfset template.addScripts(
-			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/jquery.jgrowl-min.js',
 			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/jquery.base.js',
 			transport.theRequest.webRoot & 'plugins/api/script/jquery.api.js'
 		) />
