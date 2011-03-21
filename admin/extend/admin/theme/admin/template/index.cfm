@@ -12,8 +12,8 @@
 	<cfset isLoggedIn = hasUser and user.isLoggedIn() />
 	
 	<cfset template.addStyles(
-		'http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css',
-		'http://fonts.googleapis.com/css?family=Philosopher&subset=latin',
+		'//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css',
+		'//fonts.googleapis.com/css?family=Philosopher&subset=latin',
 		'/algid/style/960/reset-min.css',
 		'/algid/style/960/960-min.css'
 	) />
@@ -43,7 +43,6 @@
 		) />
 	<cfelse>
 		<cfset template.addScripts(
-			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/jquery.jgrowl-min.js',
 			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/jquery.base.js',
 			transport.theRequest.webRoot & 'plugins/api/script/jquery.api.js'
 		) />
