@@ -4,11 +4,16 @@ component extends="plugins.cron.inc.resource.base.cron" {
 			throw(message="No valid email provided", detail="The email was not provided or is invalid");
 		}
 		
+		local.app = variables.transport.theApplication.managers.singleton.getApplication();
 		local.observer = getPluginObserver('admin', 'report');
 		local.report = getModel('admin', 'report');
 		
+		// Get the application title
+		local.report.setSubject('Report: ' & local.app.getName());
+		local.report.setTitle(local.app.getName());
+		
 		// Generate the email message
-		local.observer.generate(variables.transport, variables.datasource, variables.task, arguments.options, local.report);
+		local.observer.generate(variables.transport, variables.task, arguments.options, local.report);
 		
 		// Send the completed email
 		if(!local.report.isBlank()) {
