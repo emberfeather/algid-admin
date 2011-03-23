@@ -39,8 +39,10 @@
 		// Setup the admin search
 		$('#adminSearch input[name=term]').searchComplete({
 			source: function(request, response) {
+				var i;
+				
 				// Check if the term has already been searched for
-				if ( request.term in searchCache ) {
+				if ( searchCache[ request.term ] !== undefined ) {
 					response( searchCache[ request.term ] );
 					
 					return;
@@ -54,7 +56,6 @@
 					term: request.term
 				}, {
 					success: function( data ) {
-						
 						if(data.HEAD.result) {
 							searchCache[ request.term ] = data.BODY;
 							
