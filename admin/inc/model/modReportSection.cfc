@@ -22,12 +22,4 @@ component extends="algid.inc.resource.base.model" {
 	public boolean function isBlank() {
 		return !len(this.getContent());
 	}
-	
-	public string function _toHTML() {
-		local.html = '<h2>' & this.getTitle() & '</h2>';
-		
-		local.html &= this.getContent();
-		
-		return local.html;
-	}
 }

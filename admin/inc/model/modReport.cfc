@@ -29,16 +29,4 @@ component extends="algid.inc.resource.base.model" {
 	public boolean function isBlank() {
 		return !arrayLen(this.getSections());
 	}
-	
-	public string function _toHTML() {
-		local.html = '<h1>' & this.getTitle() & '</h1>';
-		
-		local.sections = this.getSections();
-		
-		for(local.i = 1; local.i <= arrayLen(local.sections); local.i++) {
-			local.html &= local.sections[local.i]._toHtml()
-		}
-		
-		return local.html;
-	}
 }
