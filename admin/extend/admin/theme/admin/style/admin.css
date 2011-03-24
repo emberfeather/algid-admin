@@ -33,7 +33,7 @@ ul,ol{padding-top:0;}
 #adminSearch{padding:.5em;}#adminSearch input[type=search]{width:20em;}
 #adminSearch input[type=submit]{display:none;}
 #breadcrumb{font-size:.85em;color:#ffffff;line-height:2.25em;-moz-border-radius-bottomright:0.5em;-moz-border-radius-bottomleft:0.5em;border-bottom-right-radius:0.5em;border-bottom-left-radius:0.5em;}#breadcrumb a{padding:0 1em;color:#ffffff;}
-.message,.warning,.error,.success{-moz-border-radius:0.5em;border-radius:0.5em;}
+.notification.message,.notification.warning,.notification.error,.notification.success{-moz-border-radius:0.5em;border-radius:0.5em;}
 .float-right{float:right;}
 .align-center{text-align:center;}
 .align-right{text-align:right;}
