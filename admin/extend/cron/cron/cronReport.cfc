@@ -13,14 +13,16 @@ component extends="plugins.cron.inc.resource.base.cron" {
 		local.report.setSubject('Report: ' & local.app.getName());
 		local.report.setTitle(local.app.getName());
 		
-		// Generate the email message
-		local.observer.generate(variables.transport, variables.task, arguments.options, local.report);
-		
-		// Send the completed email
-		if(!local.report.isBlank()) {
-			mail from="#arguments.options.email#" to="#arguments.options.email#" subject="#local.report.getSubject()#" type="html" {
-				writeOutput( local.viewReport.generateReport(local.report) );
-			};
+		transaction {
+			// Generate the email message
+			local.observer.generate(variables.transport, variables.task, arguments.options, local.report);
+			
+			// Send the completed email
+			if(!local.report.isBlank()) {
+				mail from="#arguments.options.email#" to="#arguments.options.email#" subject="#local.report.getSubject()#" type="html" {
+					writeOutput( local.viewReport.generateReport(local.report) );
+				};
+			}
 		}
 	}
 }
