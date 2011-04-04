@@ -6,8 +6,25 @@ component extends="plugins.cron.inc.resource.base.cron" {
 		
 		local.viewReport = getView('admin', 'report');
 		local.app = variables.transport.theApplication.managers.singleton.getApplication();
+		local.plugin = variables.transport.theApplication.managers.plugin.getAdmin();
 		local.observer = getPluginObserver('admin', 'report');
 		local.report = getModel('admin', 'report');
+		
+		// Create the URL component
+		local.webRoot =  app.getPath();
+		local.requestRoot =  plugin.getPath();
+		
+		local.urlOptions = { start = 'http' & ( variables.transport.theCgi.server_port_secure eq true ? 's' : '' ) & '://' & variables.transport.theCgi.http_host & local.webRoot & local.requestRoot };
+		
+		local.rewrite = local.plugin.getRewrite();
+		
+		if(local.rewrite.isEnabled) {
+			local.urlOptions.rewriteBase = local.rewrite.base;
+			
+			arguments.options.theUrl = variables.transport.theApplication.factories.transient.getUrlRewrite(variables.transport.theUrl, local.urlOptions);
+		} else {
+			arguments.options.theUrl = variables.transport.theApplication.factories.transient.getUrl(variables.transport.theUrl, local.urlOptions);
+		}
 		
 		// Get the application title
 		local.report.setSubject('Report: ' & local.app.getName());
