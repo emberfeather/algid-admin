@@ -75,6 +75,9 @@
 			minLength: 2
 		});
 		
+		// Uses ISO 8601 Date Format
+		$('.filter input[type="date"]').datepicker({ dateFormat: 'yy-mm-dd' });
+		
 		// Display any api messages triggered
 		$('body').bind('api.errors api.warnings api.successes api.messages', function( event, type, alerts ) {
 			var alert;
