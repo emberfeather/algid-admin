@@ -75,7 +75,7 @@
 			minLength: 2
 		});
 		
-		// Uses ISO 8601 Date Format
+		// Uses RFC 3339 Date Format
 		$('.filter input[type="date"]').datepicker({ dateFormat: 'yy-mm-dd' });
 		
 		// Display any api messages triggered
