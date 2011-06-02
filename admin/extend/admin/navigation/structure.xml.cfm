@@ -5,6 +5,7 @@
 		<app position="main"/>
 		
 		<environment position="main">
+			<maintenance position="action"/>
 			<reset position="action"/>
 		</environment>
 		
