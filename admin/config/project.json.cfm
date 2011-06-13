@@ -38,5 +38,5 @@
 	"sessionTransients": {
 	},
 	"theme": "admin/extend/admin/theme/admin",
-	"version": "0.1.9"
+	"version": "0.1.10"
 }
