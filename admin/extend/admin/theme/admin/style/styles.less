@@ -1,11 +1,14 @@
 @import "colors";
+@import "transition";
 
 .border-radius (@radius: 0.5em) {
+	-webkit-border-radius: @radius;
 	-moz-border-radius: @radius;
 	border-radius: @radius;
 }
 
 .border-radius-bottom (@radius: 0.5em) {
+	.border-radius(0);
 	-moz-border-radius-bottomright: @radius;
 	-moz-border-radius-bottomleft: @radius;
 	border-bottom-right-radius: @radius;
@@ -13,10 +16,31 @@
 }
 
 .border-radius-top (@radius: 0.5em) {
+	.border-radius(0);
 	-moz-border-radius-topright: @radius;
 	-moz-border-radius-topleft: @radius;
 	border-top-right-radius: @radius;
 	border-top-left-radius: @radius;
+}
+
+.border-radius-left (@radius: 0.5em) {
+	.border-radius(0);
+	-webkit-border-top-left-radius: @radius;
+	-webkit-border-bottom-left-radius: @radius;
+	-moz-border-radius-topleft: @radius;
+	-moz-border-radius-bottomleft: @radius;
+	border-top-left-radius: @radius;
+	border-bottom-left-radius: @radius;
+}
+
+.border-radius-right (@radius: 0.5em) {
+	.border-radius(0);
+	-webkit-border-top-right-radius: @radius;
+	-webkit-border-bottom-right-radius: @radius;
+	-moz-border-radius-topright: @radius;
+	-moz-border-radius-bottomright: @radius;
+	border-top-right-radius: @radius;
+	border-bottom-right-radius: @radius;
 }
 
 .transition (@type: all, @duration: .25s, @easing: ease-in-out) {
@@ -261,6 +285,72 @@ ul, ol {
 
 .section {
 	margin-bottom: 1em;
+}
+
+/*
+	Forms
+*/
+
+.form .element {
+	margin-bottom: .5em;
+	padding: 0;
+	line-height: 2.5em;
+	overflow: hidden;
+}
+
+.form .element:nth-child(odd) {
+	background: none;
+}
+
+.form .element label {
+	border: 1px solid @colorBorder;
+	.border-radius-left;
+	.verticalGradient;
+	margin-right: .5em;
+	font-weight: bold;
+	width: 25%;
+}
+
+.form .element.datagrid label,
+.form .element.textarea label,
+.form .element.full label {
+	.border-radius-top;
+	width: auto;
+	float: none;
+	margin-bottom: .5em;
+	margin-right: 0;
+}
+
+.form .element .options label {
+	background: none;
+	border: none;
+}
+
+.form .element input[type=date],
+.form .element input[type=email],
+.form .element input[type=tel],
+.form .element input[type=number],
+.form .element input[type=text],
+.form .element input[type=url] {
+	.transition;
+	border: 1px solid @colorBorderFade;
+	background: transparent;
+	padding: .25em;
+}
+
+.form .element input[type=date]:hover,
+.form .element input[type=date]:focus,
+.form .element input[type=email]:hover,
+.form .element input[type=email]:focus,
+.form .element input[type=tel]:hover,
+.form .element input[type=tel]:focus,
+.form .element input[type=number]:hover,
+.form .element input[type=number]:focus,
+.form .element input[type=text]:hover,
+.form .element input[type=text]:focus,
+.form .element input[type=url]:hover,
+.form .element input[type=url]:focus {
+	border: 1px solid @colorBorder;
 }
 
 /*

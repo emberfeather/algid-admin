@@ -3,5 +3,10 @@
 @colorBoxBackground: darken(@colorBackground, 10%);
 @colorBoxBackgroundGrad: darken(@colorBoxBackground, 10%);
 @colorBase: darken(@colorBackground, 75%);
+@colorBorder: darken(@colorBackground, 50%);
+@colorBorderFade: darken(@colorBackground, 5%);
 @colorDelete: #FF3333;
 @colorInlineEdit: #FFFF99;
+.verticalGradient (@fromColor: @colorBackground, @toColor: @colorBackgroundGrad) {
+	background-image: -webkit-linear-gradient(@fromColor, @toColor);
+}
