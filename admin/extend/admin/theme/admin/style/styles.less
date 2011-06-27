@@ -333,7 +333,8 @@ ul, ol {
 .form .element input[type=tel],
 .form .element input[type=number],
 .form .element input[type=text],
-.form .element input[type=url] {
+.form .element input[type=url],
+.form .element textarea {
 	.transition;
 	border: 1px solid @colorBorderFade;
 	background: transparent;
@@ -351,7 +352,9 @@ ul, ol {
 .form .element input[type=text]:hover,
 .form .element input[type=text]:focus,
 .form .element input[type=url]:hover,
-.form .element input[type=url]:focus {
+.form .element input[type=url]:focus,
+.form .element textarea:hover,
+.form .element textarea:hover:focus {
 	border: 1px solid @colorBorder;
 }
 
