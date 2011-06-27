@@ -45,7 +45,7 @@ ul,ol{padding-top:0;}
 .box h3{font-size:1.25em;}
 .box ul,.box ol,.box p{margin:0;}
 .section{margin-bottom:1em;}
-.form .element{border:1px solid #808080;-webkit-border-radius:0.5em;-moz-border-radius:0.5em;border-radius:0.5em;margin-bottom:1em;padding:0;overflow:hidden;}
+.form .element{border:1px solid #808080;-webkit-border-radius:0.5em;-moz-border-radius:0.5em;border-radius:0.5em;margin-bottom:1em;padding:0;overflow:hidden;line-height:3em;}
 .form .element:nth-child(odd){background:none;}
 .form .element label{border-right:1px solid #808080;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-webkit-border-top-left-radius:0.5em;-webkit-border-bottom-left-radius:0.5em;-moz-border-radius-topleft:0.5em;-moz-border-radius-bottomleft:0.5em;border-top-left-radius:0.5em;border-bottom-left-radius:0.5em;background-image:-webkit-linear-gradient(#ffffff, #bfbfbf);background-image:-mox-linear-gradient(#ffffff, #bfbfbf);background-image:-o-linear-gradient(#ffffff, #bfbfbf);background-image:linear-gradient(#ffffff, #bfbfbf);margin-right:.5em;font-weight:bold;width:25%;}
 .form .element.datagrid label,.form .element.textarea label,.form .element.full label{border-right:none;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-moz-border-radius-topright:0.5em;-moz-border-radius-topleft:0.5em;border-top-right-radius:0.5em;border-top-left-radius:0.5em;width:auto;float:none;margin-bottom:.5em;margin-right:0;}
