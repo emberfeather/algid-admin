@@ -292,9 +292,10 @@ ul, ol {
 */
 
 .form .element {
-	margin-bottom: .5em;
+	border: 1px solid @colorBorder;
+	.border-radius;
+	margin-bottom: 1em;
 	padding: 0;
-	line-height: 2.5em;
 	overflow: hidden;
 }
 
@@ -303,7 +304,7 @@ ul, ol {
 }
 
 .form .element label {
-	border: 1px solid @colorBorder;
+	border-right: 1px solid @colorBorder;
 	.border-radius-left;
 	.verticalGradient;
 	margin-right: .5em;
@@ -314,6 +315,7 @@ ul, ol {
 .form .element.datagrid label,
 .form .element.textarea label,
 .form .element.full label {
+	border-right: none;
 	.border-radius-top;
 	width: auto;
 	float: none;
@@ -351,6 +353,11 @@ ul, ol {
 .form .element input[type=url]:hover,
 .form .element input[type=url]:focus {
 	border: 1px solid @colorBorder;
+}
+
+.form .element textarea {
+	width: 922px;
+	margin: .25em .5em;
 }
 
 /*
