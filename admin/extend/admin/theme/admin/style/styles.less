@@ -1,5 +1,7 @@
 @import "colors";
 @import "transition";
+@widthTextarea: 920px;
+@heightTextarea: 20em;
 
 .border-radius (@radius: 0.5em) {
 	-webkit-border-radius: @radius;
@@ -360,8 +362,8 @@ ul, ol {
 }
 
 .form .element textarea {
-	width: 922px;
-	margin: .25em .5em;
+	width: @widthTextarea;
+	margin: .25em 5px;
 }
 
 /*
@@ -465,6 +467,40 @@ ul, ol {
 	.transition;
 }
 
+/**
+ * markItUp! Customizations
+ */
+.form .element .markItUpContainer {
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+.form .element .markItUp  {
+	width: @widthTextarea;
+	border: none;
+	margin: 0;
+}
+
+.form .element textarea.markItUpEditor {
+	width: @widthTextarea;
+	height: @heightTextarea;
+}
+
+.form .element .markItUpHeader {
+	margin: 0 .5em;
+}
+
+.form .element .markItUpPreviewFrame {
+	margin: 5px;
+	width: @widthTextarea;
+	border: 1px solid @colorBorder;
+}
+
+/**
+ * jQuery UI Customizations
+ */
 .ui-autocomplete {
 	max-width: 30em;
 	

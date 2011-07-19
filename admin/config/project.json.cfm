@@ -20,7 +20,8 @@
 	"plugin": "Administration",
 	"prerequisites": {
 		"algid": "0.1.3",
-		"api": "0.1.0"
+		"api": "0.1.0",
+		"editor": "0.1.0"
 	},
 	"requestSingletons": {
 	},

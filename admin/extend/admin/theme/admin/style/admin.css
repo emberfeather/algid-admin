@@ -52,7 +52,7 @@ ul,ol{padding-top:0;}
 .form .element .options label{background:none;border:none;}
 .form .element input[type=date],.form .element input[type=email],.form .element input[type=tel],.form .element input[type=number],.form .element input[type=text],.form .element input[type=url],.form .element textarea{-webkit-transition:all 1.5s ease-in-out;-moz-transition:all 1.5s ease-in-out;-o-transition:all 1.5s ease-in-out;-ms-transition:all 1.5s ease-in-out;transition:all 1.5s ease-in-out;-moz-transition:all 0.25s ease-in-out;-webkit-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out;border:1px solid #f2f2f2;background:transparent;padding:.25em;}
 .form .element input[type=date]:hover,.form .element input[type=date]:focus,.form .element input[type=email]:hover,.form .element input[type=email]:focus,.form .element input[type=tel]:hover,.form .element input[type=tel]:focus,.form .element input[type=number]:hover,.form .element input[type=number]:focus,.form .element input[type=text]:hover,.form .element input[type=text]:focus,.form .element input[type=url]:hover,.form .element input[type=url]:focus,.form .element textarea:hover,.form .element textarea:hover:focus{border:1px solid #808080;}
-.form .element textarea{width:922px;margin:.25em .5em;}
+.form .element textarea{width:920px;margin:.25em 5px;}
 .pagination a:hover,.pagination .selected a{background-image:-moz-linear-gradient(top, #cccccc, #e6e6e6);background-image:-webkit-gradient(linear, left top, left bottom, from(#cccccc), to(#e6e6e6));}
 .sortable li{list-style:none;margin:.25em 0;padding:.25em .5em;}
 .sortable{min-height:5em;}
@@ -66,6 +66,11 @@ ul,ol{padding-top:0;}
 .submenu.horizontal a{-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-moz-border-radius-bottomright:0.5em;-moz-border-radius-bottomleft:0.5em;border-bottom-right-radius:0.5em;border-bottom-left-radius:0.5em;}
 .menu.horizontal.action a.selected,.menu.horizontal.action a:hover,.submenu.horizontal.action a.selected,.submenu.horizontal.action a:hover{background:none;text-decoration:underline;}
 .menu.horizontal a{-webkit-transition:all 1.5s ease-in-out;-moz-transition:all 1.5s ease-in-out;-o-transition:all 1.5s ease-in-out;-ms-transition:all 1.5s ease-in-out;transition:all 1.5s ease-in-out;-moz-transition:all 0.25s ease-in-out;-webkit-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out;}
+.form .element .markItUpContainer{background:none;border:none;margin:0;padding:0;}
+.form .element .markItUp{width:920px;border:none;margin:0;}
+.form .element textarea.markItUpEditor{width:920px;height:20em;}
+.form .element .markItUpHeader{margin:0 .5em;}
+.form .element .markItUpPreviewFrame{margin:5px;width:920px;border:1px solid #808080;}
 .ui-autocomplete{max-width:30em;}.ui-autocomplete a{font-weight:normal;}
 .ui-autocomplete-category{margin:0;padding:.25em;font-weight:bold;}
 .ui-autocomplete-more{margin:0;padding:.25em .5em;font-size:.9em;font-style:italic;}
