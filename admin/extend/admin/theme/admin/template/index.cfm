@@ -19,8 +19,20 @@
 	) />
 	
 	<cfif isProduction>
-		<cfset template.addStyles( transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/admin-min.css' ) />
+		<cfset template.addStyles(
+			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/admin-min.css',
+			transport.theRequest.webRoot & 'plugins/editor/script/markitup/skins/markitup/style-min.css',
+			transport.theRequest.webRoot & 'plugins/editor/style/editor-min.css'
+		) />
+		
 		<cfset template.addStyle(transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/print-min.css', 'print') />
+		
+		<cfset template.addScripts(
+			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/jquery.admin-min.js',
+			transport.theRequest.webRoot & 'plugins/api/script/jquery.api-min.js',
+			transport.theRequest.webRoot & 'plugins/editor/script/markitup/jquery.markitup-min.js',
+			transport.theRequest.webRoot & 'plugins/editor/script/jquery.editor-min.js'
+		) />
 	<cfelse>
 		<cfif app.isMaintenance()>
 			<cfset template.addStyles( transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/maintenance-min.css' ) />
@@ -30,21 +42,18 @@
 		
 		<cfset template.addStyles(
 			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/jquery.jgrowl.css',
-			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/styles-min.css'
+			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/styles-min.css',
+			transport.theRequest.webRoot & 'plugins/editor/script/markitup/skins/markitup/style.css',
+			transport.theRequest.webRoot & 'plugins/editor/style/editor.css'
 		) />
 		
 		<cfset template.addStyle(transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/print.css', 'print') />
-	</cfif>
-	
-	<cfif isProduction>
-		<cfset template.addScripts(
-			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/jquery.admin-min.js',
-			transport.theRequest.webRoot & 'plugins/api/script/jquery.api-min.js'
-		) />
-	<cfelse>
+		
 		<cfset template.addScripts(
 			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/jquery.base.js',
-			transport.theRequest.webRoot & 'plugins/api/script/jquery.api.js'
+			transport.theRequest.webRoot & 'plugins/api/script/jquery.api.js',
+			transport.theRequest.webRoot & 'plugins/editor/script/markitup/jquery.markitup.js',
+			transport.theRequest.webRoot & 'plugins/editor/script/jquery.editor.js'
 		) />
 	</cfif>
 	
