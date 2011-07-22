@@ -1,7 +1,23 @@
 @colorBackground: #FFFFFF;
 @colorBackgroundGrad: darken(@colorBackground, 25%);
 @colorBoxBackground: darken(@colorBackground, 10%);
-@colorBoxBackgroundGrad: darken(@colorBoxBackground, 10%);
+@colorBoxBackgroundGrad: darken(@colorBackground, 20%);
 @colorBase: darken(@colorBackground, 75%);
+@colorBorder: darken(@colorBackground, 50%);
+@colorBorderFade: darken(@colorBackground, 5%);
 @colorDelete: #FF3333;
 @colorInlineEdit: #FFFF99;
+
+.horizonatlGradient (@fromColor: @colorBackground, @toColor: @colorBackgroundGrad) {
+	background-image: -webkit-linear-gradient(0, @fromColor, @toColor);
+	background-image: -moz-linear-gradient(0, @fromColor, @toColor);
+	background-image: -o-linear-gradient(0, @fromColor, @toColor);
+	background-image: linear-gradient(0, @fromColor, @toColor);
+}
+
+.verticalGradient (@fromColor: @colorBackground, @toColor: @colorBackgroundGrad) {
+	background-image: -webkit-linear-gradient(@fromColor, @toColor);
+	background-image: -mox-linear-gradient(@fromColor, @toColor);
+	background-image: -o-linear-gradient(@fromColor, @toColor);
+	background-image: linear-gradient(@fromColor, @toColor);
+}
