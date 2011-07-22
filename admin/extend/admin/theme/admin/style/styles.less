@@ -273,16 +273,16 @@ ul, ol {
 	.border-radius;
 	background: -webkit-gradient(linear, 0% 0, 0% 350, from(@colorBoxBackground), to(@colorBoxBackgroundGrad));
 	background: -moz-linear-gradient(0px 350px 90deg,@colorBoxBackgroundGrad, @colorBoxBackground);
-}
-
-.box h3 {
-	font-size: 1.25em;
-}
-
-.box ul,
-.box ol,
-.box p {
-	margin: 0;
+	
+	h3 {
+		font-size: 1.25em;
+	}
+	
+	ul,
+	ol,
+	p {
+		margin: 0;
+	}
 }
 
 .section {
@@ -293,105 +293,139 @@ ul, ol {
 	Forms
 */
 
-.form .element {
-	border: 1px solid @colorBorder;
-	.border-radius;
-	margin-bottom: 1em;
-	padding: 0;
-	overflow: hidden;
-	line-height: 3em;
-}
-
-.form .element:nth-child(odd) {
-	background: none;
-}
-
-.form .element label {
-	border-right: 1px solid @colorBorder;
-	.border-radius-left;
-	.verticalGradient;
-	margin-right: .5em;
-	font-weight: bold;
-	width: 25%;
-}
-
-.form .element.datagrid label,
-.form .element.textarea label,
-.form .element.full label {
-	border-right: none;
-	.border-radius-top;
-	width: auto;
-	float: none;
-	margin-bottom: .5em;
-	margin-right: 0;
-}
-
-.form .element.full .options label {
-	margin-left: .5em;
-}
-
-.form .element .options label {
-	background: none;
-	border: none;
-}
-
-.form .element input[type=date],
-.form .element input[type=email],
-.form .element input[type=tel],
-.form .element input[type=number],
-.form .element input[type=text],
-.form .element input[type=url],
-.form .element textarea {
-	.transition;
-	border: 1px solid @colorBorderFade;
-	background: transparent;
-	padding: .25em;
-}
-
-.form .element input[type=date]:hover,
-.form .element input[type=date]:focus,
-.form .element input[type=email]:hover,
-.form .element input[type=email]:focus,
-.form .element input[type=tel]:hover,
-.form .element input[type=tel]:focus,
-.form .element input[type=number]:hover,
-.form .element input[type=number]:focus,
-.form .element input[type=text]:hover,
-.form .element input[type=text]:focus,
-.form .element input[type=url]:hover,
-.form .element input[type=url]:focus,
-.form .element textarea:hover,
-.form .element textarea:hover:focus {
-	border: 1px solid @colorBorder;
-}
-
-.form .element textarea {
-	width: @widthTextarea;
-	margin: .25em 5px;
+.form {
+	.element {
+		border: 1px solid @colorBorder;
+		.border-radius;
+		margin-bottom: 1em;
+		padding: 0;
+		overflow: hidden;
+		line-height: 3em;
+		
+		label {
+			border-right: 1px solid @colorBorder;
+			.border-radius-left;
+			.verticalGradient;
+			margin-right: .5em;
+			font-weight: bold;
+			width: 25%;
+		}
+		
+		.options label {
+			background: none;
+			border: none;
+		}
+		
+		input[type=date],
+		input[type=email],
+		input[type=tel],
+		input[type=number],
+		input[type=text],
+		input[type=url],
+		textarea {
+			.transition;
+			border: 1px solid @colorBorderFade;
+			background: transparent;
+			padding: .25em;
+		}
+		
+		input[type=date]:hover,
+		input[type=date]:focus,
+		input[type=email]:hover,
+		input[type=email]:focus,
+		input[type=tel]:hover,
+		input[type=tel]:focus,
+		input[type=number]:hover,
+		input[type=number]:focus,
+		input[type=text]:hover,
+		input[type=text]:focus,
+		input[type=url]:hover,
+		input[type=url]:focus,
+		textarea:hover,
+		textarea:hover:focus {
+			border: 1px solid @colorBorder;
+		}
+		
+		textarea {
+			width: @widthTextarea;
+			margin: .25em 5px;
+		}
+		
+		/**
+		 * markItUp! Customizations
+		 */
+		.markItUpContainer {
+			background: none;
+			border: none;
+			margin: 0;
+			padding: 0;
+		}
+		
+		.markItUp  {
+			width: @widthTextarea;
+			border: none;
+			margin: 0;
+		}
+		
+		textarea.markItUpEditor {
+			width: @widthTextarea;
+			height: @heightTextarea;
+		}
+		
+		.markItUpHeader {
+			margin: 0 .5em;
+		}
+		
+		.markItUpPreviewFrame {
+			margin: 5px;
+			width: @widthTextarea;
+			border: 1px solid @colorBorder;
+		}
+		
+		&:nth-child(odd) {
+			background: none;
+		}
+		
+		&.datagrid label,
+		&.textarea label,
+		&.full label {
+			border-right: none;
+			.border-radius-top;
+			width: auto;
+			float: none;
+			margin-bottom: .5em;
+			margin-right: 0;
+		}
+		
+		&.full .options label {
+			margin-left: .5em;
+		}
+	}
 }
 
 /*
 	Pagination
 */
 
-.pagination a:hover,
-.pagination .selected a {
-	background-image: -moz-linear-gradient(top, @colorBoxBackgroundGrad, @colorBoxBackground);
-	background-image: -webkit-gradient(linear, left top, left bottom, from(@colorBoxBackgroundGrad), to(@colorBoxBackground));
+.pagination {
+	a:hover,
+	.selected a {
+		background-image: -moz-linear-gradient(top, @colorBoxBackgroundGrad, @colorBoxBackground);
+		background-image: -webkit-gradient(linear, left top, left bottom, from(@colorBoxBackgroundGrad), to(@colorBoxBackground));
+	}
 }
 
 /*
 	Sorting
 */
-
-.sortable li {
-	list-style: none;
-	margin: .25em 0;
-	padding: .25em .5em;
-}
-
 .sortable {
 	min-height: 5em;
+	
+	li {
+		list-style: none;
+		margin: .25em 0;
+		padding: .25em .5em;
+	}
 }
 
 .dragarea {
@@ -472,37 +506,6 @@ ul, ol {
 }
 
 /**
- * markItUp! Customizations
- */
-.form .element .markItUpContainer {
-	background: none;
-	border: none;
-	margin: 0;
-	padding: 0;
-}
-
-.form .element .markItUp  {
-	width: @widthTextarea;
-	border: none;
-	margin: 0;
-}
-
-.form .element textarea.markItUpEditor {
-	width: @widthTextarea;
-	height: @heightTextarea;
-}
-
-.form .element .markItUpHeader {
-	margin: 0 .5em;
-}
-
-.form .element .markItUpPreviewFrame {
-	margin: 5px;
-	width: @widthTextarea;
-	border: 1px solid @colorBorder;
-}
-
-/**
  * jQuery UI Customizations
  */
 .ui-autocomplete {
@@ -529,12 +532,12 @@ ul, ol {
 dl.navigation {
 	margin: 0 0 1.5em 0;
 	line-height: 2em;
-}
-
-dl.navigation dt {
-	font-size: 1.2em;
-}
-
-dl.navigation dd {
-	margin-left: 2em;
+	
+	dt {
+		font-size: 1.2em;
+	}
+	
+	dd {
+		margin-left: 2em;
+	}
 }
