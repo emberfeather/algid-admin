@@ -7,6 +7,9 @@ a:hover{color:#00608e;}
 .menu.horizontal a.selected,.menu.horizontal a:hover,.submenu.horizontal a.selected,.submenu.horizontal a:hover{color:#ffffff;background:#0083c1;}
 .submenu.horizontal.action a.selected,.submenu.horizontal.action a:hover{color:#0083c1;}
 .sortable li{border:1px solid #0083c1;}
+.form .element input[type=date],.form .element input[type=email],.form .element input[type=tel],.form .element input[type=number],.form .element input[type=text],.form .element input[type=url],.form .element textarea{border:1px solid #00a6f4;}
+.form .element input[type=date]:hover,.form .element input[type=date]:focus,.form .element input[type=email]:hover,.form .element input[type=email]:focus,.form .element input[type=tel]:hover,.form .element input[type=tel]:focus,.form .element input[type=number]:hover,.form .element input[type=number]:focus,.form .element input[type=text]:hover,.form .element input[type=text]:focus,.form .element input[type=url]:hover,.form .element input[type=url]:focus,.form .element textarea:hover,.form .element textarea:hover:focus{border:1px solid #0083c1;}
+.form .element .markItUpPreviewFrame{border:1px solid #0083c1;}
 body{background:#ffffff;color:#404040;font:11px/15px Century Gothic,Apple Gothic,sans-serif;}
 p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin:.5em 0;}
 a{font-weight:bold;text-decoration:none;}
@@ -44,17 +47,16 @@ ul,ol{padding-top:0;}
 .box{background:#e6e6e6;margin:0 0 1em 0;padding:1em;min-height:1em;-webkit-border-radius:0.5em;-moz-border-radius:0.5em;border-radius:0.5em;background:-webkit-gradient(linear, 0% 0, 0% 350, from(#e6e6e6), to(#cccccc));background:-moz-linear-gradient(0px 350px 90deg, #cccccc, #e6e6e6);}.box h3{font-size:1.25em;}
 .box ul,.box ol,.box p{margin:0;}
 .section{margin-bottom:1em;}
-.form .element{border:1px solid #808080;-webkit-border-radius:0.5em;-moz-border-radius:0.5em;border-radius:0.5em;margin-bottom:1em;padding:0;overflow:hidden;line-height:3em;}.form .element label{border-right:1px solid #808080;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-webkit-border-top-left-radius:0.5em;-webkit-border-bottom-left-radius:0.5em;-moz-border-radius-topleft:0.5em;-moz-border-radius-bottomleft:0.5em;border-top-left-radius:0.5em;border-bottom-left-radius:0.5em;background-image:-webkit-linear-gradient(#ffffff, #bfbfbf);background-image:-mox-linear-gradient(#ffffff, #bfbfbf);background-image:-o-linear-gradient(#ffffff, #bfbfbf);background-image:linear-gradient(#ffffff, #bfbfbf);margin-right:.5em;font-weight:bold;width:25%;}
+.form .element{-webkit-border-radius:0.5em;-moz-border-radius:0.5em;border-radius:0.5em;margin-bottom:1em;padding:0;overflow:hidden;line-height:3em;}.form .element label{margin-right:.5em;font-weight:bold;width:25%;}
 .form .element .options label{background:none;border:none;}
-.form .element input[type=date],.form .element input[type=email],.form .element input[type=tel],.form .element input[type=number],.form .element input[type=text],.form .element input[type=url],.form .element textarea{-webkit-transition:all 1.5s ease-in-out;-moz-transition:all 1.5s ease-in-out;-o-transition:all 1.5s ease-in-out;-ms-transition:all 1.5s ease-in-out;transition:all 1.5s ease-in-out;-moz-transition:all 0.25s ease-in-out;-webkit-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out;border:1px solid #f2f2f2;background:transparent;padding:.25em;}
-.form .element input[type=date]:hover,.form .element input[type=date]:focus,.form .element input[type=email]:hover,.form .element input[type=email]:focus,.form .element input[type=tel]:hover,.form .element input[type=tel]:focus,.form .element input[type=number]:hover,.form .element input[type=number]:focus,.form .element input[type=text]:hover,.form .element input[type=text]:focus,.form .element input[type=url]:hover,.form .element input[type=url]:focus,.form .element textarea:hover,.form .element textarea:hover:focus{border:1px solid #808080;}
+.form .element input[type=date],.form .element input[type=email],.form .element input[type=tel],.form .element input[type=number],.form .element input[type=text],.form .element input[type=url],.form .element textarea{-webkit-transition:all 1.5s ease-in-out;-moz-transition:all 1.5s ease-in-out;-o-transition:all 1.5s ease-in-out;-ms-transition:all 1.5s ease-in-out;transition:all 1.5s ease-in-out;-moz-transition:all 0.25s ease-in-out;-webkit-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out;border:1px solid #808080;background:transparent;padding:.25em;}
+.form .element input[type=date]:hover,.form .element input[type=date]:focus,.form .element input[type=email]:hover,.form .element input[type=email]:focus,.form .element input[type=tel]:hover,.form .element input[type=tel]:focus,.form .element input[type=number]:hover,.form .element input[type=number]:focus,.form .element input[type=text]:hover,.form .element input[type=text]:focus,.form .element input[type=url]:hover,.form .element input[type=url]:focus,.form .element textarea:hover,.form .element textarea:hover:focus{border:1px solid #404040;}
 .form .element textarea{width:920px;margin:.25em 5px;}
 .form .element .markItUpContainer{background:none;border:none;margin:0;padding:0;}
 .form .element .markItUp{width:920px;border:none;margin:0;}
 .form .element textarea.markItUpEditor{width:920px;height:20em;}
 .form .element .markItUpHeader{margin:0 .5em;}
-.form .element .markItUpPreviewFrame{margin:5px;width:920px;border:1px solid #808080;}
-.form .element:nth-child(odd){background:none;}
+.form .element .markItUpPreviewFrame{margin:5px;width:920px;border:1px solid #404040;}
 .form .element.datagrid label,.form .element.textarea label,.form .element.full label{border-right:none;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-moz-border-radius-topright:0.5em;-moz-border-radius-topleft:0.5em;border-top-right-radius:0.5em;border-top-left-radius:0.5em;width:auto;float:none;margin-bottom:.5em;margin-right:0;}
 .form .element.full .options label{margin-left:.5em;}
 .pagination a:hover,.pagination .selected a{background-image:-moz-linear-gradient(top, #cccccc, #e6e6e6);background-image:-webkit-gradient(linear, left top, left bottom, from(#cccccc), to(#e6e6e6));}
