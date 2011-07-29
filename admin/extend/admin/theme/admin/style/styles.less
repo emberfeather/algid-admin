@@ -397,6 +397,20 @@ ul, ol {
 	&.condensed .element {
 		margin-bottom: 0;
 	}
+	
+	&.highlight .element {
+		&:hover {
+			background: #d7eafe;
+		}
+		
+		.phantom {
+			visibility: hidden;
+		}
+		
+		&:hover .phantom {
+			visibility: visible;
+		}
+	}
 }
 
 /*
