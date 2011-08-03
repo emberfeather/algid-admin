@@ -177,13 +177,17 @@
 							</cfif>
 							
 							<cfset options = {
-									navClasses = ['submenu horizontal']
-								} />
+								navClasses = ['submenu horizontal']
+							} />
 							
-							<cfif isLoggedIn>
-								<cfset subNav = (template.getNavigation(navLevel + 1, 'main', options, user)) />
-							<cfelseif not hasUser>
-								<cfset subNav = (template.getNavigation(navLevel + 1, 'main', options)) />
+							<cfif navLevel gt 0>
+								<cfif isLoggedIn>
+									<cfset subNav = (template.getNavigation(navLevel + 1, 'main', options, user)) />
+								<cfelseif not hasUser>
+									<cfset subNav = (template.getNavigation(navLevel + 1, 'main', options)) />
+								<cfelse>
+									<cfset subNav = '' />
+								</cfif>
 							<cfelse>
 								<cfset subNav = '' />
 							</cfif>
