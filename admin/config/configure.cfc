@@ -40,10 +40,13 @@
 			
 			<!--- Search for admin directory in the plugin extension point --->
 			<cfif directoryExists(navDirectory)>
-				<cfdirectory action="list" directory="#navDirectory#" name="files" filter="structure.json.cfm|structure.xml.cfm" />
+				<cfdirectory action="list" directory="#navDirectory#" name="files" filter="*.json.cfm|*.xml.cfm" />
 				
 				<cfloop query="files">
-					<cfset navigation.applyMask( files.directory & '/' & files.name, contentDirectory, i18nDirectory, 'structure', arrayToList(plugin.getI18n().locales) ) />
+					<cfset search = reFind('^(.*)\.(json|xml)\.cfm$', files.name, 1, true) />
+					<cfset bundleName = mid(files.name, search.pos[2], search.len[2]) />
+					
+					<cfset navigation.applyMask( files.directory & '/' & files.name, contentDirectory, i18nDirectory, bundleName, arrayToList(plugin.getI18n().locales) ) />
 				</cfloop>
 			</cfif>
 		</cfloop>
@@ -54,14 +57,17 @@
 			
 			<cfset contentDirectory = '/plugins/' & i & '/extend/admin/content/' />
 			<cfset i18nDirectory = '/plugins/' & i & '/i18n/extend/admin/navigation/' />
-			<cfset navDirectory = variables.appBaseDirectory & 'plugins/' & i & '/extend/admin/navigation/' />
+			<cfset navDirectory = local.plugin.getStoragePath() & '/extend/admin/navigation/' />
 			
 			<!--- Search for admin directory in the plugin extension point --->
 			<cfif directoryExists(navDirectory)>
-				<cfdirectory action="list" directory="#navDirectory#" name="files" filter="permission.json.cfm|permission.xml.cfm" />
+				<cfdirectory action="list" directory="#navDirectory#" name="files" filter="*.json.cfm|*.xml.cfm" />
 				
 				<cfloop query="files">
-					<cfset navigation.applyMask( files.directory & '/' & files.name, contentDirectory, i18nDirectory, 'permission', arrayToList(plugin.getI18n().locales) ) />
+					<cfset search = reFind('^(.*)\.(json|xml)\.cfm$', files.name, 1, true) />
+					<cfset bundleName = mid(files.name, search.pos[2], search.len[2]) />
+					
+					<cfset navigation.applyMask( files.directory & '/' & files.name, contentDirectory, i18nDirectory, bundleName, arrayToList(plugin.getI18n().locales) ) />
 				</cfloop>
 			</cfif>
 		</cfloop>
