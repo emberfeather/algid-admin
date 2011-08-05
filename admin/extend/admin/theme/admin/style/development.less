@@ -2,6 +2,8 @@
 
 @colorEnv: #1E8F00;
 @colorEnvGrad: darken(@colorEnv, 10%);
+@colorBorder: @colorEnv;
+@colorBorderFade: lighten(@colorEnv, 10%);
 
 h2,
 .box h3 {
@@ -45,4 +47,37 @@ a:hover {
 
 .sortable li {
 	border: 1px solid @colorEnv;
+}
+
+.form .element {
+	input[type=date],
+	input[type=email],
+	input[type=tel],
+	input[type=number],
+	input[type=text],
+	input[type=url],
+	textarea {
+		border: 1px solid @colorBorderFade;
+	}
+	
+	input[type=date]:hover,
+	input[type=date]:focus,
+	input[type=email]:hover,
+	input[type=email]:focus,
+	input[type=tel]:hover,
+	input[type=tel]:focus,
+	input[type=number]:hover,
+	input[type=number]:focus,
+	input[type=text]:hover,
+	input[type=text]:focus,
+	input[type=url]:hover,
+	input[type=url]:focus,
+	textarea:hover,
+	textarea:hover:focus {
+		border: 1px solid @colorBorder;
+	}
+	
+	.markItUpPreviewFrame {
+		border: 1px solid @colorBorder;
+	}
 }

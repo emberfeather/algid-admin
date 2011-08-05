@@ -30,7 +30,7 @@
 		<!--- Create the admin navigation singleton --->
 		<cfset navigation = arguments.theApplication.factories.transient.getNavigationForAdmin(arguments.theApplication.managers.singleton.getI18N()) />
 		
-		<!--- Update the plugins and setup the transient and singleton information --->
+		<!--- Apply any normal navigation --->
 		<cfloop array="#arguments.theApplication.managers.singleton.getApplication().getPrecedence()#" index="i">
 			<cfset plugin = arguments.theApplication.managers.plugin.get(i) />
 			
@@ -43,11 +43,30 @@
 				<cfdirectory action="list" directory="#navDirectory#" name="files" filter="*.json.cfm|*.xml.cfm" />
 				
 				<cfloop query="files">
-					<!--- Get the bundle name from the filename --->
 					<cfset search = reFind('^(.*)\.(json|xml)\.cfm$', files.name, 1, true) />
 					<cfset bundleName = mid(files.name, search.pos[2], search.len[2]) />
 					
-					<!--- Apply Navigation Masks --->
+					<cfset navigation.applyMask( files.directory & '/' & files.name, contentDirectory, i18nDirectory, bundleName, arrayToList(plugin.getI18n().locales) ) />
+				</cfloop>
+			</cfif>
+		</cfloop>
+		
+		<!--- Apply any permissions --->
+		<cfloop array="#arguments.theApplication.managers.singleton.getApplication().getPrecedence()#" index="i">
+			<cfset plugin = arguments.theApplication.managers.plugin.get(i) />
+			
+			<cfset contentDirectory = '/plugins/' & i & '/extend/admin/content/' />
+			<cfset i18nDirectory = '/plugins/' & i & '/i18n/extend/admin/navigation/' />
+			<cfset navDirectory = local.plugin.getStoragePath() & '/extend/admin/navigation/' />
+			
+			<!--- Search for admin directory in the plugin extension point --->
+			<cfif directoryExists(navDirectory)>
+				<cfdirectory action="list" directory="#navDirectory#" name="files" filter="*.json.cfm|*.xml.cfm" />
+				
+				<cfloop query="files">
+					<cfset search = reFind('^(.*)\.(json|xml)\.cfm$', files.name, 1, true) />
+					<cfset bundleName = mid(files.name, search.pos[2], search.len[2]) />
+					
 					<cfset navigation.applyMask( files.directory & '/' & files.name, contentDirectory, i18nDirectory, bundleName, arrayToList(plugin.getI18n().locales) ) />
 				</cfloop>
 			</cfif>
