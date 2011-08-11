@@ -59,6 +59,8 @@ ul,ol{padding-top:0;}
 .form .element .markItUpHeader{margin:0 .5em;}
 .form .element .markItUpPreviewFrame{margin:5px;width:920px;border:1px solid #404040;}
 .form .element.datagrid label,.form .element.textarea label,.form .element.full label{border-right:none;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-moz-border-radius-topright:0.5em;-moz-border-radius-topleft:0.5em;border-top-right-radius:0.5em;border-top-left-radius:0.5em;width:auto;float:none;margin-bottom:.5em;margin-right:0;}
+.form .element.full>label{padding-left:0;}
+.form .element.full{padding:0 1em;}
 .form .element.full .options label{margin-left:.5em;}
 .form.condensed .element{margin-bottom:0;}
 .form.highlight .element:hover{background:#d7eafe;}
