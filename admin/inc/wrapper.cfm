@@ -49,7 +49,18 @@
 	<cfset profiler.start('template') />
 	
 	<!--- Create template object --->
-	<cfset template = transport.theApplication.factories.transient.getTemplateForAdmin(transport.theCGI.server_name, navigation, theURL, i18n, transport.theSession.managers.singleton.getSession().getLocale(), {}, transport.theSession.managers.singleton.getUser()) />
+	<cfset args = [transport.theCGI.server_name,
+			navigation,
+			theURL,
+			i18n,
+			transport.theSession.managers.singleton.getSession().getLocale(),
+			{}] />
+	
+	<cfif transport.theSession.managers.singleton.hasUser()>
+		<cfset arrayAppend(args, transport.theSession.managers.singleton.getUser()) />
+	</cfif>
+	
+	<cfset template = transport.theApplication.factories.transient.getTemplateForAdmin(argumentCollection = args) />
 	
 	<!--- Add the main jquery scripts with fallbacks --->
 	<cfset template.addScript('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', { condition = '!window.jQuery', script = '/algid/script/jquery-min.js' }) />
