@@ -47,13 +47,16 @@ ul,ol{padding-top:0;}
 .form .element .markItUpHeader{margin:0 .5em;}
 .form .element .markItUpPreviewFrame{margin:5px;width:920px;border:1px solid #404040;}
 .form .element.datagrid label,.form .element.textarea label,.form .element.full label{border-right:none;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-moz-border-radius-topright:0.5em;-moz-border-radius-topleft:0.5em;border-top-right-radius:0.5em;border-top-left-radius:0.5em;width:auto;float:none;margin-bottom:.5em;margin-right:0;}
+.form .element.full>label{padding-left:0;}
+.form .element.full{padding:0 1em;}
 .form .element.full .options label{margin-left:.5em;}
 .form.condensed .element{margin-bottom:0;}
 .form.highlight .element:hover{background:#d7eafe;}
 .form.highlight .element .phantom{visibility:hidden;}
 .form.highlight .element:hover .phantom{visibility:visible;}
 .pagination a:hover,.pagination .selected a{background-image:-moz-linear-gradient(top, #cccccc, #e6e6e6);background-image:-webkit-gradient(linear, left top, left bottom, from(#cccccc), to(#e6e6e6));}
-.sortable{min-height:5em;}.sortable li{list-style:none;margin:.25em 0;padding:.25em .5em;}
+ul.sortable{min-height:5em;}
+.sortable li{list-style:none;margin:.25em 0;padding:.25em .5em;}
 .dragarea{background:#bfbfbf;margin:0 0 1em 0;padding:1em;min-height:1em;-webkit-border-radius:0.5em;-moz-border-radius:0.5em;border-radius:0.5em;background:-webkit-gradient(linear, 0% 0, 0% 350, from(#e6e6e6), to(#cccccc));background:-moz-linear-gradient(0px 350px 90deg, #cccccc, #e6e6e6);}
 .inlineEdit{margin:0;padding:1px 0;border:none;background:none;}.inlineEdit:hover,.inlineEdit:focus{background:#ffff99;}
 .menu.horizontal ul,.submenu.horizontal ul{margin:0;padding:0;list-style:none;}
