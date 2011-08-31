@@ -27,7 +27,7 @@ h1,h2,h3,h4,h5,h6{line-height:1.2em;margin:.3em 0;}
 h2{margin:.5em 0;}
 ol{list-style:decimal;}
 ul{list-style:square;}
-li{margin-left:2em;}
+dd,li{margin-left:2em;}
 p{margin-bottom:1em;}
 blockquote{font-family:Georgia,'Times New Roman',serif;font-size:1.2em;padding-left:1.5em;border-left:4px solid #575757;}
 blockquote cite{font-size:.9em;}
