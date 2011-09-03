@@ -147,6 +147,7 @@ ul {
 	list-style: square;
 }
 
+dd,
 li {
 	margin-left: 2em;
 }
@@ -340,6 +341,11 @@ ul, ol {
 		textarea:hover,
 		textarea:hover:focus {
 			border: 1px solid @colorBorder;
+		}
+		
+		::-webkit-input-placeholder,
+		:-moz-placeholder {
+			text-transform: capitalize;
 		}
 		
 		textarea {
