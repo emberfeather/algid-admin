@@ -388,6 +388,20 @@ ul, ol {
 			border: 1px solid @colorBorder;
 		}
 		
+		&.datagrid:nth-child(odd)  {
+			thead {
+				background: #d2d2d2;
+			}
+			
+			tbody {
+				tr:nth-child(odd) {
+					td {
+						background: #dcdcdc;
+					}
+				}
+			}
+		}
+		
 		&.datagrid label,
 		&.textarea label,
 		&.full label {
