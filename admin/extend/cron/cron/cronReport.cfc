@@ -36,7 +36,7 @@ component extends="plugins.cron.inc.resource.base.cron" {
 			
 			// Send the completed email
 			if(!local.report.isBlank()) {
-				mail from="#arguments.options.email#" to="#arguments.options.email#" subject="#local.report.getSubject()#" type="html" {
+				mail from="#arguments.options.from#" to="#arguments.options.email#" subject="#local.report.getSubject()#" type="html" {
 					writeOutput( local.viewReport.generateReport(local.report) );
 				};
 			}
