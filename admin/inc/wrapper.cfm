@@ -73,9 +73,9 @@
 		<cfset template.addScripts('/cf-compendium/script/jquery.cf-compendium-min.js') />
 		<cfset template.addScripts('/algid/script/jquery.algid-min.js') />
 	<cfelse>
-		<cfset template.addStyles('/cf-compendium/style/base.css', '/cf-compendium/style/form.css', '/cf-compendium/style/list.css', '/cf-compendium/style/datagrid.css', '/cf-compendium/style/detail.css', '/cf-compendium/style/code.css', '/cf-compendium/style/chosen.css') />
+		<cfset template.addStyles('/cf-compendium/style/base.css', '/cf-compendium/style/form.css', '/cf-compendium/style/list.css', '/cf-compendium/style/datagrid.css', '/cf-compendium/style/detail.css', '/cf-compendium/style/code.css') />
 		<cfset template.addStyles('/algid/style/base.css') />
-		<cfset template.addScripts('/cf-compendium/script/jquery.base.js', '/cf-compendium/script/jquery.form.js', '/cf-compendium/script/jquery.list.js', '/cf-compendium/script/jquery.datagrid.js', '/cf-compendium/script/jquery.timeago.js', '/cf-compendium/script/jquery.cookie.js', '/cf-compendium/script/jquery-ui.timepicker-addon.js', '/cf-compendium/script/jquery.chosen-min.js', '/cf-compendium/script/jquery.elastic.js') />
+		<cfset template.addScripts('/cf-compendium/script/jquery.base.js', '/cf-compendium/script/jquery.form.js', '/cf-compendium/script/jquery.list.js', '/cf-compendium/script/jquery.datagrid.js', '/cf-compendium/script/jquery.timeago.js', '/cf-compendium/script/jquery.cookie.js', '/cf-compendium/script/jquery-ui.timepicker-addon.js', '/cf-compendium/script/jquery.expanding.js') />
 		<cfset template.addScripts('/algid/script/jquery.base.js') />
 	</cfif>
 	
