@@ -10,67 +10,26 @@
 	</cfif>
 	
 	<cfset isLoggedIn = hasUser and user.isLoggedIn() />
-	
-	<cfset template.addStyles(
-		'//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css',
-		'//fonts.googleapis.com/css?family=Philosopher&subset=latin',
-		'/algid/style/960/reset-min.css',
-		'/algid/style/960/960-min.css'
-	) />
-	
-	<cfif isProduction>
-		<cfset template.addStyles(
-			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/admin-min.css',
-			transport.theRequest.webRoot & 'plugins/editor/script/markitup/skins/markitup/style-min.css',
-			transport.theRequest.webRoot & 'plugins/editor/style/editor-min.css'
-		) />
-		
-		<cfset template.addStyle(transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/print-min.css', 'print') />
-		
-		<cfset template.addScripts(
-			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/jquery.admin-min.js',
-			transport.theRequest.webRoot & 'plugins/api/script/jquery.api-min.js',
-			transport.theRequest.webRoot & 'plugins/editor/script/markitup/jquery.markitup-min.js',
-			transport.theRequest.webRoot & 'plugins/editor/script/jquery.editor-min.js'
-		) />
-	<cfelse>
-		<cfif app.isMaintenance()>
-			<cfset template.addStyles( transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/maintenance-min.css' ) />
-		<cfelse>
-			<cfset template.addStyles( transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/development-min.css' ) />
-		</cfif>
-		
-		<cfset template.addStyles(
-			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/jquery.jgrowl.css',
-			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/styles-min.css',
-			transport.theRequest.webRoot & 'plugins/editor/script/markitup/skins/markitup/style.css',
-			transport.theRequest.webRoot & 'plugins/editor/style/editor.css'
-		) />
-		
-		<cfset template.addStyle(transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/style/print.css', 'print') />
-		
-		<cfset template.addScripts(
-			transport.theRequest.webRoot & 'plugins/admin/extend/admin/theme/admin/script/jquery.base.js',
-			transport.theRequest.webRoot & 'plugins/api/script/jquery.api.js',
-			transport.theRequest.webRoot & 'plugins/editor/script/markitup/jquery.markitup.js',
-			transport.theRequest.webRoot & 'plugins/editor/script/jquery.editor.js'
-		) />
-	</cfif>
+	<cfset minFix = isProduction ? '-min' : '' />
 	
 	<!--- Setup admin search settings --->
 	<cfset searchSettings = admin.getSearch() />
 	
-	<cfsavecontent variable="adminSearch">
+	<cfsavecontent variable="settings">
 		<cfoutput>
-			;(function($){
+			require([
+				'jquery',
+				'plugins/admin/extend/admin/theme/admin/script/theme',
+				'plugins/api/script/api'
+			], function($) {
 				$.algid.admin.options.base.url = '#app.getPath()#';
 				$.algid.admin.options.search.threshold = #searchSettings.threshold#;
 				$.api.defaults.url = '#app.getPath()##api.getPath()#';
-			})(jQuery);
+			});
 		</cfoutput>
 	</cfsavecontent>
 	
-	<cfset template.addScripts(adminSearch) />
+	<cfset template.addScripts(settings) />
 </cfsilent>
 <!DOCTYPE html>
 <html>
@@ -79,7 +38,35 @@
 		
 		<title><cfoutput>#template.getHTMltitle()#</cfoutput></title>
 		
-		<cfoutput>#template.getStyles()#</cfoutput>
+		<cfoutput>
+			<cfif isProduction>
+				<link rel="stylesheet" href="/cf-compendium/style/cf-compendium-min.css" />
+				<link rel="stylesheet" href="/algid/style/algid-min.css" />
+			<cfelse>
+				<link rel="stylesheet" href="/cf-compendium/style/base.css" />
+				<link rel="stylesheet" href="/cf-compendium/style/form.css" />
+				<link rel="stylesheet" href="/cf-compendium/style/datagrid.css" />
+				<link rel="stylesheet" href="/cf-compendium/style/detail.css" />
+				<link rel="stylesheet" href="/cf-compendium/style/code.css" />
+				<link rel="stylesheet" href="/algid/style/base.css" />
+			</cfif>
+			
+			<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.css" />
+			<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Philosopher&subset=latin" />
+			<link rel="stylesheet" href="/algid/style/960/reset-min.css" />
+			<link rel="stylesheet" href="/algid/style/960/960-min.css" />
+			<link rel="stylesheet" href="#transport.theRequest.webRoot#plugins/admin/extend/admin/theme/admin/style/admin#minFix#.css" />
+			<link rel="stylesheet" href="#transport.theRequest.webRoot#plugins/editor/script/markitup/skins/markitup/style#minFix#.css" />
+			<link rel="stylesheet" href="#transport.theRequest.webRoot#plugins/editor/style/editor#minFix#.css" />
+			
+			<link rel="stylesheet" href="#transport.theRequest.webRoot#plugins/admin/extend/admin/theme/admin/style/print#minFix#.css" media="print" />
+			
+			<cfif not isProduction>
+				<link rel="stylesheet" href="#transport.theRequest.webRoot#plugins/admin/extend/admin/theme/admin/style/#(app.isMaintenance() ? "maintenance" : "development")#-min.css" />
+			</cfif>
+			
+			#template.getStyles()#
+		</cfoutput>
 	</head>
 	<body>
 		<div class="container-outer <cfoutput>#app.getEnvironment()#</cfoutput>">
@@ -269,6 +256,18 @@
 			</div>
 		</div>
 		
-		<cfoutput>#template.getScripts()#</cfoutput>
+		<cfoutput>
+			<script src="/cf-compendium/script/require-min.js"></script>
+			<script>
+				require.config({
+					baseUrl: '#transport.theRequest.webRoot#',
+					paths: {
+						'jquery': '//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min',
+						'jqueryui': '//ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min'
+					}
+				});
+			</script>
+			#template.getScripts()#
+		</cfoutput>
 	</body>
 </html>
