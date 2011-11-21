@@ -262,6 +262,8 @@
 				require.config({
 					baseUrl: '#transport.theRequest.webRoot#',
 					paths: {
+						'async': '/cf-compendium/script/plugin/async',
+						'goog': '/cf-compendium/script/plugin/goog',
 						'jquery': '//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min',
 						'jqueryui': '//ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min'
 					}
