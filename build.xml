@@ -16,11 +16,6 @@
 		<property name="theme.admin.script" value="${theme.admin}/script" />
 		<property name="theme.admin.style" value="${theme.admin}/style" />
 		
-		<!-- Create a single, concatenated JS file -->
-		<concat destfile="${theme.admin.script}/jquery.admin.js">
-			<fileset dir="${theme.admin.script}" includes="jquery.base.js,jquery.jgrowl-min.js" />
-		</concat>
-		
 		<!-- Create a single, concatenated CSS file -->
 		<concat destfile="${theme.admin.style}/admin.css">
 			<fileset dir="${theme.admin.style}" includes="jquery.growl.css,styles-min.css,production-min.css" />
