@@ -5,15 +5,15 @@
 	
 	<!--- Setup a transport object to transport scopes --->
 	<cfset transport = {
-			theApplication = application,
-			theCGI = cgi,
-			theCookie = cookie,
-			theForm = form,
-			theRequest = request,
-			theServer = server,
-			theSession = session,
-			theUrl = url
-		} />
+		theApplication = application,
+		theCGI = cgi,
+		theCookie = cookie,
+		theForm = form,
+		theRequest = request,
+		theServer = server,
+		theSession = session,
+		theUrl = url
+	} />
 	
 	<!--- Retrieve the admin objects --->
 	<cfset i18n = transport.theApplication.managers.singleton.getI18N() />
@@ -61,23 +61,6 @@
 	</cfif>
 	
 	<cfset template = transport.theApplication.factories.transient.getTemplateForAdmin(argumentCollection = args) />
-	
-	<!--- Add the main jquery scripts with fallbacks --->
-	<cfset template.addScript('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js', { condition = '!window.jQuery', script = '/algid/script/jquery-min.js' }) />
-	<cfset template.addScript('https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js', { condition = '!window.jQuery.ui', script = '/algid/script/jquery-ui-min.js' }) />
-	
-	<!--- Include minified files for production --->
-	<cfif transport.theApplication.managers.singleton.getApplication().isProduction()>
-		<cfset template.addStyles('/cf-compendium/style/cf-compendium-min.css') />
-		<cfset template.addStyles('/algid/style/algid-min.css') />
-		<cfset template.addScripts('/cf-compendium/script/jquery.cf-compendium-min.js') />
-		<cfset template.addScripts('/algid/script/jquery.algid-min.js') />
-	<cfelse>
-		<cfset template.addStyles('/cf-compendium/style/base.css', '/cf-compendium/style/form.css', '/cf-compendium/style/list.css', '/cf-compendium/style/datagrid.css', '/cf-compendium/style/detail.css', '/cf-compendium/style/code.css', '/cf-compendium/style/chosen.css') />
-		<cfset template.addStyles('/algid/style/base.css') />
-		<cfset template.addScripts('/cf-compendium/script/jquery.base.js', '/cf-compendium/script/jquery.form.js', '/cf-compendium/script/jquery.list.js', '/cf-compendium/script/jquery.datagrid.js', '/cf-compendium/script/jquery.timeago.js', '/cf-compendium/script/jquery.cookie.js', '/cf-compendium/script/jquery-ui.timepicker-addon.js', '/cf-compendium/script/jquery.chosen-min.js', '/cf-compendium/script/jquery.elastic.js') />
-		<cfset template.addScripts('/algid/script/jquery.base.js') />
-	</cfif>
 	
 	<cfset template.setIsSimple(transport.theApplication.managers.singleton.getApplication().hasPlugin('user') and not transport.theSession.managers.singleton.getUser().isLoggedIn()) />
 	

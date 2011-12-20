@@ -348,11 +348,6 @@ ul, ol {
 			text-transform: capitalize;
 		}
 		
-		textarea {
-			width: @widthTextarea;
-			margin: .25em 5px;
-		}
-		
 		/**
 		 * markItUp! Customizations
 		 */
@@ -386,6 +381,20 @@ ul, ol {
 			margin: 5px;
 			width: @widthTextarea;
 			border: 1px solid @colorBorder;
+		}
+		
+		&.datagrid:nth-child(odd)  {
+			thead {
+				background: #d2d2d2;
+			}
+			
+			tbody {
+				tr:nth-child(odd) {
+					td {
+						background: #dcdcdc;
+					}
+				}
+			}
 		}
 		
 		&.datagrid label,

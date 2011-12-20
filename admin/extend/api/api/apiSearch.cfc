@@ -7,7 +7,7 @@ component extends="plugins.api.inc.resource.base.api" {
 		servSearch = variables.services.get('admin', 'search');
 		
 		// Retrieve the search results
-		results = servSearch.search( variables.variables.apiRequestBody.term);
+		results = servSearch.search( variables.apiRequestBody.term);
 		
 		// Get the array of results from the search results
 		variables.apiResponseBody = results.getResults();

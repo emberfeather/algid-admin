@@ -3,7 +3,22 @@
  * 
  * Used to unobtrusively enhance the admin experience for the user.
  */
-(function($) {
+(function(factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD Registration
+		define('plugins/admin/extend/admin/theme/admin/script/theme', [
+		        'jquery',
+		        'jqueryui',
+		        '/cf-compendium/script/form.js',
+		        '/cf-compendium/script/datagrid.js',
+		        '/cf-compendium/script/jquery-ui.timepicker-addon.js',
+		        '/cf-compendium/script/jquery.timeago.js'
+		        ], factory);
+	} else {
+		// Browser globals
+		factory(jQuery);
+	}
+}(function($, $ui) {
 	$.algid = $.algid || {};
 	
 	$.algid.admin = {
@@ -128,4 +143,4 @@
 			});
 		}
 	});
-}(jQuery));
+}));
